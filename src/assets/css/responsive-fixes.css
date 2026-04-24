@@ -1,0 +1,472 @@
+/* Responsive Fixes for Data Marketics */
+
+/* Global Image Responsiveness */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Ensure images with Bootstrap classes work as expected */
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Hero Area 2 Fixes */
+@media (max-width: 991px) {
+    .hero-area2 {
+        min-height: auto !important;
+        padding: 130px 0 60px !important;
+        display: block !important;
+    }
+
+    .hero-area2 .hero2-content {
+        padding-top: 0 !important;
+        text-align: center;
+    }
+
+    .hero-area2 .main-headding {
+        margin-top: 0 !important;
+        /* Fix: removed negative margin causing overlap with navbar */
+    }
+
+    .hero-area2 .main-headding h1 {
+        font-size: 34px !important;
+        line-height: 44px !important;
+    }
+
+    .hero-area2 .main-headding .span {
+        display: inline-block;
+        margin-bottom: 15px;
+        font-size: 14px;
+        background: var(--qt-bg-bg-3);
+        padding: 5px 15px;
+        border-radius: 50px;
+    }
+
+    .hero-area2 .hero2-image {
+        height: auto !important;
+        /* Fixed height to contain absolute elements */
+        margin-top: 40px !important;
+        position: relative !important;
+        width: 100%;
+    }
+
+    .hero-area2 .hero2-image .image1 {
+        position: relative !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+        z-index: 1;
+        display: block;
+    }
+
+    .hero-area2 .hero2-image .image2 {
+        position: absolute !important;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: 70% !important;
+        margin: 0 !important;
+        z-index: 2;
+    }
+
+    .hero-area2 .hero2-image .image3 {
+        display: none;
+    }
+}
+
+/* About Us Section (Stapes) Fixes */
+@media (max-width: 991px) {
+    .stapes-images2 {
+        margin-bottom: 40px;
+    }
+
+    .stapes-images2 .image2,
+    .stapes .main-shape {
+        display: none;
+        /* Hide overlapping shapes that might break layout or cause horizontal scroll */
+    }
+
+    .headding2 {
+        text-align: center;
+    }
+
+    .headding2 .theme-btn2 {
+        margin: 0 auto;
+        display: table;
+    }
+}
+
+/* Why Choose Section (Choose2) Fixes */
+@media (max-width: 991px) {
+    .choose2 .choose-images {
+        margin-top: 50px;
+    }
+
+    .choose2 .choose-images .image2 {
+        display: none;
+    }
+}
+
+/* Features Tabs (Work5) Fixes */
+@media (max-width: 767px) {
+    .work5 .nav-pills {
+        flex-direction: column;
+    }
+
+    .work5 .nav-item {
+        width: 100%;
+    }
+
+    .work5 .nav-link {
+        width: 100%;
+        text-align: left;
+        margin-bottom: 10px;
+    }
+
+    .work-tab-body {
+        padding: 20px 0;
+    }
+
+    .work-tab-body h3 {
+        font-size: 24px;
+        line-height: 32px;
+    }
+}
+
+/* Footer Fixes */
+@media (max-width: 767px) {
+    .footer-icon-box-all {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-icon-box {
+        margin-bottom: 20px;
+        width: 100%;
+    }
+
+    .copyright-area {
+        text-align: center;
+    }
+
+    .copyright-area .logo {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .copyright-area .coppyright {
+        text-align: center !important;
+    }
+}
+
+/* General Layout Fixes */
+.space100 {
+    height: 60px;
+}
+
+.space60 {
+    height: 40px;
+}
+
+.space30 {
+    height: 20px;
+}
+
+@media (min-width: 992px) {
+    .space100 {
+        height: 100px;
+    }
+
+    .space60 {
+        height: 60px;
+    }
+
+    .space30 {
+        height: 30px;
+    }
+}
+
+/* Prevent horizontal scroll */
+body,
+html {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
+/* Fix Hero Paragraph Width on Desktop */
+@media (min-width: 992px) {
+    .hero-area2 .main-headding p {
+        max-width: 90%;
+    }
+}
+
+/* Fix Potential Overlapping in editing6 section */
+@media (max-width: 767px) {
+    .editing-box {
+        margin-top: 30px;
+    }
+}
+
+/* Premium Mobile Nav Icon Design (Staggered Bars) */
+@media (max-width: 991px) {
+    .mobile-nav-icon {
+        background: linear-gradient(135deg, #603BF3 0%, #8F00FF 100%) !important;
+        color: #fff !important;
+        border: none !important;
+        width: 46px !important;
+        height: 46px !important;
+        border-radius: 14px !important;
+        box-shadow: 0 4px 15px rgba(96, 59, 243, 0.3) !important;
+        transition: all 0.3s ease !important;
+        cursor: pointer;
+        position: relative !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .mobile-nav-icon i {
+        display: none !important;
+    }
+
+    /* Top and Bottom Bars */
+    .mobile-nav-icon::before {
+        content: "";
+        position: absolute;
+        width: 22px;
+        height: 3px;
+        background: #fff;
+        border-radius: 10px;
+        transform: translateY(-8px);
+        box-shadow: 0 16px 0 #fff;
+        /* Creates the bottom bar */
+        transition: all 0.3s ease;
+    }
+
+    /* Middle Staggered Bar */
+    .mobile-nav-icon::after {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 3px;
+        background: #fff;
+        border-radius: 10px;
+        transform: translateX(4px);
+        transition: all 0.3s ease;
+    }
+
+    .mobile-nav-icon:active {
+        transform: scale(0.9);
+    }
+
+
+    /* Adjust header height to accommodate larger icon if needed */
+    .mobile-header {
+        padding: 12px 0 !important;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+    }
+}
+
+/* Premium Slider Dots (Three/Multiple Dots) Design */
+.slick-dots,
+.owl-dots {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    list-style: none !important;
+    padding: 20px 0 !important;
+    margin: 0 !important;
+}
+
+.slick-dots li,
+.owl-dot {
+    margin: 0 6px !important;
+}
+
+.slick-dots li button,
+.owl-dot span {
+    width: 10px !important;
+    height: 10px !important;
+    background: #DFE1EC !important;
+    border: none !important;
+    border-radius: 50% !important;
+    transition: all 0.3s ease !important;
+    text-indent: -9999px !important;
+    padding: 0 !important;
+}
+
+.slick-dots li.slick-active button,
+.owl-dot.active span {
+    width: 28px !important;
+    border-radius: 10px !important;
+    background: linear-gradient(95deg, #603BF3 0.75%, #8F00FF 101.34%) !important;
+    box-shadow: 0 4px 10px rgba(96, 59, 243, 0.2) !important;
+}
+
+/* Premium Mobile Close Button */
+.menu-close {
+    width: 40px !important;
+    height: 40px !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.3s ease !important;
+    top: 25px !important;
+    right: 25px !important;
+}
+
+.menu-close:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    transform: rotate(90deg);
+}
+
+.menu-close i {
+    font-size: 20px !important;
+}
+
+/* Base overlay styling */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 9998;
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+}
+
+/* About Page Area 2 Box Alignment Fix */
+.about-page-boxs.aligned-boxs .single-box {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+/* Ensure boxes are properly spaced on desktop */
+@media (min-width: 992px) {
+    .about-page-boxs.aligned-boxs .single-box {
+        margin-top: 24px !important;
+    }
+
+    .about-page-boxs.aligned-boxs .single-box:first-child {
+        margin-top: 0 !important;
+    }
+}
+
+/* Dynamic Inline-Style Fallbacks for Mobile Responsiveness */
+@media (max-width: 767px) {
+
+    /* Scale down oversized inline headings */
+    h1[style*="font-size: 50px"],
+    h1[style*="font-size: 40px"],
+    .main-headding h1,
+    .form-inputs h1 {
+        font-size: 32px !important;
+        line-height: 1.3 !important;
+    }
+
+    h2[style*="font-size: 40px"],
+    h2[style*="font-size: 32px"] {
+        font-size: 26px !important;
+        line-height: 1.4 !important;
+    }
+
+    p[style*="font-size: 18px"] {
+        font-size: 15px !important;
+        line-height: 1.5 !important;
+    }
+
+    /* Reduce heavy paddings on mobile */
+    .cta-area[style*="padding: 80px"] {
+        padding: 50px 15px !important;
+    }
+
+    .why-choose-area {
+        padding: 40px 15px !important;
+    }
+
+    /* Stack buttons that use inline flex */
+    .cta-area .d-flex.gap-4,
+    .contact-form-all .d-flex.gap-4 {
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+
+    .cta-area .d-flex a,
+    .contact-form-all .d-flex a,
+    .hero-btns a {
+        width: 100% !important;
+        justify-content: center !important;
+        text-align: center !important;
+        padding: 14px 20px !important;
+        font-size: 16px !important;
+    }
+
+    /* Adjust custom bullet points layout */
+    .custom-bullet-list li {
+        flex-direction: column !important;
+        text-align: center !important;
+        padding: 20px 15px !important;
+    }
+
+    .custom-bullet-list li>div {
+        margin: 0 auto 15px auto !important;
+    }
+
+    /* Pages Hero Fixes */
+    .pages-hero {
+        text-align: center;
+        padding-top: 20px !important;
+        min-height: auto !important;
+    }
+
+    .pages-hero .main-headding {
+        margin-bottom: 20px !important;
+        padding-top: 20px !important;
+    }
+
+    /* Contact Page Top Padding Setup */
+    .contact-page-area.sp,
+    .sp {
+        padding-top: 40px !important;
+        padding-bottom: 40px !important;
+    }
+
+    .space60 {
+        height: 15px !important;
+    }
+
+    .space100 {
+        height: 30px !important;
+    }
+
+    .pages-hero .hero-image img,
+    .about-img img {
+        margin: 0 auto;
+        display: block;
+    }
+}
+
+@media (max-width: 991px) {
+
+    /* Ensure layout stacks properly on tablets too */
+    .pages-hero {
+        text-align: center;
+        min-height: auto !important;
+        padding-top: 40px !important;
+    }
+
+    .pages-hero .main-headding {
+        padding-top: 40px !important;
+    }
+
+    .hero-btns {
+        justify-content: center;
+        display: flex;
+    }
+}

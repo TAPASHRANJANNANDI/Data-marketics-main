@@ -1,0 +1,138 @@
+import React from 'react';
+import aboutMainImg from '../assets/img/about/about-main-img.png';
+import aboutPageImg1 from '../assets/img/about/about-page-img1.png';
+import aboutPageImg2 from '../assets/img/about/about-page-img2.png';
+import spanImage6 from '../assets/img/icons/span-image6.png';
+import edit1 from '../assets/img/icons/editing6-icon1.svg';
+import edit2 from '../assets/img/icons/editing6-icon2.svg';
+import edit3 from '../assets/img/icons/editing6-icon3.svg';
+import edit4 from '../assets/img/icons/editing6-icon4.svg';
+import secIcon1 from '../assets/img/icons/about-page-sec-icon1.png';
+import secIcon2 from '../assets/img/icons/about-page-sec-icon2.png';
+import secIcon3 from '../assets/img/icons/about-page-sec-icon3.png';
+// import shape1 from '../assets/img/shapes/common-hero-shape1.png';
+// import shape2 from '../assets/img/shapes/common-hero-shape2.png';
+import { Link } from 'react-router-dom';
+import {Helmet} from 'react-helmet';
+const ExhibitorsData = () => {
+    return (
+        <>
+        <Helmet>
+            <meta name="title" content="Exhibitors Data List | B2B Event & Trade Show Leads – Data Marketics" />
+            <meta name="description" content="Access verified exhibitors data and trade show contact lists with Data Marketics. Target decision-makers, improve outreach, and generate qualified B2B leads faster." />
+        </Helmet>
+            <div className="pages-hero">
+                <div className="container">
+                    <div className="row align-items-center">
+                        <div className="col-lg-6">
+                            <div className="headding2">
+                                <h1>B2B Event Exhibitors Data for Targeted Lead Generation</h1>
+                                <p>Data Marketics provides verified event exhibitors data to help businesses connect with decision-makers from global trade shows and industry events. Our curated databases enable targeted outreach, improved engagement, and faster sales pipeline growth.</p>
+                                <div className="space30"></div>
+                                <div className="hero-btns">
+                                    <Link to="/contact" className="theme-btn2">Contact Us - Attendees Data</Link>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-6">
+                            <div className="hero-image shape-animaiton3">
+                                <img className="img-fluid" src={aboutMainImg} alt="Exhibitors data" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {/* <img className="hero-shape1" src={shape1} alt="" /> */}
+                {/* <img className="hero-shape2" src={shape2} alt="" /> */}
+            </div>
+
+            <div className="about-page-area1 sp">
+                <div className="container">
+                    <div className="row align-items-center">
+                        <div className="col-lg-6">
+                            <div className="headding2">
+                                <h2>Industry-Wise Exhibitors Data Solutions</h2>
+                                <p>Our industry-specific exhibitor databases help B2B companies identify high-intent prospects actively participating in global events.</p>
+                                <ul className="list">
+                                    <li><span><i className="fa-solid fa-check"></i></span> Healthcare Events Data</li>
+                                    <li><span><i className="fa-solid fa-check"></i></span> Technology Events</li>
+                                    <li><span><i className="fa-solid fa-check"></i></span> Banking & Finance Events</li>
+                                    <li><span><i className="fa-solid fa-check"></i></span> Travel & Tourism Events</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div className="col-lg-6">
+                            <div className="about-img">
+                                <img className="img-fluid" src={aboutPageImg1} alt="Industry data" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="editing6 sp">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-8 m-auto text-center">
+                            <div className="heading6">
+                                <span className="title"><img src={spanImage6} alt="Icon" /></span>
+                                <h2>How Our Exhibitors Data Helps You Generate Qualified Leads</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row mt-5">
+                        {[
+                            { title: 'Events List', text: 'Global events calendar and insider exhibitor data.', icon: edit1 },
+                            { title: 'Exhibitor’s List', text: 'See all companies in your industry taking part in each event.', icon: edit2 },
+                            { title: 'Event Attendees Data', text: 'Sales-qualified leads primed for conversion.', icon: edit2 },
+                            { title: 'Name of Events', text: 'Relevant business event details and direct URLs.', icon: edit3 },
+                            { title: 'Website URL', text: 'Direct URLs to connect with organizers & exhibitors.', icon: edit4 },
+                            { title: 'Sponsors & Organisers', text: 'Detailed information on sponsors helping evaluate funding strength.', icon: edit4 },
+                        ].map((item, index) => (
+                            <div className="col-lg-4 col-md-6 mb-4" key={index}>
+                                <div className="editing-box">
+                                    <div className="icon"><img src={item.icon} alt={item.title} width="48" /></div>
+                                    <h4>{item.title}</h4>
+                                    <p>{item.text}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            <div className="about-page-area2 _relative">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-10 m-auto text-center">
+                            <div className="headding2">
+                                <h5>Unlock the Power of Verified Exhibitor Data</h5>
+                                <p>Access accurate, sales-ready exhibitor contacts from global events and empower your marketing and sales teams to connect with decision-makers quickly and effectively.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row mt-5">
+                        <div className="col-lg-6">
+                            <img className="img-fluid" src={aboutPageImg2} alt="event exhibitors data lead generation" />
+                        </div>
+                        <div className="col-lg-6">
+                            <div className="about-page-boxs aligned-boxs">
+                                <div className="single-box">
+                                    <div className="icon"><img src={secIcon1} alt="trade show exhibitor analytics" /></div>
+                                    <h4>Time and Cost Efficiency</h4>
+                                    <p>Save resources by accessing curated lists in one place.</p>
+                                </div>
+                                <div className="single-box">
+                                    <div className="icon"><img src={secIcon2} alt="exhibitor data sales analytics dashboard" /></div>
+                                    <h4>Ready-to-Use Sales Leads</h4>
+                                    <p>Exhibitor contacts are sales-qualified prospects primed for outreach.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    );
+};
+
+export default ExhibitorsData;
