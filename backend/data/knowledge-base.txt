@@ -12,7 +12,6 @@ As a leading marketing data provider, we help businesses connect with qualified 
 Company Name: Data Marketics
 Tagline: Data-Driven Marketing Experts
 Domain / Website: https://datamarketics.com
-Sister Site: Professionalsdata.com
 Industry: B2B Marketing Consultant, Data Provider, Lead Generation Specialists
 Years of Experience: 6+ years
 Mission: To deliver marketing solutions powered by reliable data and strategic insights that drive measurable business success. Helping businesses accelerate growth through accurate contact data, intelligent strategies, and performance-focused marketing execution.
@@ -110,7 +109,7 @@ Data Marketics is a trusted provider of data-driven marketing solutions helping 
 - Lead Scoring & Nurturing: Automated and manual processes to guide leads through the sales funnel.
 
 6. Customer Testimonials
-> "Professionals Data team provided fast service and we were pleased with the data that they were able to provide that will help us better support patients."
+> "Data Marketics team provided fast service and we were pleased with the data that they were able to provide that will help us better support patients."
 > — Jenn Gordon, Director, The Canadian Breast Cancer Network
 
 7. Marketing Data Solutions for Every Industry

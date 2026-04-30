@@ -1,6 +1,6 @@
-# Data Marketics & Professionals Data - Master Knowledge Base
+# Data Marketics  - Master Knowledge Base
 
-This document is the definitive knowledge source for the AI Chatbot, combining intelligence from Data Marketics and its sister brand, Professionals Data.
+This document is the definitive knowledge source for the AI Chatbot, combining intelligence from Data Marketics
 
 ---
 
@@ -11,7 +11,6 @@ As a leading marketing data provider, we help businesses connect with qualified 
 
 ## 1. Brand Identity & Sister Sites
 - **Primary Brand**: Data Marketics ([datamarketics.com](https://datamarketics.com))
-- **Sister Brand**: Professionals Data ([professionalsdata.com](https://professionalsdata.com))
 - **Relationship**: Sister companies sharing core expertise in B2B data, lead generation, and sales prospecting.
 - **Founded**: Over 6 years ago.
 - **Mission**: To empower businesses to increase sales by delivering accurate, reliable, and actionable data that fuels sustainable growth and efficient sales pipelines.
@@ -23,11 +22,6 @@ As a leading marketing data provider, we help businesses connect with qualified 
 ### Data Marketics
 - **Phone**: +1 (281) 789-6642
 - **Email**: sales@datamarketics.com
-- **Address**: 100 Horizon Center Blvd, 1st and 2nd Floor, Hamilton, NJ 08691
-
-### Professionals Data
-- **Phone**: +1 (609) 318-6094
-- **Email**: info@professionalsdata.com / contact@professionalsdata.com
 - **Address**: 100 Horizon Center Blvd, 1st and 2nd Floor, Hamilton, NJ 08691
 
 ---
@@ -132,7 +126,7 @@ Data Marketics is a trusted provider of data-driven marketing solutions helping 
 
 ## 6. Customer Success & Testimonials
 We are trusted by global organizations to deliver high-quality business intelligence.
-> "Professionals Data team provided fast service and we were pleased with the data that they were able to provide that will help us better support patients."
+> "Data Marketics Data team provided fast service and we were pleased with the data that they were able to provide that will help us better support patients."
 > — **Jenn Gordon**, Director, The Canadian Breast Cancer Network
 
 ---

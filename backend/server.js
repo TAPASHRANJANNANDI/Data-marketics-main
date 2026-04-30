@@ -35,7 +35,7 @@ async function condenseQuery(history, latestMessage) {
     const { text } = await generateText({
         model: model,
         system: `Given the following conversation history and a follow-up question, rephrase the follow-up question to be a standalone search query. 
-        Focus only on the company context (Data Marketics / Professionals Data).`,
+        Focus only on the company context Data Marketics.`,
         prompt: `History: ${JSON.stringify(history.slice(-3))} \nQuestion: ${latestMessage}`,
     });
     return text.trim();
@@ -66,7 +66,7 @@ app.post('/api/chat', async (req, res) => {
         const result = await streamText({
             model: model,
             temperature: 0, // High-precision retrieval
-            system: `You are the Executive AI Assistant for Professionals Data (Sister brand of Data Marketics).
+            system: `You are the Executive AI Assistant for Data Marketics).
 
             ### RETRIEVED CONTEXT:
             ${context}
