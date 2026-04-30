@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import contactIcon1 from '../assets/img/icons/contact-page-icon1.png';
 import contactIcon2 from '../assets/img/icons/contact-page-icon2.png';
@@ -17,6 +17,15 @@ const Contact = () => {
     });
     const [status, setStatus] = useState('');
 
+    useEffect(() => {
+        if (status && status !== 'Sending...') {
+            const timer = setTimeout(() => {
+                setStatus('');
+            }, 5000);
+            return () => clearTimeout(timer);
+        }
+    }, [status]);
+
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
@@ -25,33 +34,9 @@ const Contact = () => {
         e.preventDefault();
         setStatus('Sending...');
 
-        const emailData = {
-            to: import.meta.env.VITE_TO_EMAIL,
-            subject: `New Contact Form Submission from ${formData.first_name}`,
-            text: `
-Name: ${formData.first_name}
-Email: ${formData.email}
-Phone: ${formData.phone}
-Website: ${formData.website}
-Industry: ${formData.industry}
-Services: ${formData.services}
-Message: ${formData.message}
-            `,
-            html: `
-                <h2>New Contact Form Submission</h2>
-                <p><strong>Name:</strong> ${formData.first_name}</p>
-                <p><strong>Email:</strong> ${formData.email}</p>
-                <p><strong>Phone:</strong> ${formData.phone}</p>
-                <p><strong>Website:</strong> ${formData.website}</p>
-                <p><strong>Industry:</strong> ${formData.industry}</p>
-                <p><strong>Services:</strong> ${formData.services}</p>
-                <p><strong>Message:</strong></p>
-                <p>${formData.message}</p>
-            `
-        };
-
         try {
-            const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/send-email`, emailData);
+            const baseUrl = import.meta.env.DEV ? '' : (import.meta.env.VITE_API_URL || '');
+            const response = await axios.post(`${baseUrl}/api/send-email`, formData);
             if (response.data.success) {
                 setStatus('Message sent successfully!');
                 setFormData({ first_name: '', email: '', phone: '', website: '', industry: '', services: '', message: '' });
@@ -191,8 +176,44 @@ Message: ${formData.message}
                                                 <div className="button">
                                                     <button type="submit" className="theme-btn2">Submit Now</button>
                                                 </div>
-                                                {status && <div className="space16"></div>}
-                                                {status && <p className="status-message">{status}</p>}
+                                                {status && (
+                                                    <div style={{
+                                                        marginTop: '20px',
+                                                        padding: '16px 24px',
+                                                        borderRadius: '8px',
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        gap: '12px',
+                                                        backgroundColor: status === 'Message sent successfully!' ? '#e6f4ea' : status === 'Sending...' ? '#eef5ff' : '#fce8e6',
+                                                        color: status === 'Message sent successfully!' ? '#137333' : status === 'Sending...' ? '#007bff' : '#c5221f',
+                                                        border: `1px solid ${status === 'Message sent successfully!' ? '#ceead6' : status === 'Sending...' ? '#cce5ff' : '#fad2cf'}`,
+                                                        fontWeight: '600',
+                                                        fontSize: '16px',
+                                                        boxShadow: '0 4px 10px rgba(0,0,0,0.05)',
+                                                        transition: 'all 0.3s ease-in-out'
+                                                    }}>
+                                                        {status === 'Message sent successfully!' && (
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                                            </svg>
+                                                        )}
+                                                        {status === 'Sending...' && (
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                                                <path d="M22 2L11 13"></path>
+                                                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                                            </svg>
+                                                        )}
+                                                        {status !== 'Message sent successfully!' && status !== 'Sending...' && (
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                                                <circle cx="12" cy="12" r="10"></circle>
+                                                                <line x1="12" y1="8" x2="12" y2="12"></line>
+                                                                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                                                            </svg>
+                                                        )}
+                                                        <span>{status}</span>
+                                                    </div>
+                                                )}
                                             </div>
                                         </div>
                                     </form>
