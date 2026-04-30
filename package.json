@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "index": "node backend/index-data.js",
+    "start:bot": "node backend/data/server.js"
   },
   "repository": {
     "type": "git",
@@ -15,7 +17,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/TAPASHRANJANNANDI/Data-marketics/issues"
   },
@@ -25,13 +27,20 @@
     "vite": "^7.3.1"
   },
   "dependencies": {
+    "@ai-sdk/google": "^3.0.64",
+    "@ai-sdk/react": "^3.0.170",
+    "ai": "^6.0.168",
     "axios": "^1.13.6",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
     "framer-motion": "^12.35.0",
     "lucide-react": "^0.577.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-helmet": "^6.1.0",
     "react-helmet-async": "^3.0.0",
-    "react-router-dom": "^7.13.1"
+    "react-router-dom": "^7.13.1",
+    "zod": "^4.3.6"
   }
 }

@@ -12,6 +12,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import Sitemap from './pages/Sitemap';
 
 import ScrollToTop from './components/ScrollToTop';
+import ChatBot from './pages/ChatBot';
 
 function App() {
     return (
@@ -28,6 +29,7 @@ function App() {
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                 <Route path="/sitemap" element={<Sitemap />} />
             </Routes>
+            <ChatBot />
         </Layout>
     );
 }
