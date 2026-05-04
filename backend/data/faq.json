@@ -1,0 +1,87 @@
+[
+  {
+    "question": "What does Data Marketics do?",
+    "answer": "We are a leading marketing data provider specializing in B2B lead generation. We help businesses connect with qualified decision-makers through accurate B2B contact databases, targeted email lists, and data-driven solutions.",
+    "category": "Company"
+  },
+  {
+    "question": "What services do you offer?",
+    "answer": "Our core services include Account-Based Marketing (ABM) data, Verified B2B Contact Intelligence, Demand Generation support, Event & Exhibitor intelligence, and Custom Marketing Research.",
+    "category": "Services"
+  },
+  {
+    "question": "How accurate is your data?",
+    "answer": "We guarantee 95%+ data accuracy through a multi-step human-in-the-loop verification process, including automated AI scrubbing and manual tele-verification.",
+    "category": "Quality"
+  },
+  {
+    "question": "Is your data GDPR compliant?",
+    "answer": "Yes, all our B2B contact intelligence is strictly GDPR, CCPA, and CAN-SPAM compliant. We source data through professional public records and direct verification.",
+    "category": "Compliance"
+  },
+  {
+    "question": "How can I contact Data Marketics?",
+    "answer": "You can reach us at sales@datamarketics.com or call us at +1 (281) 789-6642. Our headquarters is located at 100 Horizon Center Blvd, Hamilton, NJ 08691.",
+    "category": "Contact"
+  },
+  {
+    "question": "What industries do you serve?",
+    "answer": "We provide tailored B2B data solutions for Financial Services, Technology, Healthcare, Manufacturing, and SaaS companies globally.",
+    "category": "Services"
+  },
+  {
+    "question": "Can you help with Account-Based Marketing (ABM)?",
+    "answer": "Yes! Our ABM solutions help you identify and engage decision-makers using firmographic targeting, technographic insights, and buyer intent data.",
+    "category": "Services"
+  },
+  {
+    "question": "What is Event & Exhibitor Intelligence?",
+    "answer": "We provide verified lists of event attendees, exhibitors, and sponsors from global trade shows to help you connect with sales-ready prospects faster.",
+    "category": "Services"
+  },
+  {
+    "question": "Do you offer a free trial or free tier?",
+    "answer": "We don't have a standard free tier, but we offer a consultation discovery call to understand your business goals and can provide samples based on your ICP.",
+    "category": "Pricing"
+  },
+  {
+    "question": "What is your pricing model?",
+    "answer": "We offer flexible models including Pay-as-you-go for custom lists, subscriptions for our Prospector platform, and custom Enterprise solutions.",
+    "category": "Pricing"
+  },
+  {
+    "question": "What is the Prospector Platform?",
+    "answer": "The Prospector Platform is our flagship tool for custom list prospecting and real-time sales intelligence, designed for decision-maker engagement.",
+    "category": "Tools"
+  },
+  {
+    "question": "How do you verify your emails?",
+    "answer": "We use a multi-step process including manual tele-verification by humans to ensure that the contact details are active and accurate.",
+    "category": "Quality"
+  },
+  {
+    "question": "Where are you located?",
+    "answer": "Our headquarters is located at 100 Horizon Center Blvd, 1st and 2nd Floor, Hamilton, NJ 08691, USA.",
+    "category": "Contact"
+  },
+  {
+    "question": "Who founded Data Marketics?",
+    "answer": "Data Marketics was founded over 6 years ago with a mission to empower businesses to increase sales through accurate and actionable B2B data.",
+    "category": "Company"
+  },
+  {
+    "question": "hello hi greetings",
+    "answer": "Greetings! I am the Data Marketics Assistant. How can I help you with your B2B lead generation needs today?",
+    "category": "Greeting"
+  },
+  {
+    "question": "thank you thanks",
+    "answer": "You're very welcome! If you have any other questions about our data services, feel free to ask.",
+    "category": "Greeting"
+  },
+  {
+    "question": "Who are you?",
+    "answer": "I am the official AI assistant for Data Marketics. I can help you with information about our B2B data services, lead generation, and contact details.",
+    "category": "Company"
+  }
+]
