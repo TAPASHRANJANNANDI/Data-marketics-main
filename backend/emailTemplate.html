@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Lead - Data Marketics</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f4f7f6; color: #333333; -webkit-font-smoothing: antialiased;">
+    <div style="max-width: 600px; margin: 40px auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        
+        <!-- Top accent line -->
+        <div style="height: 6px; background-color: #25b9a3; width: 100%;"></div>
+
+        <!-- Header -->
+        <div style="background-color: #101537; padding: 35px 40px; text-align: center;">
+            <h1 style="color: #ffffff; margin: 0; font-size: 24px; font-weight: 600; letter-spacing: 0.5px;">New Lead Inquiry</h1>
+            <p style="color: #aeb4d1; margin: 8px 0 0 0; font-size: 15px;">Data Marketics Website</p>
+        </div>
+        
+        <!-- Body -->
+        <div style="padding: 40px;">
+            <p style="font-size: 16px; color: #444; line-height: 1.6; margin-top: 0; margin-bottom: 25px;">Hello Team,</p>
+            <p style="font-size: 16px; color: #444; line-height: 1.6; margin-top: 0; margin-bottom: 30px;">A new prospect has submitted their information via the website contact form. Below are the details:</p>
+            
+            <table style="width: 100%; border-collapse: collapse; margin-bottom: 35px; background-color: #fcfcfc; border-radius: 6px; overflow: hidden; border: 1px solid #eeeeee;">
+                <tr>
+                    <td style="padding: 15px 20px; border-bottom: 1px solid #eeeeee; width: 35%; background-color: #f8f9fa;"><strong style="color: #101537; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Name</strong></td>
+                    <td style="padding: 15px 20px; border-bottom: 1px solid #eeeeee; color: #222222; font-size: 15px;">{{first_name}}</td>
+                </tr>
+                <tr>
+                    <td style="padding: 15px 20px; border-bottom: 1px solid #eeeeee; background-color: #f8f9fa;"><strong style="color: #101537; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Email</strong></td>
+                    <td style="padding: 15px 20px; border-bottom: 1px solid #eeeeee; color: #25b9a3; font-size: 15px;"><a href="mailto:{{email}}" style="color: #25b9a3; text-decoration: none; font-weight: 500;">{{email}}</a></td>
+                </tr>
+                <tr>
+                    <td style="padding: 15px 20px; border-bottom: 1px solid #eeeeee; background-color: #f8f9fa;"><strong style="color: #101537; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Phone</strong></td>
+                    <td style="padding: 15px 20px; border-bottom: 1px solid #eeeeee; color: #222222; font-size: 15px;">{{phone}}</td>
+                </tr>
+                <tr>
+                    <td style="padding: 15px 20px; border-bottom: 1px solid #eeeeee; background-color: #f8f9fa;"><strong style="color: #101537; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Website</strong></td>
+                    <td style="padding: 15px 20px; border-bottom: 1px solid #eeeeee; color: #25b9a3; font-size: 15px;"><a href="{{website}}" style="color: #25b9a3; text-decoration: none; font-weight: 500;">{{website}}</a></td>
+                </tr>
+                <tr>
+                    <td style="padding: 15px 20px; border-bottom: 1px solid #eeeeee; background-color: #f8f9fa;"><strong style="color: #101537; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Industry</strong></td>
+                    <td style="padding: 15px 20px; border-bottom: 1px solid #eeeeee; color: #222222; font-size: 15px;">{{industry}}</td>
+                </tr>
+                <tr>
+                    <td style="padding: 15px 20px; background-color: #f8f9fa;"><strong style="color: #101537; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Services</strong></td>
+                    <td style="padding: 15px 20px; color: #101537; font-size: 15px; font-weight: 600;">{{services}}</td>
+                </tr>
+            </table>
+
+            <h3 style="color: #101537; font-size: 16px; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 0.5px;">Prospect Message</h3>
+            <div style="background-color: #f4f7f6; border-left: 4px solid #25b9a3; padding: 20px 25px; border-radius: 0 4px 4px 0; color: #555555; font-size: 15px; line-height: 1.7; white-space: pre-wrap; margin-bottom: 40px; font-style: italic;">{{message}}</div>
+            
+            <div style="text-align: center;">
+                <a href="mailto:{{email}}" style="background-color: #25b9a3; color: #ffffff; padding: 14px 35px; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 15px; display: inline-block; transition: background-color 0.3s;">Reply to Prospect</a>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div style="background-color: #101537; padding: 25px; text-align: center;">
+            <p style="color: #7b83a6; font-size: 13px; margin: 0;">© {{year}} Data Marketics. All rights reserved.</p>
+            <p style="color: #4a5173; font-size: 12px; margin: 10px 0 0 0;">This email was generated automatically by the contact form.</p>
+        </div>
+    </div>
+</body>
+</html>
