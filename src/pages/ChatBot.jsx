@@ -14,20 +14,23 @@ export default function ChatBot() {
   const [isLoading, setIsLoading] = useState(false);
   const [recentShown, setRecentShown] = useState([]); // Ring buffer for dedup
   const [suggestions, setSuggestions] = useState([]);
+  const [showTooltip, setShowTooltip] = useState(false);
 
   const messagesEndRef = useRef(null);
 
-  // Auto-open logic
+  // Tooltip shows after a brief delay when the chat is closed
   useEffect(() => {
-    const hasBeenOpened = sessionStorage.getItem('dm_chatbot_auto_opened');
-    if (!hasBeenOpened) {
-      const timer = setTimeout(() => {
-        setIsOpen(true);
-        sessionStorage.setItem('dm_chatbot_auto_opened', 'true');
-      }, 3000);
+    if (!isOpen) {
+      const timer = setTimeout(() => setShowTooltip(true), 1500);
       return () => clearTimeout(timer);
+    } else {
+      setShowTooltip(false);
     }
-  }, []);
+  }, [isOpen]);
+
+  const toggleChat = () => {
+    setIsOpen(!isOpen);
+  };
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -123,11 +126,36 @@ export default function ChatBot() {
 
   return (
     <div className="dm-chatbot-root">
+      <AnimatePresence>
+        {showTooltip && !isOpen && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: 10 }}
+            animate={{ 
+              opacity: 1, 
+              scale: 1, 
+              y: 0,
+              transition: { duration: 0.3 }
+            }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            className="dm-chat-tooltip"
+          >
+            <div className="dm-tooltip-content">
+               Hi! How can I help you today ?
+               <motion.div 
+                 animate={{ opacity: [0.4, 1, 0.4] }}
+                 transition={{ repeat: Infinity, duration: 2 }}
+                 className="dm-tooltip-pulse"
+               />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <motion.button
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         className={`dm-launcher ${isOpen ? 'open' : ''}`}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={toggleChat}
       >
         {isOpen ? <X size={28} /> : <img src={chatbotIcon} alt="Chat" className="dm-launcher-icon" />}
       </motion.button>
@@ -149,7 +177,7 @@ export default function ChatBot() {
               </div>
               <div className="dm-header-text">
                 <strong>Data Marketics AI</strong>
-                <span>Instant Growth Assistant</span>
+                <span>Data Marketics Intelligence Assistant</span>
               </div>
               <div className="dm-header-actions">
                 <button onClick={resetChat} title="Reset Chat" className="dm-header-btn">

@@ -1,10 +1,18 @@
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import dns from 'dns';
+
+// Force IPv4 to avoid ECONNREFUSED ::1 issues
+dns.setDefaultResultOrder('ipv4first');
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+// Try loading .env from multiple locations to be safe
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
+dotenv.config({ path: path.resolve(process.cwd(), '.env') });
+
 import express, { json, urlencoded } from 'express';
 import fs from 'fs';
 import cors from 'cors';
@@ -75,49 +83,74 @@ app.post('/api/chat', (req, res) => {
 
 app.post('/api/send-email', async (req, res) => {
     const body = req.body || {};
-    const { first_name, email, phone, website, industry, services, message } = body;
-    console.log(body);
-    if (!first_name || !email || !message) {
+    const { first_name, email, phone, website, industry, services, message, source } = body;
+    
+    const host = process.env.EMAIL_HOST || 'smtp.gmail.com'; // Hard fallback to Gmail
+    console.log(`📩 Outgoing Email Request. Host: ${host}, User: ${process.env.EMAIL_USER}`);
+    
+    const isPopup = source === 'popup';
+
+    // Popup only requires name + email. Contact form requires message too.
+    if (!first_name || !email || (!isPopup && !message)) {
         return res.status(400).json({ success: false, message: 'Missing required fields' });
     }
 
     try {
         const transporter = nodemailer.createTransport({
-            host: process.env.EMAIL_HOST,
+            host: host,
             port: parseInt(process.env.EMAIL_PORT || '587', 10),
-            secure: process.env.EMAIL_PORT === '465', // true for 465, false for other ports
+            secure: process.env.EMAIL_PORT === '465',
             auth: {
                 user: process.env.EMAIL_USER,
                 pass: process.env.EMAIL_PASS
             }
         });
 
-        const templatePath = path.resolve(__dirname, './emailTemplate.html');
+        // Pick template based on source
+        const templateFile = isPopup ? './popupLeadTemplate.html' : './emailTemplate.html';
+        const templatePath = path.resolve(__dirname, templateFile);
+        
+        console.log(`📧 Attempting to load template: ${templatePath}`);
+
+        if (!fs.existsSync(templatePath)) {
+            throw new Error(`Template file not found at: ${templatePath}`);
+        }
+
         let htmlTemplate = fs.readFileSync(templatePath, 'utf8');
 
-        htmlTemplate = htmlTemplate
-            .replace(/\{\{first_name\}\}/g, first_name)
-            .replace(/\{\{email\}\}/g, email)
-            .replace(/\{\{phone\}\}/g, phone)
-            .replace(/\{\{website\}\}/g, website)
-            .replace(/\{\{industry\}\}/g, industry)
-            .replace(/\{\{services\}\}/g, services)
-            .replace(/\{\{message\}\}/g, message)
-            .replace(/\{\{year\}\}/g, new Date().getFullYear());
+        if (isPopup) {
+            // Popup template — only 3 fields
+            htmlTemplate = htmlTemplate
+                .replace(/\{\{first_name\}\}/g, first_name)
+                .replace(/\{\{email\}\}/g, email)
+                .replace(/\{\{phone\}\}/g, phone || 'Not provided')
+                .replace(/\{\{year\}\}/g, new Date().getFullYear());
+        } else {
+            // Standard contact form template — all 7 fields
+            htmlTemplate = htmlTemplate
+                .replace(/\{\{first_name\}\}/g, first_name)
+                .replace(/\{\{email\}\}/g, email)
+                .replace(/\{\{phone\}\}/g, phone || 'Not provided')
+                .replace(/\{\{website\}\}/g, website || 'Not provided')
+                .replace(/\{\{industry\}\}/g, industry || 'Not provided')
+                .replace(/\{\{services\}\}/g, services || 'Not provided')
+                .replace(/\{\{message\}\}/g, message)
+                .replace(/\{\{year\}\}/g, new Date().getFullYear());
+        }
+
+        const emailSubject = isPopup
+            ? `🔔 New Popup Lead — ${first_name}`
+            : `New Contact Form Submission from ${first_name}`;
+
+        const plainText = isPopup
+            ? `New Popup Lead\nName: ${first_name}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}`
+            : `Name: ${first_name}\nEmail: ${email}\nPhone: ${phone}\nWebsite: ${website}\nIndustry: ${industry}\nServices: ${services}\nMessage: ${message}`;
 
         const mailOptions = {
             from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
             to: process.env.EMAIL_TO || process.env.EMAIL_USER,
-            subject: `New Contact Form Submission from ${first_name}`,
-            text: `
-Name: ${first_name}
-Email: ${email}
-Phone: ${phone}
-Website: ${website}
-Industry: ${industry}
-Services: ${services}
-Message: ${message}
-            `,
+            subject: emailSubject,
+            text: plainText,
             html: htmlTemplate
         };
 
@@ -126,7 +159,7 @@ Message: ${message}
         res.json({ success: true, message: 'Email sent successfully!' });
     } catch (error) {
         console.error('Error sending email:', error);
-        res.status(500).json({ success: false, message: 'Failed to send email' });
+        res.status(500).json({ success: false, message: error.message });
     }
 });
 
