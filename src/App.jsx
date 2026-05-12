@@ -13,24 +13,28 @@ import Sitemap from './pages/Sitemap';
 
 import ScrollToTop from './components/ScrollToTop';
 import ChatBot from './pages/ChatBot';
+import LeadPopup from './components/LeadPopup';
 
 function App() {
     return (
-        <Layout>
-            <ScrollToTop />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/features" element={<Features />} />
-                <Route path="/services" element={<Services />} />
-                <Route path="/demand-generation" element={<DemandGeneration />} />
-                <Route path="/exhibitors-data" element={<ExhibitorsData />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                <Route path="/sitemap" element={<Sitemap />} />
-            </Routes>
-            <ChatBot />
-        </Layout>
+        <>
+            <Layout>
+                <ScrollToTop />
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/features" element={<Features />} />
+                    <Route path="/services" element={<Services />} />
+                    <Route path="/demand-generation" element={<DemandGeneration />} />
+                    <Route path="/exhibitors-data" element={<ExhibitorsData />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                    <Route path="/sitemap" element={<Sitemap />} />
+                </Routes>
+                <ChatBot />
+            </Layout>
+            <LeadPopup />
+        </>
     );
 }
 

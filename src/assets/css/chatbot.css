@@ -348,3 +348,72 @@
 .dm-li { display: flex; gap: 8px; align-items: flex-start; margin: 6px 0; }
 .dm-bullet-point { color: #0061ff; font-weight: bold; flex-shrink: 0; }
 .dm-line-break { height: 8px; }
+
+/* Chat Tooltip Bubble (Left Side + Glassmorphism) */
+.dm-chat-tooltip {
+  position: absolute;
+  bottom: 5px; 
+  right: 75px; 
+  width: max-content;
+  max-width: 260px; /* Increased to allow for more text */
+  z-index: 9999999;
+  pointer-events: none;
+}
+
+.dm-tooltip-content {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 10px 20px; /* Increased padding */
+  border-radius: 14px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #0f172a;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  position: relative;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  line-height: 1.4; /* Better line height for multi-line */
+}
+
+/* Dark Mode support if the site has a dark class */
+@media (prefers-color-scheme: dark) {
+  .dm-tooltip-content {
+    background: rgba(15, 23, 42, 0.8);
+    color: #f8fafc;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+.dm-tooltip-pulse {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 15px;
+  border: 2.5px solid #83CF8F;
+  pointer-events: none;
+}
+
+.dm-tooltip-arrow {
+  position: absolute;
+  top: 50%;
+  right: -6px;
+  margin-top: -6px;
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  transform: rotate(45deg);
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  border-right: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+@media (prefers-color-scheme: dark) {
+  .dm-tooltip-arrow {
+    background: rgba(15, 23, 42, 0.8);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
