@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const Sitemap = () => {
     const links = [
@@ -14,7 +15,13 @@ const Sitemap = () => {
     ];
 
     return (
-        <div className="testimonial-page sp">
+        <>
+            <Helmet>
+                <meta name="title" content="Sitemap | Data Marketics" />
+                <meta name="description" content="Sitemap for Data Marketics website. Navigate through our pages and services." />
+                <link rel="canonical" href="https://datamarketics.com/sitemap" />
+            </Helmet>
+            <div className="testimonial-page sp">
             <div className="container">
                 <div className="row">
                     <div className="col-lg-7 m-auto text-center">
@@ -42,6 +49,7 @@ const Sitemap = () => {
                 <div className="space60"></div>
             </div>
         </div>
+        </>
     );
 };
 

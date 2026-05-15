@@ -2,10 +2,14 @@ import React from 'react';
 import aboutMainImg from '../assets/img/about/about-main-img.png';
 import aboutPageImg1 from '../assets/img/about/about-page-img1.png';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const Home = () => {
     return (
         <>
+            <Helmet>
+                <link rel="canonical" href="https://datamarketics.com/" />
+            </Helmet>
             <div className="pages-hero">
                 <div className="container">
                     <div className="row align-items-center">

@@ -1,9 +1,16 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 
 const PrivacyPolicy = () => {
     return (
-        <div className="testimonial-page sp">
-            <div className="container">
+        <>
+            <Helmet>
+                <meta name="title" content="Privacy Policy | Data Marketics" />
+                <meta name="description" content="Read the Privacy Policy for Data Marketics. We respect your privacy and protect your personal information." />
+                <link rel="canonical" href="https://datamarketics.com/privacy-policy" />
+            </Helmet>
+            <div className="testimonial-page sp">
+                <div className="container">
                 <div className="row">
                     <div className="col-lg-7 m-auto text-center">
                         <div className="common-main-headding">
@@ -36,6 +43,7 @@ const PrivacyPolicy = () => {
                 </div>
             </div>
         </div>
+        </>
     );
 };
 

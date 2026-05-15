@@ -16,6 +16,7 @@ const About = () => {
             <Helmet>
                 <meta name="title" content="About Datamarketics | B2B Marketing & Lead Generation Experts" />
                 <meta name="description" content="Learn about Datamarketics, a data-driven B2B marketing company helping businesses grow through strategic lead generation and marketing solutions." />
+                <link rel="canonical" href="https://datamarketics.com/about" />
             </Helmet>
             <div className="pages-hero" aria-label="About Data Marketics Hero Section">
                 <div className="container">
