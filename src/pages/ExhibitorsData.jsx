@@ -20,6 +20,7 @@ const ExhibitorsData = () => {
         <Helmet>
             <meta name="title" content="Exhibitors Data List | B2B Event & Trade Show Leads – Data Marketics" />
             <meta name="description" content="Access verified exhibitors data and trade show contact lists with Data Marketics. Target decision-makers, improve outreach, and generate qualified B2B leads faster." />
+            <link rel="canonical" href="https://datamarketics.com/exhibitors-data" />
         </Helmet>
             <div className="pages-hero">
                 <div className="container">

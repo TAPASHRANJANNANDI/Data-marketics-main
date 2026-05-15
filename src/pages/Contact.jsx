@@ -54,6 +54,7 @@ const Contact = () => {
             <Helmet>
                 <meta name="title" content="Contact Data Marketics | B2B Data & Demand Generation Experts" />
                 <meta name="description" content="Get in touch with Data Marketics for verified B2B contact data, account-based marketing lists, and demand generation solutions. Request a free consultation today." />
+                <link rel="canonical" href="https://datamarketics.com/contact" />
             </Helmet>
             <div className="contact-page-area sp">
 

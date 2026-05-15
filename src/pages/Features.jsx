@@ -16,6 +16,7 @@ const Features = () => {
             <Helmet>
                 <meta name="title" content="Core Features | Data Marketics B2B Data & Marketing Solutions" />
                 <meta name="description" content="Explore Data Marketics core features including data enablement, lead scoring, and custom marketing research designed to improve targeting, engagement, and business growth." />
+                <link rel="canonical" href="https://datamarketics.com/features" />
             </Helmet>
             <div className="pages-hero">
                 <div className="container">

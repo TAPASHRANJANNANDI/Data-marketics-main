@@ -89,6 +89,7 @@ const Services = () => {
          <Helmet>
             <meta name="title" content= "B2B Marketing Services | Data & Demand Generation – Data Marketics" />
             <meta name="description" content="Explore Data Marketics’ B2B marketing services including ABM data, verified contact intelligence, demand generation, and event intelligence solutions."/>
+            <link rel="canonical" href="https://datamarketics.com/services" />
          </Helmet>
             <div className="pages-hero">
                 <div className="container">
@@ -117,7 +118,7 @@ const Services = () => {
                     <div className="row">
                         <div className="col-lg-9 m-auto text-center">
                             <div className="headding4 pbmit-heading-subheading">
-                                <span className="span">Our Services</span>
+                                <span style={{ color: '#25b9a3', fontSize: '20px', fontWeight: '600', marginBottom: '16px', display: 'inline-block' }}>Our Services</span>
                                 <h2>Data-Driven Solutions for B2B Growth</h2>
                                 <p>We provide advanced data and marketing solutions designed to help sales and marketing teams connect with the right decision-makers, improve campaign performance, and generate high-quality leads.</p>
                                 <div className="space16"></div>
