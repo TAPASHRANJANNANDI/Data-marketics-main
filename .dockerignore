@@ -14,8 +14,4 @@ build_*.txt
 *.log
 *.md
 .htaccess
-Dockerfile
-Dockerfile.frontend
-docker-compose.yml
-nginx.conf
 .dockerignore
