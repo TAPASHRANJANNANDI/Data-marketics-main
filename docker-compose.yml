@@ -14,12 +14,6 @@ services:
       - "3000"
     networks:
       - datamarketics
-    healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://localhost:3000/api/chat", "--post-data", "{}", "--header=Content-Type:application/json", "||", "exit", "0"]
-      interval: 30s
-      timeout: 5s
-      retries: 3
-      start_period: 10s
 
   frontend:
     build:
