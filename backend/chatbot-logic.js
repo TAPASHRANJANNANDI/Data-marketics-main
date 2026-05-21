@@ -16,14 +16,12 @@ try {
     console.error("❌ Failed to load faq.json:", err);
 }
 
-// 2. Normalization Logic (from CHATBOT.md)
-const BRAND_STRIP = /\b(datamarketics|data marketics|marketics)\b/gi;
-
+// 2. Normalization Logic
 function normalize(text) {
     if (!text) return "";
-    // Strip brand tokens, remove punctuation, and lowercase
-    let out = text.replace(BRAND_STRIP, "");
-    out = out.replace(/[^\w\s]/gi, "");
+    // Remove punctuation and lowercase. Brand tokens are kept so questions like
+    // "Tell me about Data Marketics" retain enough signal to match company entries.
+    let out = text.replace(/[^\w\s]/gi, "");
     return out.trim().toLowerCase();
 }
 
@@ -37,11 +35,14 @@ const searchCorpus = faq.map(entry => ({
 // 4. Initialize Fuse.js
 const fuseOptions = {
     keys: ['normalizedQuestion', 'question'],
-    threshold: 0.4, // Threshold for fuzzy matching (0.0 = perfect match, 1.0 = match anything)
+    threshold: 0.45, // Balanced: tolerates typos/paraphrasing without matching unrelated overlap
     includeScore: true,
     distance: 100,
-    location: 0
+    location: 0,
+    minMatchCharLength: 2
 };
+
+const HELPFUL_FALLBACK = "I apologize — I was not able to find a direct answer to your question. I would be happy to help with the following topics:\n• Our services (ABM, intent data, event intelligence, demand generation)\n• Pricing and how to schedule a discovery call\n• Data accuracy, GDPR compliance, and delivery formats\n• The industries we serve and how we compare to other providers\n\nFor a personalised response, please contact our team at sales@datamarketics.com or +1 (281) 789-6642.";
 
 const fuse = new Fuse(searchCorpus, fuseOptions);
 
@@ -71,21 +72,20 @@ export function askChatbot(query, exclude = []) {
         return {
             confident: false,
             matches: [],
-            fallback: "I'm not sure about that. Would you like to contact our sales team at sales@datamarketics.com?"
+            fallback: HELPFUL_FALLBACK
         };
     }
 
     const topMatch = filteredResults[0];
-    
-    // Confidence threshold (Fuse score: lower is better)
-    // 0.4 is a good balance for spelling mistakes vs random noise
+
+    // Confidence threshold (Fuse score: lower is better). Aligned with the fuse threshold.
     const isConfident = topMatch.score <= 0.45;
 
     if (!isConfident) {
         return {
             confident: false,
-            matches: filteredResults.slice(0, 2).map(r => r.item),
-            fallback: "I'm not entirely sure, but here is what I found. If this doesn't help, feel free to email support@datamarketics.com."
+            matches: filteredResults.slice(0, 3).map(r => r.item),
+            fallback: HELPFUL_FALLBACK
         };
     }
 

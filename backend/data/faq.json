@@ -1,62 +1,97 @@
 [
   {
     "question": "What does Data Marketics do?",
-    "answer": "We are a leading marketing data provider specializing in B2B lead generation. We help businesses connect with qualified decision-makers through accurate B2B contact databases, targeted email lists, and data-driven solutions.",
+    "answer": "Data Marketics is a leading B2B marketing data provider specializing in lead generation, verified contact intelligence, and demand generation. We help businesses connect with qualified decision-makers through accurate B2B databases, targeted email lists, and data-driven solutions that accelerate sales growth.",
+    "category": "Company"
+  },
+  {
+    "question": "Tell me about Data Marketics",
+    "answer": "Data Marketics is a B2B marketing data provider with over 6 years of experience. Our database includes 10M+ companies and 60M+ verified contacts globally, with a 95%+ accuracy guarantee maintained through human tele-verification. We deliver Account-Based Marketing (ABM) data, verified contact intelligence, intent data, event & exhibitor intelligence, and demand generation support to companies in Financial Services, Technology, Healthcare, Manufacturing, and SaaS. To learn more, contact sales@datamarketics.com or call +1 (281) 789-6642.",
+    "category": "Company"
+  },
+  {
+    "question": "About Data Marketics company overview",
+    "answer": "Founded over 6 years ago and headquartered at 100 Horizon Center Blvd, Hamilton, NJ, Data Marketics empowers businesses with accurate, GDPR-compliant B2B data. Our offerings span ABM solutions, verified contact intelligence, demand generation, event & exhibitor intelligence, and custom marketing research — backed by 10M+ companies and 60M+ verified contacts worldwide.",
+    "category": "Company"
+  },
+  {
+    "question": "What is Data Marketics?",
+    "answer": "Data Marketics is a B2B marketing data and lead generation company. We provide verified contact intelligence, ABM data, intent signals, and demand-generation services to help businesses reach qualified decision-makers and accelerate revenue growth.",
     "category": "Company"
   },
   {
     "question": "What services do you offer?",
-    "answer": "Our core services include Account-Based Marketing (ABM) data, Verified B2B Contact Intelligence, Demand Generation support, Event & Exhibitor intelligence, and Custom Marketing Research.",
+    "answer": "Our core services include Account-Based Marketing (ABM) data, Verified B2B Contact Intelligence, Demand Generation support, Event & Exhibitor Intelligence, and Custom Marketing Research.",
     "category": "Services"
   },
   {
     "question": "How accurate is your data?",
-    "answer": "We guarantee 95%+ data accuracy through a multi-step human-in-the-loop verification process, including automated AI scrubbing and manual tele-verification.",
+    "answer": "We guarantee 95%+ data accuracy through a multi-step verification process that combines automated AI scrubbing with manual tele-verification by our research team.",
     "category": "Quality"
   },
   {
     "question": "Is your data GDPR compliant?",
-    "answer": "Yes, all our B2B contact intelligence is strictly GDPR, CCPA, and CAN-SPAM compliant. We source data through professional public records and direct verification.",
+    "answer": "Yes. All Data Marketics B2B contact intelligence is fully compliant with GDPR, CCPA, and CAN-SPAM regulations. Our data is sourced through professional public records and direct verification.",
     "category": "Compliance"
   },
   {
     "question": "How can I contact Data Marketics?",
-    "answer": "You can reach us at sales@datamarketics.com or call us at +1 (281) 789-6642. Our headquarters is located at 100 Horizon Center Blvd, Hamilton, NJ 08691.",
+    "answer": "You can reach our team at sales@datamarketics.com or by phone at +1 (281) 789-6642. Our headquarters is located at 100 Horizon Center Blvd, 1st and 2nd Floor, Hamilton, NJ 08691.",
     "category": "Contact"
   },
   {
     "question": "What industries do you serve?",
-    "answer": "We provide tailored B2B data solutions for Financial Services, Technology, Healthcare, Manufacturing, and SaaS companies globally.",
+    "answer": "We provide tailored B2B data solutions across Financial Services, Technology, Healthcare, Manufacturing, and SaaS, with global coverage.",
     "category": "Services"
   },
   {
     "question": "Can you help with Account-Based Marketing (ABM)?",
-    "answer": "Yes! Our ABM solutions help you identify and engage decision-makers using firmographic targeting, technographic insights, and buyer intent data.",
+    "answer": "Yes. Our ABM solutions help you identify and engage decision-makers within your target accounts using firmographic targeting, technographic insights, and buyer intent data.",
     "category": "Services"
   },
   {
     "question": "What is Event & Exhibitor Intelligence?",
-    "answer": "We provide verified lists of event attendees, exhibitors, and sponsors from global trade shows to help you connect with sales-ready prospects faster.",
+    "answer": "We provide verified lists of event attendees, exhibitors, sponsors, and organizers from global trade shows, enabling your team to connect with sales-ready prospects across Healthcare, Technology, Finance, and other industries.",
     "category": "Services"
   },
   {
     "question": "Do you offer a free trial or free tier?",
-    "answer": "We don't have a standard free tier, but we offer a consultation discovery call to understand your business goals and can provide samples based on your ICP.",
+    "answer": "We do not offer a standard free tier. However, we provide a complimentary discovery consultation and tailored data samples based on your Ideal Customer Profile (ICP). Please contact sales@datamarketics.com to arrange this.",
     "category": "Pricing"
   },
   {
     "question": "What is your pricing model?",
-    "answer": "We offer flexible models including Pay-as-you-go for custom lists, subscriptions for our Prospector platform, and custom Enterprise solutions.",
+    "answer": "We offer flexible pricing models: Pay-as-you-go for custom lists, subscription plans for our Prospector Platform, and tailored Enterprise solutions for larger requirements.",
+    "category": "Pricing"
+  },
+  {
+    "question": "How much does it cost?",
+    "answer": "Pricing depends on list size, industry, geography, and complexity. We offer Pay-as-you-go for custom lists, subscription plans for the Prospector Platform, and Enterprise solutions. Please contact sales@datamarketics.com or call +1 (281) 789-6642 for a tailored quote.",
+    "category": "Pricing"
+  },
+  {
+    "question": "What is the price?",
+    "answer": "Pricing is customized to your requirements — list size, industry, geography, and complexity all factor in. Please contact sales@datamarketics.com or call +1 (281) 789-6642 to receive a tailored quote.",
+    "category": "Pricing"
+  },
+  {
+    "question": "How expensive is it?",
+    "answer": "Cost varies based on the size and scope of your data requirements. We offer Pay-as-you-go, subscription, and Enterprise pricing models. Contact sales@datamarketics.com for a personalized quote.",
+    "category": "Pricing"
+  },
+  {
+    "question": "Do you have monthly subscription plans?",
+    "answer": "Yes. We offer monthly and annual subscription options for the Prospector Platform, in addition to Pay-as-you-go lists and Enterprise plans. Please contact sales@datamarketics.com for plan details.",
     "category": "Pricing"
   },
   {
     "question": "What is the Prospector Platform?",
-    "answer": "The Prospector Platform is our flagship tool for custom list prospecting and real-time sales intelligence, designed for decision-maker engagement.",
+    "answer": "The Prospector Platform is our flagship sales intelligence tool for custom list prospecting and real-time decision-maker engagement.",
     "category": "Tools"
   },
   {
     "question": "How do you verify your emails?",
-    "answer": "We use a multi-step process including manual tele-verification by humans to ensure that the contact details are active and accurate.",
+    "answer": "We use a multi-step verification process that includes automated AI validation followed by manual tele-verification by our research team, ensuring contact accuracy of 95% or higher.",
     "category": "Quality"
   },
   {
@@ -66,22 +101,367 @@
   },
   {
     "question": "Who founded Data Marketics?",
-    "answer": "Data Marketics was founded over 6 years ago with a mission to empower businesses to increase sales through accurate and actionable B2B data.",
+    "answer": "Data Marketics was founded over 6 years ago with a mission to empower businesses to grow revenue through accurate, actionable B2B data and intelligence.",
     "category": "Company"
   },
   {
     "question": "hello hi greetings",
-    "answer": "Greetings! I am the Data Marketics Assistant. How can I help you with your B2B lead generation needs today?",
+    "answer": "Hello, and welcome to Data Marketics. I am your B2B data assistant. How may I help you today?",
     "category": "Greeting"
   },
   {
     "question": "thank you thanks",
-    "answer": "You're very welcome! If you have any other questions about our data services, feel free to ask.",
+    "answer": "You are most welcome. If you have any further questions about our B2B data services, please let me know.",
     "category": "Greeting"
   },
   {
     "question": "Who are you?",
-    "answer": "I am the official AI assistant for Data Marketics. I can help you with information about our B2B data services, lead generation, and contact details.",
+    "answer": "I am the official Data Marketics AI assistant. I can provide information about our B2B data services, lead generation solutions, pricing, and how to connect with our team.",
     "category": "Company"
+  },
+  {
+    "question": "How many companies and contacts do you have in your database?",
+    "answer": "Our database includes 10M+ companies and 60M+ verified contacts globally, with strong coverage across the USA, Europe, and other major B2B markets.",
+    "category": "Database"
+  },
+  {
+    "question": "How big is your database?",
+    "answer": "Data Marketics maintains a database of 10M+ companies and 60M+ verified contacts worldwide, continuously refreshed through AI-driven scrubbing and human tele-verification.",
+    "category": "Database"
+  },
+  {
+    "question": "What is intent data?",
+    "answer": "Intent data identifies prospects actively researching solutions like yours. We surface accounts showing in-market buying signals so your sales team can prioritize the highest-converting outreach.",
+    "category": "Intent Data"
+  },
+  {
+    "question": "Do you provide buyer intent signals?",
+    "answer": "Yes. Our Intent Data Solutions identify accounts demonstrating active buying signals, enabling earlier engagement and significantly improved conversion rates.",
+    "category": "Intent Data"
+  },
+  {
+    "question": "How long does it take to deliver a list?",
+    "answer": "Turnaround time depends on list size and complexity. Following the discovery call and ICP definition, most custom lists are sourced, verified, and delivered within a few business days.",
+    "category": "Process"
+  },
+  {
+    "question": "In what format do you deliver the data?",
+    "answer": "Data is delivered in standard CSV or Excel formats. We also support direct CRM sync for seamless integration with your existing sales workflow.",
+    "category": "Process"
+  },
+  {
+    "question": "Can you integrate with my CRM?",
+    "answer": "Yes. We support direct CRM integration, allowing verified contacts to be delivered straight into your sales workflow.",
+    "category": "Process"
+  },
+  {
+    "question": "What is your delivery process?",
+    "answer": "Our delivery process consists of five steps: (1) Discovery consultation, (2) ICP definition (industry, revenue, titles, geography), (3) Data sourcing using our proprietary intelligence tools, (4) Manual tele-verification, and (5) Secure delivery via CSV/Excel or direct CRM sync.",
+    "category": "Process"
+  },
+  {
+    "question": "What is ICP Ideal Customer Profile?",
+    "answer": "ICP stands for Ideal Customer Profile. We work with you to define yours — by industry, company size, revenue, job titles, and geography — and use it to build precisely targeted contact lists.",
+    "category": "Process"
+  },
+  {
+    "question": "Can I get a sample of your data?",
+    "answer": "Yes. Following a brief discovery call to understand your ICP, we can provide a tailored sample so you can evaluate data quality before committing.",
+    "category": "Pricing"
+  },
+  {
+    "question": "How do I book a discovery call?",
+    "answer": "You can book a discovery call by emailing sales@datamarketics.com or calling +1 (281) 789-6642. Our team will assess your goals and define your ICP.",
+    "category": "Contact"
+  },
+  {
+    "question": "How are you different from ZoomInfo or Apollo or Lusha?",
+    "answer": "Unlike large generic aggregators, Data Marketics focuses on manual data accuracy and customization. We deliver a boutique, personalized service with higher data freshness, dedicated account support, and lists tailored precisely to your ICP — rather than a one-size-fits-all database.",
+    "category": "Comparison"
+  },
+  {
+    "question": "What is tele-verification?",
+    "answer": "Tele-verification is our manual human verification step in which our research team calls to confirm that each contact's details are active and accurate. It is a key reason we are able to guarantee 95%+ data accuracy.",
+    "category": "Quality"
+  },
+  {
+    "question": "What is data enrichment?",
+    "answer": "Data enrichment is the process of completing and verifying your existing records. We append missing phone numbers, emails, postal addresses, and job titles, and verify the accuracy of what you already have.",
+    "category": "Services"
+  },
+  {
+    "question": "Do you offer data cleansing?",
+    "answer": "Yes. Our Data Cleansing service identifies and removes erroneous, outdated, or duplicate records from your database so your outreach reaches valid contacts only.",
+    "category": "Services"
+  },
+  {
+    "question": "What is reverse email append?",
+    "answer": "Reverse email append matches an existing email address back to an updated postal address and contact name — useful when you have email data but require complete contact records.",
+    "category": "Services"
+  },
+  {
+    "question": "Do you provide phone numbers and direct dials?",
+    "answer": "Yes. Our verified contact records include direct dial phone numbers wherever available, all manually verified through tele-verification.",
+    "category": "Quality"
+  },
+  {
+    "question": "Do you serve healthcare companies?",
+    "answer": "Yes. We maintain dedicated B2B data sets for the Healthcare industry — including providers, payers, and medical device companies — with verified decision-maker contacts.",
+    "category": "Industries"
+  },
+  {
+    "question": "Do you serve technology and SaaS companies?",
+    "answer": "Yes. Technology and SaaS are core verticals for Data Marketics. We provide technographic data, verified decision-maker contacts, and intent signals tailored to software buyers.",
+    "category": "Industries"
+  },
+  {
+    "question": "Do you serve financial services?",
+    "answer": "Yes. We provide fully compliant, verified B2B data for Financial Services — including banks, insurance, fintech, and asset management — with deep coverage of decision-makers.",
+    "category": "Industries"
+  },
+  {
+    "question": "Do you serve manufacturing companies?",
+    "answer": "Yes. We provide B2B contact data and demand-generation support for manufacturing companies, including industry-specific decision-maker lists.",
+    "category": "Industries"
+  },
+  {
+    "question": "What countries and regions do you cover?",
+    "answer": "Data Marketics offers global coverage, with particular depth across the USA, Europe, and other major international B2B markets.",
+    "category": "Database"
+  },
+  {
+    "question": "What is demand generation?",
+    "answer": "Demand generation is the process of building awareness and pipeline through targeted marketing. We support it with lead nurturing, audience targeting, MQL generation, and performance-driven outreach planning.",
+    "category": "Services"
+  },
+  {
+    "question": "What is the difference between MQL and SQL?",
+    "answer": "A Marketing Qualified Lead (MQL) is a prospect who has shown interest and matches your ICP. A Sales Qualified Lead (SQL) is one whom a salesperson has vetted as ready for direct engagement. Our demand generation services focus on producing high-quality MQLs ready for sales handoff.",
+    "category": "Education"
+  },
+  {
+    "question": "Do you offer event attendee lists?",
+    "answer": "Yes. We provide verified lists of attendees, exhibitors, sponsors, and organizers from global trade shows, enabling your team to plan outreach before, during, and after events.",
+    "category": "Services"
+  },
+  {
+    "question": "Can I target trade show exhibitors?",
+    "answer": "Yes. Our Event & Exhibitor Intelligence provides sales-qualified exhibitor lists from trade shows across Healthcare, Technology, Finance, Tourism, and other industries.",
+    "category": "Services"
+  },
+  {
+    "question": "What is technographic data?",
+    "answer": "Technographic data describes the technology stack a company uses — CRM, marketing tools, cloud provider, and so on. We layer this into ABM targeting so you can align your pitch with the prospect's existing technology.",
+    "category": "ABM"
+  },
+  {
+    "question": "What is firmographic data?",
+    "answer": "Firmographic data describes companies by attributes such as industry, revenue, employee count, and location. We use it for precise ABM targeting and ICP-based segmentation.",
+    "category": "ABM"
+  },
+  {
+    "question": "Do you have customer testimonials or case studies?",
+    "answer": "Yes. Jenn Gordon, Director at The Canadian Breast Cancer Network, has shared: 'Data Marketics provided fast service and we were pleased with the data that they were able to provide.' For additional relevant examples, please contact sales@datamarketics.com.",
+    "category": "Company"
+  },
+  {
+    "question": "How long has Data Marketics been in business?",
+    "answer": "Data Marketics has been delivering B2B data solutions for over 6 years, helping companies expand their customer base and grow revenue.",
+    "category": "Company"
+  },
+  {
+    "question": "What is hashed email data?",
+    "answer": "Hashed emails use cryptographic hashing to enable privacy-compliant buyer identification and tracking, allowing audience matching without exposing raw email addresses.",
+    "category": "Education"
+  },
+  {
+    "question": "What is LinkedIn appending?",
+    "answer": "LinkedIn appending enriches contact records with up-to-date professional experience and role information, ensuring your outreach targets current decision-makers rather than outdated titles.",
+    "category": "Services"
+  },
+  {
+    "question": "What is lead scoring and nurturing?",
+    "answer": "Lead scoring ranks prospects by likelihood to convert, while nurturing keeps them engaged until they are sales-ready. We combine automated personalized email and direct mail campaigns with human expertise to move leads through your funnel efficiently.",
+    "category": "Services"
+  },
+  {
+    "question": "Do you use AI in your services?",
+    "answer": "Yes. Data Marketics leverages AI for automated data scrubbing, predictive targeting, and personalized sales recommendations, combined with human verification for the final accuracy assurance.",
+    "category": "Technology"
+  },
+  {
+    "question": "What is omni-channel marketing?",
+    "answer": "Omni-channel marketing integrates outreach across email, social, mobile, and AI-driven touchpoints, ensuring you can reach prospects on their preferred channel in real time.",
+    "category": "Education"
+  },
+  {
+    "question": "What happens if the data is inaccurate or has bounces?",
+    "answer": "We guarantee 95%+ data accuracy. Should you identify inaccurate records in a delivered list, please contact your account manager — we will replace or refund per our data quality commitment.",
+    "category": "Quality"
+  },
+  {
+    "question": "Is your data ethically sourced?",
+    "answer": "Yes. All Data Marketics B2B contact intelligence is ethically sourced through professional public records and direct verification, and is fully GDPR, CCPA, and CAN-SPAM compliant.",
+    "category": "Compliance"
+  },
+  {
+    "question": "What roles or job titles can you target?",
+    "answer": "We can target any role or seniority level — including C-suite executives (CEO, CMO, CTO, CFO), Vice Presidents, Directors, Managers, and individual contributors. Targeting is defined during the ICP step.",
+    "category": "ABM"
+  },
+  {
+    "question": "Do you offer custom lists?",
+    "answer": "Yes. Custom lists are our specialty. Each list is built to match your exact ICP through our Pay-as-you-go pricing model.",
+    "category": "Pricing"
+  },
+  {
+    "question": "Do you handle enterprise deals?",
+    "answer": "Yes. We offer custom Enterprise solutions with dedicated account management, volume-based pricing, and tailored data programs. Please contact sales@datamarketics.com to discuss your requirements.",
+    "category": "Pricing"
+  },
+  {
+    "question": "Why should I choose Data Marketics?",
+    "answer": "Data Marketics offers a database of 10M+ companies and 60M+ verified contacts, a 95%+ accuracy guarantee backed by human tele-verification, full GDPR/CCPA/CAN-SPAM compliance, customized targeting to your exact ICP, and over 6 years of experience helping companies build predictable sales pipelines.",
+    "category": "Company"
+  },
+  {
+    "question": "What is your sales email?",
+    "answer": "You can reach our sales team at sales@datamarketics.com. We are happy to answer your questions or arrange a discovery call.",
+    "category": "Contact"
+  },
+  {
+    "question": "What is your phone number?",
+    "answer": "You can reach us at +1 (281) 789-6642 during US business hours. For after-hours inquiries, please email sales@datamarketics.com.",
+    "category": "Contact"
+  },
+  {
+    "question": "bye goodbye see you later",
+    "answer": "Thank you for visiting Data Marketics. Should you have further questions, please return anytime or reach our team at sales@datamarketics.com.",
+    "category": "Greeting"
+  },
+  {
+    "question": "How are you doing today?",
+    "answer": "Thank you for asking. I am ready to assist you with information about our B2B data services. How may I help?",
+    "category": "Greeting"
+  },
+  {
+    "question": "Can you help me find decision makers?",
+    "answer": "Yes — this is one of our core specialties. We identify and verify decision-makers within your ICP using firmographic, technographic, and intent signals, enabling your sales team to engage the right contacts efficiently.",
+    "category": "ABM"
+  },
+  {
+    "question": "good morning",
+    "answer": "Good morning, and welcome to Data Marketics. How may I assist you today? You can ask about our services, pricing, data accuracy, or compliance.",
+    "category": "Greeting"
+  },
+  {
+    "question": "good afternoon",
+    "answer": "Good afternoon, and welcome to Data Marketics. How may I assist you today?",
+    "category": "Greeting"
+  },
+  {
+    "question": "good evening",
+    "answer": "Good evening, and welcome to Data Marketics. How may I assist you today?",
+    "category": "Greeting"
+  },
+  {
+    "question": "good day",
+    "answer": "Good day, and welcome to Data Marketics. How may I assist you?",
+    "category": "Greeting"
+  },
+  {
+    "question": "What can you do?",
+    "answer": "I can provide information on Data Marketics's services (ABM, intent data, event intelligence, demand generation), database scale, pricing, data accuracy and compliance, our delivery process, the industries we serve, comparisons with other providers, and how to book a discovery call. What would you like to know?",
+    "category": "Greeting"
+  },
+  {
+    "question": "What can you help me with?",
+    "answer": "I can assist you with information about our B2B data services, ABM and intent data, event lists, pricing, data accuracy and GDPR compliance, delivery formats and CRM integration, and how to request a sample or schedule a discovery call.",
+    "category": "Greeting"
+  },
+  {
+    "question": "help me",
+    "answer": "Certainly. I can assist with our services and pricing, data accuracy, GDPR and compliance details, delivery process, the industries we serve, ABM and intent data, event lists, and connecting you with our sales team. How may I help?",
+    "category": "Greeting"
+  },
+  {
+    "question": "What is your name?",
+    "answer": "I am the Data Marketics AI Assistant. How may I assist you today?",
+    "category": "Greeting"
+  },
+  {
+    "question": "are you a bot ai chatbot human robot artificial intelligence",
+    "answer": "I am an AI assistant designed to help you with information about Data Marketics. For direct conversations with our team, please email sales@datamarketics.com or call +1 (281) 789-6642.",
+    "category": "Greeting"
+  },
+  {
+    "question": "Can I talk to a human?",
+    "answer": "Of course. You can reach our team at sales@datamarketics.com or by phone at +1 (281) 789-6642 during US business hours.",
+    "category": "Greeting"
+  },
+  {
+    "question": "ok okay alright understood",
+    "answer": "Understood. Please let me know what else I can help you with — for example, pricing, our services, or our delivery process.",
+    "category": "Greeting"
+  },
+  {
+    "question": "yes yeah yep sure yup confirmed",
+    "answer": "Thank you. Please tell me more about what you are looking for — industry, role, geography, or list size — so I can provide the most relevant information.",
+    "category": "Greeting"
+  },
+  {
+    "question": "no nope not now no thank you",
+    "answer": "Understood. If anything else comes up, please let me know — or contact our team directly at sales@datamarketics.com.",
+    "category": "Greeting"
+  },
+  {
+    "question": "What are your hours of operation?",
+    "answer": "I am available 24/7 to assist you. Our sales team is reachable at +1 (281) 789-6642 during US business hours, and anytime via email at sales@datamarketics.com.",
+    "category": "Contact"
+  },
+  {
+    "question": "How do I get started?",
+    "answer": "To get started, please email sales@datamarketics.com or call +1 (281) 789-6642 to book a discovery call. We will define your ICP, source a tailored sample, and deliver verified contacts in CSV/Excel or directly to your CRM.",
+    "category": "Process"
+  },
+  {
+    "question": "Do you have a website?",
+    "answer": "Yes — please visit datamarketics.com for our full range of offerings, or email sales@datamarketics.com to begin a conversation.",
+    "category": "Contact"
+  },
+  {
+    "question": "Do you do email marketing campaigns?",
+    "answer": "We provide the verified B2B email contact data and demand-generation support that powers email campaigns, including campaign data support and audience targeting strategies. Please contact sales@datamarketics.com to discuss campaign requirements.",
+    "category": "Services"
+  },
+  {
+    "question": "Do you do cold email or cold calling lists?",
+    "answer": "Yes. Our verified B2B contact lists are well suited for cold outreach, including direct emails and dial numbers, all manually tele-verified for 95%+ accuracy.",
+    "category": "Services"
+  },
+  {
+    "question": "How do I request a quote or pricing?",
+    "answer": "Please email sales@datamarketics.com or call +1 (281) 789-6642 with your ICP (industry, role, geography, list size). We will return a custom quote across our Pay-as-you-go, subscription, or Enterprise models.",
+    "category": "Pricing"
+  },
+  {
+    "question": "Do you provide B2B leads or sales leads?",
+    "answer": "Yes — B2B and sales leads are at the core of our offering. We deliver verified, GDPR-compliant leads tailored to your ICP, with 95%+ accuracy through human tele-verification.",
+    "category": "Services"
+  },
+  {
+    "question": "Do you offer B2B email lists or databases?",
+    "answer": "Yes. Our B2B email databases and targeted email lists are built to your ICP — industry, role, geography, technology stack — and fully verified for accuracy.",
+    "category": "Services"
+  },
+  {
+    "question": "Is my data safe with you?",
+    "answer": "Yes. We handle all data with strict confidentiality, comply fully with GDPR, CCPA, and CAN-SPAM, and never share your information with third parties. Delivery is conducted securely via CSV/Excel or direct CRM sync.",
+    "category": "Compliance"
+  },
+  {
+    "question": "Can I see a demo?",
+    "answer": "Yes. Please book a discovery call at sales@datamarketics.com or +1 (281) 789-6642. We will walk you through the Prospector Platform and provide a tailored data sample.",
+    "category": "Pricing"
   }
 ]
