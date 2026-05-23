@@ -228,7 +228,7 @@ const Contact = () => {
                                         </div>
                                         <div className="headding">
                                             <h5>Call</h5>
-                                            <a href="tel:2817896642">281-789-6642</a>
+                                            <a href="tel:+16093222666">609-322-2666</a>
                                         </div>
                                     </div>
                                     <div className="single-box">

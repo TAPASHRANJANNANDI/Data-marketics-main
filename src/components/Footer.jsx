@@ -81,7 +81,7 @@ const Footer = () => {
                             <div className="coppyright text-md-right text-center">
                                 © 2026 <Link to="/">Data Marketics</Link> |
                                 <Link to="/privacy-policy">Privacy Policy</Link>|
-                                <Link to="/sitemap">Sitemap</Link>
+                                <a href="https://datamarketics.com/sitemap.xml">Sitemap</a>
                             </div>
                         </div>
                     </div>

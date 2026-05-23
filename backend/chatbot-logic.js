@@ -34,15 +34,15 @@ const searchCorpus = faq.map(entry => ({
 
 // 4. Initialize Fuse.js
 const fuseOptions = {
-    keys: ['normalizedQuestion', 'question'],
-    threshold: 0.45, // Balanced: tolerates typos/paraphrasing without matching unrelated overlap
+    keys: ['normalizedQuestion'],
+    threshold: 0.5,
     includeScore: true,
-    distance: 100,
-    location: 0,
+    distance: 200,
+    ignoreLocation: true,
     minMatchCharLength: 2
 };
 
-const HELPFUL_FALLBACK = "I apologize — I was not able to find a direct answer to your question. I would be happy to help with the following topics:\n• Our services (ABM, intent data, event intelligence, demand generation)\n• Pricing and how to schedule a discovery call\n• Data accuracy, GDPR compliance, and delivery formats\n• The industries we serve and how we compare to other providers\n\nFor a personalised response, please contact our team at sales@datamarketics.com or +1 (281) 789-6642.";
+const HELPFUL_FALLBACK = "For specific questions our knowledge base does not directly cover, please contact our team:\n• Email: sales@datamarketics.com\n• Phone: +1 (609) 322-2666\n\nI can also answer questions about our services, pricing, data accuracy, compliance, delivery process, or industries we serve — please feel free to rephrase or ask about one of these topics.";
 
 const fuse = new Fuse(searchCorpus, fuseOptions);
 
@@ -79,7 +79,7 @@ export function askChatbot(query, exclude = []) {
     const topMatch = filteredResults[0];
 
     // Confidence threshold (Fuse score: lower is better). Aligned with the fuse threshold.
-    const isConfident = topMatch.score <= 0.45;
+    const isConfident = topMatch.score <= 0.5;
 
     if (!isConfident) {
         return {
