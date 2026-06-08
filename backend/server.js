@@ -19,6 +19,7 @@ import cors from 'cors';
 import { streamText, embed, generateText } from 'ai';
 import { createGoogleGenerativeAI } from '@ai-sdk/google';
 import { initRAG, retrieveContext } from './rag.js';
+import { initLocalRag, isLocalRagReady, searchFaq } from './local-rag.js';
 
 import { askChatbot } from './chatbot-logic.js';
 
@@ -41,37 +42,57 @@ app.use(json());
 app.use(urlencoded({ extended: true }));
 app.use('/api/chat', apiLimiter);
 
-// Note: Keeping Gemini vars for other potential uses, but the main chatbot now uses local logic.
 const google = createGoogleGenerativeAI({ apiKey: process.env.GEMINI_API_KEY });
 const model = google('gemini-flash-latest');
 const embeddingModel = google.textEmbeddingModel('gemini-embedding-001');
 
-/**
- * Chat Route - Now using local logic (Deterministic FAQ)
- */
-app.post('/api/chat', (req, res) => {
+// Initialise local semantic RAG over faq.json (no external API).
+initLocalRag().catch(e => console.error('⚠️ Local RAG init failed:', e.message));
+
+// Confidence threshold for cosine similarity over TF-IDF vectors (0..1).
+// TF-IDF scores tend to run lower than dense embeddings: ~0.25-0.50 for strong matches.
+const RAG_CONFIDENCE = 0.25;
+
+app.post('/api/chat', async (req, res) => {
     try {
         const { messages, exclude = [] } = req.body;
         const userMessage = messages[messages.length - 1].content;
-
         console.log(`💬 User Query: ${userMessage}`);
 
-        const result = askChatbot(userMessage, exclude);
+        if (isLocalRagReady()) {
+            try {
+                const top = await searchFaq(userMessage, 3);
+                if (top.length && top[0].similarity >= RAG_CONFIDENCE) {
+                    return res.json({
+                        role: 'assistant',
+                        content: top[0].answer,
+                        matches: top,
+                        confident: true,
+                        mode: 'rag',
+                        similarity: Number(top[0].similarity.toFixed(3))
+                    });
+                }
+            } catch (ragErr) {
+                console.error('⚠️ Local RAG search error, falling back to FAQ:', ragErr.message);
+            }
+        }
 
+        const result = askChatbot(userMessage, exclude);
         if (result.confident) {
-            const answer = result.bestMatch.answer;
             res.json({
                 role: 'assistant',
-                content: answer,
+                content: result.bestMatch.answer,
                 matches: result.matches,
-                confident: true
+                confident: true,
+                mode: 'faq'
             });
         } else {
             res.json({
                 role: 'assistant',
                 content: result.fallback,
                 matches: result.matches,
-                confident: false
+                confident: false,
+                mode: 'fallback'
             });
         }
 

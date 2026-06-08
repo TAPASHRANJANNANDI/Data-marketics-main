@@ -20,7 +20,7 @@ As a leading marketing data provider, we help businesses connect with qualified 
 
 ## 2. Contact Information
 ### Data Marketics
-- **Phone**: +1 (281) 789-6642
+- **Phone**: +1 (609) 322-2666
 - **Email**: sales@datamarketics.com
 - **Address**: 100 Horizon Center Blvd, 1st and 2nd Floor, Hamilton, NJ 08691
 
