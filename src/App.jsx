@@ -54,8 +54,10 @@ function App() {
                     <Route path="/industries/healthcare" element={<HealthcareIndustry />} />
                     <Route path="/industries/technology" element={<TechnologyIndustry />} />
                 </Routes>
-                <ChatBot />
             </Layout>
+            {/* Rendered outside <Layout> so the chatbot's z-index isn't trapped
+                inside the framer-motion stacking context that wraps <main>. */}
+            <ChatBot />
             <LeadPopup />
         </>
     );

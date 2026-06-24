@@ -710,5 +710,105 @@
     "question": "no nope not now no thank you",
     "answer": "Understood. Reach our team at sales@datamarketics.com or +1 (609) 322-2666 anytime.",
     "category": "Greeting"
+  },
+  {
+    "question": "Where are you based located headquartered office address location",
+    "answer": "Our headquarters are at 100 Horizon Center Blvd, 1st and 2nd Floor, Hamilton, NJ 08691, USA. We serve clients globally from this office.",
+    "category": "Company"
+  },
+  {
+    "question": "What is your headquarters office address postal mailing",
+    "answer": "100 Horizon Center Blvd, 1st and 2nd Floor, Hamilton, NJ 08691, USA.",
+    "category": "Company"
+  },
+  {
+    "question": "Who is the CEO founder leadership team president owner",
+    "answer": "We don't share internal leadership details publicly. For partnership or executive inquiries, contact sales@datamarketics.com or +1 (609) 322-2666 and we'll connect you with the right person.",
+    "category": "Company"
+  },
+  {
+    "question": "What are your business hours timezone availability working days",
+    "answer": "Our team is available Monday through Friday, 9 AM to 6 PM Eastern Time (US). Email inquiries are typically answered within one business day.",
+    "category": "Support"
+  },
+  {
+    "question": "How do I contact support help customer service team reach",
+    "answer": "Email sales@datamarketics.com for inquiries or call +1 (609) 322-2666. Our team responds within one business day on weekdays.",
+    "category": "Support"
+  },
+  {
+    "question": "Do you serve Europe UK Germany France Netherlands EU European market",
+    "answer": "Yes — we have strong European coverage including the UK, Germany, France, and the Netherlands, with full GDPR-compliant data sourcing.",
+    "category": "Coverage"
+  },
+  {
+    "question": "Do you serve Asia APAC India Japan Singapore Australia",
+    "answer": "Yes — we provide verified B2B contact data across APAC including India, Japan, Singapore, and Australia. Ask sales@datamarketics.com for region-specific samples.",
+    "category": "Coverage"
+  },
+  {
+    "question": "Do you cover USA United States American market North America Canada",
+    "answer": "Yes — the USA is one of our core markets with deep verified-contact coverage across all 50 states and Canada.",
+    "category": "Coverage"
+  },
+  {
+    "question": "What data formats do you deliver CSV Excel JSON XLSX file output",
+    "answer": "We deliver in CSV or Excel (XLSX) by default. JSON, direct CRM sync (Salesforce/HubSpot), and SFTP are also available on request.",
+    "category": "Process"
+  },
+  {
+    "question": "Do you have API access programmatic real-time integration endpoint",
+    "answer": "Direct CRM sync is supported out of the box for Salesforce and HubSpot. For programmatic/API access to our data, contact sales@datamarketics.com to discuss enterprise integration.",
+    "category": "Process"
+  },
+  {
+    "question": "How often is your data refreshed updated frequency stale freshness",
+    "answer": "Records are continuously verified through automated AI scrubbing and manual tele-verification. Custom lists are re-verified at delivery for 95%+ accuracy.",
+    "category": "Quality"
+  },
+  {
+    "question": "Are you CCPA CASL compliant California Canada privacy law regulations",
+    "answer": "Yes — our B2B contact data is 100% compliant with GDPR, CCPA, CAN-SPAM, and CASL. We follow ethical sourcing and provide full opt-out support.",
+    "category": "Compliance"
+  },
+  {
+    "question": "How does opt-out unsubscribe suppression handling work do not contact",
+    "answer": "All contacts honour opt-out requests in line with GDPR, CCPA, CAN-SPAM, and CASL. Suppression lists can be applied at delivery on request.",
+    "category": "Compliance"
+  },
+  {
+    "question": "Can you do custom research market study tailored list bespoke build",
+    "answer": "Yes — Custom Marketing Research and bespoke list building are core services. We analyse your ICP and build tailored lists. Email sales@datamarketics.com to scope a project.",
+    "category": "Services"
+  },
+  {
+    "question": "Do you offer bulk discount enterprise pricing volume quote",
+    "answer": "Enterprise and bulk pricing is available for high-volume needs. Contact sales@datamarketics.com or +1 (609) 322-2666 for a custom quote.",
+    "category": "Pricing"
+  },
+  {
+    "question": "How do I get started onboarding first steps process begin",
+    "answer": "Step 1: book a 15-minute discovery call. Step 2: we define your ICP (industry, revenue, job titles, geo). Step 3: we deliver a sample. Step 4: full list delivery in CSV/Excel or direct CRM sync. Email sales@datamarketics.com to start.",
+    "category": "Process"
+  },
+  {
+    "question": "What languages do you support multilingual international",
+    "answer": "Customer-facing support is in English. Contact data itself spans 50+ countries; let us know your target geos and we'll confirm coverage.",
+    "category": "Coverage"
+  },
+  {
+    "question": "What job titles roles can you target VP Director Manager specialist",
+    "answer": "We target any decision-maker role — C-suite (CEO/CMO/CTO/CFO), VPs, Directors, Managers, and specialists across all major functions.",
+    "category": "ABM"
+  },
+  {
+    "question": "What company sizes do you cover SMB mid-market enterprise small medium large",
+    "answer": "We cover all segments — SMB, mid-market, and enterprise — across 10M+ companies globally. Tell us your ideal revenue band and we'll match.",
+    "category": "ABM"
+  },
+  {
+    "question": "Where can I find pricing rate card price list quote",
+    "answer": "Pricing is custom-quoted based on your data needs, volume, and geo. Email sales@datamarketics.com or call +1 (609) 322-2666 for a quote within one business day.",
+    "category": "Pricing"
   }
 ]
