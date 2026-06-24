@@ -51,7 +51,7 @@ const Footer = () => {
                         <div className="single-footer-items">
                             <h3>Company</h3>
                             <ul className="menu-list">
-                                <li><Link to="/about">About us</Link></li>
+                                <li><Link to="/about-us">About us</Link></li>
                                 <li><Link to="/features">Features</Link></li>
                             </ul>
                         </div>
@@ -61,7 +61,7 @@ const Footer = () => {
                             <h3>Resources</h3>
                             <ul className="menu-list">
                                 <li><Link to="/services">Our Services</Link></li>
-                                <li><Link to="/about">Why Choose Us</Link></li>
+                                <li><Link to="/about-us">Why Choose Us</Link></li>
                                 <li><Link to="/contact">Contact Us</Link></li>
                             </ul>
                         </div>
@@ -79,8 +79,11 @@ const Footer = () => {
                         </div>
                         <div className="col-md-7">
                             <div className="coppyright text-md-right text-center">
-                                © 2026 <Link to="/">Data Marketics</Link> |
-                                <Link to="/privacy-policy">Privacy Policy</Link>|
+                                <span className="copy-text">© 2026</span>
+                                <Link to="/">Data Marketics</Link>
+                                <span className="copy-sep" aria-hidden="true">•</span>
+                                <Link to="/privacy-policy">Privacy Policy</Link>
+                                <span className="copy-sep" aria-hidden="true">•</span>
                                 <a href="https://datamarketics.com/sitemap.xml">Sitemap</a>
                             </div>
                         </div>

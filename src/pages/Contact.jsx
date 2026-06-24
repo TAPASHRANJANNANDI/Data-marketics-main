@@ -299,57 +299,14 @@ const Contact = () => {
                     </div>
                 </div>
 
-                <div className="cta-area sp text-center" style={{ backgroundColor: '#007bff', color: '#fff', padding: '80px 0' }}>
+                <div className="cta-area sp text-center">
                     <div className="container">
                         <div className="row justify-content-center">
                             <div className="col-lg-10">
-                                <h2 style={{ color: '#fff', fontSize: '40px', fontWeight: '700', marginBottom: '20px' }}>Get Started Today</h2>
-                                <p style={{ fontSize: '18px', color: '#eef5ff', marginBottom: '40px', lineHeight: '1.6' }}>
-                                    Ready to fuel your revenue engine?<br />
-                                    Let’s help you reach the right audience, at the right time, with the right message.
+                                <h2 style={{ fontSize: '40px', fontWeight: 800, marginBottom: '18px' }}>Get Started Today</h2>
+                                <p style={{ fontSize: '17px', lineHeight: 1.65, maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto', marginBottom: 0 }}>
+                                    Ready to fuel your revenue engine? Let’s help you reach the right audience, at the right time, with the right message.
                                 </p>
-                                <div className="d-flex justify-content-center gap-4 flex-wrap">
-                                    {[
-                                        { text: "Request Sample Data", href: "#" },
-                                        { text: "Schedule a Strategy Call", href: "#" },
-                                        { text: "Get a Custom Quote", href: "#" }
-                                    ].map((btn, index) => (
-                                        <a key={index} href={btn.href} className="theme-btn2" style={{
-                                            backgroundColor: '#fff',
-                                            color: '#007bff',
-                                            border: 'none',
-                                            padding: '18px 35px',
-                                            borderRadius: '50px',
-                                            fontSize: '18px',
-                                            fontWeight: '700',
-                                            boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
-                                            display: 'inline-flex',
-                                            alignItems: 'center',
-                                            transition: 'all 0.3s ease',
-                                            textDecoration: 'none'
-                                        }}
-                                            onMouseEnter={(e) => {
-                                                e.currentTarget.style.transform = 'translateY(-4px)';
-                                                e.currentTarget.style.boxShadow = '0 15px 30px rgba(0,0,0,0.25)';
-                                                if (e.currentTarget.querySelector('svg')) {
-                                                    e.currentTarget.querySelector('svg').style.transform = 'translateX(5px)';
-                                                }
-                                            }}
-                                            onMouseLeave={(e) => {
-                                                e.currentTarget.style.transform = 'translateY(0)';
-                                                e.currentTarget.style.boxShadow = '0 8px 20px rgba(0,0,0,0.15)';
-                                                if (e.currentTarget.querySelector('svg')) {
-                                                    e.currentTarget.querySelector('svg').style.transform = 'translateX(0)';
-                                                }
-                                            }}>
-                                            {btn.text}
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: '12px', transition: 'transform 0.3s ease' }}>
-                                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                                <polyline points="12 5 19 12 12 19"></polyline>
-                                            </svg>
-                                        </a>
-                                    ))}
-                                </div>
                             </div>
                         </div>
                     </div>
