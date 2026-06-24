@@ -113,7 +113,7 @@ A Google Business Profile helps you appear in **Google Maps** and **local search
    - **Business name:** Data Marketics
    - **Category:** "Marketing Consultant" or "Business to Business Service"
    - **Address:** 100 Horizon Center Blvd, 1st and 2nd Floor, Hamilton, NJ 08691
-   - **Phone:** +1 (281) 789-6642
+   - **Phone:** +1 (609) 322-2666
    - **Website:** https://datamarketics.com
    - **Service areas:** Add European countries you serve (United Kingdom, Germany, France, Netherlands, etc.)
 5. **Verify your business** — Google will send a postcard to your address with a verification code (takes 5-14 days), or you may get phone/email verification
@@ -437,7 +437,7 @@ Get your business listed on these directories (free listings available on most):
 On every directory listing, use the EXACT same information:
 - **Name:** Data Marketics
 - **Address:** 100 Horizon Center Blvd, 1st and 2nd Floor, Hamilton, NJ 08691
-- **Phone:** +1 (281) 789-6642
+- **Phone:** +1 (609) 322-2666
 - **Website:** https://datamarketics.com
 - **Email:** sales@datamarketics.com
 

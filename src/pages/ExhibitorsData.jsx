@@ -1,7 +1,8 @@
 import React from 'react';
-import aboutMainImg from '../assets/img/about/about-main-img.png';
-import aboutPageImg1 from '../assets/img/about/about-page-img1.png';
-import aboutPageImg2 from '../assets/img/about/about-page-img2.png';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
+import DancingChart from '../components/DancingChart';
 import spanImage6 from '../assets/img/icons/span-image6.png';
 import edit1 from '../assets/img/icons/editing6-icon1.svg';
 import edit2 from '../assets/img/icons/editing6-icon2.svg';
@@ -9,11 +10,18 @@ import edit3 from '../assets/img/icons/editing6-icon3.svg';
 import edit4 from '../assets/img/icons/editing6-icon4.svg';
 import secIcon1 from '../assets/img/icons/about-page-sec-icon1.png';
 import secIcon2 from '../assets/img/icons/about-page-sec-icon2.png';
-import secIcon3 from '../assets/img/icons/about-page-sec-icon3.png';
-// import shape1 from '../assets/img/shapes/common-hero-shape1.png';
-// import shape2 from '../assets/img/shapes/common-hero-shape2.png';
-import { Link } from 'react-router-dom';
-import {Helmet} from 'react-helmet';
+
+// Distinct corporate event imagery for this page
+const CORP_EVENT = {
+    hero: 'https://images.unsplash.com/photo-1591115765373-5207764f72e7?auto=format&fit=crop&w=1200&q=80',      // exhibitor / trade show data screen
+    industries: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=900&q=80', // conference audience
+    power: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=900&q=80',      // trade show floor
+};
+
+const fadeUp = {
+    hidden: { opacity: 0, y: 28 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
+};
 const ExhibitorsData = () => {
     return (
         <>
@@ -36,9 +44,20 @@ const ExhibitorsData = () => {
                             </div>
                         </div>
                         <div className="col-lg-6">
-                            <div className="hero-image shape-animaiton3">
-                                <img className="img-fluid" src={aboutMainImg} alt="Exhibitors data" />
-                            </div>
+                            <motion.div
+                                className="hero-image hero-image-static"
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                            >
+                                <img
+                                    className="img-fluid"
+                                    src={CORP_EVENT.hero}
+                                    alt="Exhibitors data dashboard for B2B event marketing"
+                                    style={{ borderRadius: '20px', boxShadow: '0 24px 60px rgba(13, 115, 119, 0.22)', width: '100%', height: '420px', objectFit: 'cover' }}
+                                    loading="eager"
+                                />
+                            </motion.div>
                         </div>
                     </div>
                 </div>
@@ -50,7 +69,13 @@ const ExhibitorsData = () => {
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-lg-6">
-                            <div className="headding2">
+                            <motion.div
+                                className="headding2"
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, margin: '-20px' }}
+                                variants={fadeUp}
+                            >
                                 <h2>Industry-Wise Exhibitors Data Solutions</h2>
                                 <p>Our industry-specific exhibitor databases help B2B companies identify high-intent prospects actively participating in global events.</p>
                                 <ul className="list">
@@ -59,12 +84,29 @@ const ExhibitorsData = () => {
                                     <li><span><i className="fa-solid fa-check"></i></span> Banking & Finance Events</li>
                                     <li><span><i className="fa-solid fa-check"></i></span> Travel & Tourism Events</li>
                                 </ul>
-                            </div>
+                            </motion.div>
                         </div>
                         <div className="col-lg-6">
-                            <div className="about-img">
-                                <img className="img-fluid" src={aboutPageImg1} alt="Industry data" />
-                            </div>
+                            <motion.div
+                                className="work4-images service-corporate-images"
+                                initial={{ opacity: 0, scale: 0.92, x: 20 }}
+                                whileInView={{ opacity: 1, scale: 1, x: 0 }}
+                                viewport={{ once: true, margin: '-20px' }}
+                                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                            >
+                                <div className="image1">
+                                    <img src={CORP_EVENT.industries} alt="Industry trade-show audience" loading="lazy" />
+                                </div>
+                                <motion.div
+                                    className="image2 image2-chart"
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.55, delay: 0.4 }}
+                                >
+                                    <DancingChart variant="pulse" label="EVENT ACTIVITY" />
+                                </motion.div>
+                            </motion.div>
                         </div>
                     </div>
                 </div>
@@ -111,23 +153,51 @@ const ExhibitorsData = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="row mt-5">
+                    <div className="row mt-5 align-items-center">
                         <div className="col-lg-6">
-                            <img className="img-fluid" src={aboutPageImg2} alt="event exhibitors data lead generation" />
+                            <motion.div
+                                className="work4-images service-corporate-images"
+                                initial={{ opacity: 0, scale: 0.92, x: -20 }}
+                                whileInView={{ opacity: 1, scale: 1, x: 0 }}
+                                viewport={{ once: true, margin: '-20px' }}
+                                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                            >
+                                <div className="image1">
+                                    <img src={CORP_EVENT.power} alt="Verified exhibitor leads at a global trade show" loading="lazy" />
+                                </div>
+                                <motion.div
+                                    className="image2 image2-chart"
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.55, delay: 0.4 }}
+                                >
+                                    <DancingChart variant="donut" label="LEAD QUALITY" />
+                                </motion.div>
+                            </motion.div>
                         </div>
                         <div className="col-lg-6">
-                            <div className="about-page-boxs aligned-boxs">
-                                <div className="single-box">
+                            <motion.div
+                                className="about-page-boxs aligned-boxs"
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, margin: '-20px' }}
+                                variants={{
+                                    hidden: {},
+                                    visible: { transition: { staggerChildren: 0.15 } }
+                                }}
+                            >
+                                <motion.div className="single-box" variants={fadeUp}>
                                     <div className="icon"><img src={secIcon1} alt="trade show exhibitor analytics" /></div>
                                     <h4>Time and Cost Efficiency</h4>
                                     <p>Save resources by accessing curated lists in one place.</p>
-                                </div>
-                                <div className="single-box">
+                                </motion.div>
+                                <motion.div className="single-box" variants={fadeUp}>
                                     <div className="icon"><img src={secIcon2} alt="exhibitor data sales analytics dashboard" /></div>
                                     <h4>Ready-to-Use Sales Leads</h4>
                                     <p>Exhibitor contacts are sales-qualified prospects primed for outreach.</p>
-                                </div>
-                            </div>
+                                </motion.div>
+                            </motion.div>
                         </div>
                     </div>
                 </div>
