@@ -2714,13 +2714,11 @@ html {
     background: #ffffff;
 }
 
-/* Only paint main dark when its last visible child is a dark CTA — this
-   hides the white gap between the CTA and footer on pages that end with one
-   (Home, Features, etc.) without affecting pages whose hero doesn't paint
-   its own background (Contact). */
-main:has(> .cta-area:last-child) {
-    background: var(--dm-grad-dark) !important;
-}
+/* (Previously: main:has(> .cta-area:last-child) painted the whole <main>
+   dark to hide a tiny gap below the CTA. That collateral-damaged every
+   transparent section above by making all of them dark-on-dark. Removed —
+   the CTA section paints its own background, so no extra darkening is
+   needed.) */
 
 body {
     background-attachment: scroll;

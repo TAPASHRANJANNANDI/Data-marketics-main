@@ -42,16 +42,41 @@ app.use(json());
 app.use(urlencoded({ extended: true }));
 app.use('/api/chat', apiLimiter);
 
-const google = createGoogleGenerativeAI({ apiKey: process.env.GEMINI_API_KEY });
-const model = google('gemini-flash-latest');
-const embeddingModel = google.textEmbeddingModel('gemini-embedding-001');
+// Trust the front-end nginx / docker-proxy so rate-limit can identify clients
+// via X-Forwarded-For without warning.
+app.set('trust proxy', 1);
 
-// Initialise local semantic RAG over faq.json (no external API).
+// Initialise local semantic RAG over faq.json (no external API, no LLM).
 initLocalRag().catch(e => console.error('⚠️ Local RAG init failed:', e.message));
 
-// Confidence threshold for cosine similarity over TF-IDF vectors (0..1).
-// TF-IDF scores tend to run lower than dense embeddings: ~0.25-0.50 for strong matches.
-const RAG_CONFIDENCE = 0.25;
+// High-confidence threshold for direct RAG answer. Above this, the FAQ entry
+// is returned verbatim. Below it, we fall through to Fuse fuzzy matching and
+// finally a helpful contact-info fallback with the top-3 closest questions as
+// suggestions.
+const RAG_HIGH = 0.40;
+const RAG_MEDIUM = 0.18;
+
+const HELPFUL_FALLBACK = "For specific questions our knowledge base does not directly cover, please contact our team:\n• Email: sales@datamarketics.com\n• Phone: +1 (609) 322-2666\n\nI can also answer questions about our services, pricing, data accuracy, compliance, delivery process, or industries we serve.";
+
+// Short-input intent recognition. RAG/Fuse can't reliably match 2-3 letter
+// inputs (e.g. "hi" fuzzy-matches the middle of "tecHnograpHIc"), so we route
+// common conversational openers/closers deterministically before any search.
+const GREETING_RE = /^\s*(hi+|hello+|hey+|yo+|sup|hola|greetings?|good\s+(morning|afternoon|evening|day))[\s!.,?]*$/i;
+const THANKS_RE   = /^\s*(thanks+|thank\s*you|thx|ty|cheers|appreciate(\s+it)?)[\s!.,?]*$/i;
+const GOODBYE_RE  = /^\s*(bye+|goodbye|see\s+you|farewell|cya|later|catch\s+you\s+later)[\s!.,?]*$/i;
+
+function intentReply(text) {
+    if (GREETING_RE.test(text)) {
+        return "Hello! I am the Data Marketics AI Assistant. How can I help you today? You can ask me about our services, pricing, data accuracy, compliance, delivery process, or industries we serve.";
+    }
+    if (THANKS_RE.test(text)) {
+        return "You're most welcome! Is there anything else I can help you with?";
+    }
+    if (GOODBYE_RE.test(text)) {
+        return "Thank you for visiting Data Marketics. Reach our team anytime at sales@datamarketics.com or +1 (609) 322-2666.";
+    }
+    return null;
+}
 
 app.post('/api/chat', async (req, res) => {
     try {
@@ -59,42 +84,68 @@ app.post('/api/chat', async (req, res) => {
         const userMessage = messages[messages.length - 1].content;
         console.log(`💬 User Query: ${userMessage}`);
 
-        if (isLocalRagReady()) {
-            try {
-                const top = await searchFaq(userMessage, 3);
-                if (top.length && top[0].similarity >= RAG_CONFIDENCE) {
-                    return res.json({
-                        role: 'assistant',
-                        content: top[0].answer,
-                        matches: top,
-                        confident: true,
-                        mode: 'rag',
-                        similarity: Number(top[0].similarity.toFixed(3))
-                    });
-                }
-            } catch (ragErr) {
-                console.error('⚠️ Local RAG search error, falling back to FAQ:', ragErr.message);
-            }
+        const intent = intentReply(userMessage);
+        if (intent) {
+            return res.json({
+                role: 'assistant',
+                content: intent,
+                matches: [],
+                confident: true,
+                mode: 'intent'
+            });
         }
 
-        const result = askChatbot(userMessage, exclude);
-        if (result.confident) {
-            res.json({
+        let topMatches = [];
+        if (isLocalRagReady()) {
+            try {
+                topMatches = await searchFaq(userMessage, 3);
+            } catch (ragErr) {
+                console.error('⚠️ Local RAG search error:', ragErr.message);
+            }
+        }
+        const top = topMatches[0];
+
+        if (top && top.similarity >= RAG_HIGH) {
+            return res.json({
                 role: 'assistant',
-                content: result.bestMatch.answer,
-                matches: result.matches,
+                content: top.answer,
+                matches: topMatches,
+                confident: true,
+                mode: 'rag',
+                similarity: Number(top.similarity.toFixed(3))
+            });
+        }
+
+        const fuseResult = askChatbot(userMessage, exclude);
+        if (fuseResult.confident) {
+            return res.json({
+                role: 'assistant',
+                content: fuseResult.bestMatch.answer,
+                matches: fuseResult.matches,
                 confident: true,
                 mode: 'faq'
             });
-        } else {
-            res.json({
+        }
+
+        if (top && top.similarity >= RAG_MEDIUM) {
+            const suggestions = topMatches.slice(0, 3).map(m => m.question);
+            return res.json({
                 role: 'assistant',
-                content: result.fallback,
-                matches: result.matches,
+                content: `I'm not 100% sure I understood your question. Did you mean one of these?\n\n• ${suggestions.join('\n• ')}\n\nIf not, reach our team at sales@datamarketics.com or +1 (609) 322-2666.`,
+                matches: topMatches,
                 confident: false,
-                mode: 'fallback'
+                mode: 'suggestion',
+                similarity: Number(top.similarity.toFixed(3))
             });
         }
+
+        return res.json({
+            role: 'assistant',
+            content: HELPFUL_FALLBACK,
+            matches: topMatches.length ? topMatches : fuseResult.matches,
+            confident: false,
+            mode: 'fallback'
+        });
 
     } catch (error) {
         console.error("🚨 CHAT SERVER ERROR:", error);

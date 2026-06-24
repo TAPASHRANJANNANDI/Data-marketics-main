@@ -33,13 +33,16 @@ const searchCorpus = faq.map(entry => ({
 }));
 
 // 4. Initialize Fuse.js
+// Tightened threshold: 0.3 instead of 0.5 avoids weak substring matches
+// (e.g. "hi" matching the middle of "tecHnograpHIc"). minMatchCharLength
+// raised to 3 so single short tokens can't dominate a fuzzy score.
 const fuseOptions = {
     keys: ['normalizedQuestion'],
-    threshold: 0.5,
+    threshold: 0.3,
     includeScore: true,
-    distance: 200,
+    distance: 100,
     ignoreLocation: true,
-    minMatchCharLength: 2
+    minMatchCharLength: 3
 };
 
 const HELPFUL_FALLBACK = "For specific questions our knowledge base does not directly cover, please contact our team:\n• Email: sales@datamarketics.com\n• Phone: +1 (609) 322-2666\n\nI can also answer questions about our services, pricing, data accuracy, compliance, delivery process, or industries we serve — please feel free to rephrase or ask about one of these topics.";
@@ -53,7 +56,7 @@ const fuse = new Fuse(searchCorpus, fuseOptions);
  */
 export function askChatbot(query, exclude = []) {
     const normalizedQuery = normalize(query);
-    
+
     if (!normalizedQuery) {
         return {
             confident: false,
@@ -62,9 +65,19 @@ export function askChatbot(query, exclude = []) {
         };
     }
 
+    // Skip fuzzy search for very short queries: a 2-char query like "hi" can
+    // confidently substring-match unrelated tokens via Fuse.
+    if (normalizedQuery.length < 4) {
+        return {
+            confident: false,
+            matches: [],
+            fallback: HELPFUL_FALLBACK
+        };
+    }
+
     // Perform the search
     const results = fuse.search(normalizedQuery);
-    
+
     // Filter out excluded items
     const filteredResults = results.filter(res => !exclude.includes(res.item.question));
 
@@ -79,7 +92,7 @@ export function askChatbot(query, exclude = []) {
     const topMatch = filteredResults[0];
 
     // Confidence threshold (Fuse score: lower is better). Aligned with the fuse threshold.
-    const isConfident = topMatch.score <= 0.5;
+    const isConfident = topMatch.score <= 0.3;
 
     if (!isConfident) {
         return {
