@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet';
 const Sitemap = () => {
     const links = [
         { name: 'Home', path: '/' },
-        { name: 'About Us', path: '/about' },
+        { name: 'About Us', path: '/about-us' },
         { name: 'Features', path: '/features' },
         { name: 'Services', path: '/services' },
         { name: 'Demand Generation', path: '/demand-generation' },

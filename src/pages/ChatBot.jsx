@@ -1,9 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, X, MessageCircle, Sparkles, RefreshCw } from 'lucide-react';
-import '../assets/css/chatbot.css';
+import { Send, X, Bot, Sparkles, RefreshCw } from 'lucide-react';
 
-import chatbotIcon from '../assets/img/customer-service-support-svgrepo-com.svg';
+const ThreeDotsIcon = ({ size = 32, color = '#ffffff' }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    className="dm-launcher-icon"
+  >
+    <circle cx="5" cy="12" r="2.6" fill={color} />
+    <circle cx="12" cy="12" r="2.6" fill={color} />
+    <circle cx="19" cy="12" r="2.6" fill={color} />
+  </svg>
+);
+import '../assets/css/chatbot.css';
 
 export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,11 +30,15 @@ export default function ChatBot() {
 
   const messagesEndRef = useRef(null);
 
-  // Tooltip shows after a brief delay when the chat is closed
+  // Tooltip shows after a brief delay when the chat is closed, then auto-hides
   useEffect(() => {
     if (!isOpen) {
-      const timer = setTimeout(() => setShowTooltip(true), 1500);
-      return () => clearTimeout(timer);
+      const showTimer = setTimeout(() => setShowTooltip(true), 1500);
+      const hideTimer = setTimeout(() => setShowTooltip(false), 7500);
+      return () => {
+        clearTimeout(showTimer);
+        clearTimeout(hideTimer);
+      };
     } else {
       setShowTooltip(false);
     }
@@ -130,18 +146,29 @@ export default function ChatBot() {
         {showTooltip && !isOpen && (
           <motion.div
             initial={{ opacity: 0, scale: 0.8, y: 10 }}
-            animate={{ 
-              opacity: 1, 
-              scale: 1, 
+            animate={{
+              opacity: 1,
+              scale: 1,
               y: 0,
               transition: { duration: 0.3 }
             }}
             exit={{ opacity: 0, scale: 0.8 }}
             className="dm-chat-tooltip"
+            onClick={() => setShowTooltip(false)}
+            role="button"
+            aria-label="Dismiss greeting"
           >
             <div className="dm-tooltip-content">
-               Hi! How can I help you today ?
-               <motion.div 
+               Hi! How can I help you today?
+               <button
+                 type="button"
+                 className="dm-tooltip-close"
+                 onClick={(e) => { e.stopPropagation(); setShowTooltip(false); }}
+                 aria-label="Close greeting"
+               >
+                 <X size={12} strokeWidth={2.8} />
+               </button>
+               <motion.div
                  animate={{ opacity: [0.4, 1, 0.4] }}
                  transition={{ repeat: Infinity, duration: 2 }}
                  className="dm-tooltip-pulse"
@@ -157,7 +184,7 @@ export default function ChatBot() {
         className={`dm-launcher ${isOpen ? 'open' : ''}`}
         onClick={toggleChat}
       >
-        {isOpen ? <X size={28} /> : <img src={chatbotIcon} alt="Chat" className="dm-launcher-icon" />}
+        {isOpen ? <X size={28} /> : <Bot size={32} strokeWidth={2.2} className="dm-launcher-icon" />}
       </motion.button>
 
       <AnimatePresence>
@@ -171,7 +198,7 @@ export default function ChatBot() {
             <div className="dm-header">
               <div className="dm-header-bot">
                 <div className="dm-bot-avatar">
-                   <img src={chatbotIcon} alt="Bot" />
+                   <Bot size={28} strokeWidth={2.2} />
                    <div className="dm-online-indicator" />
                 </div>
               </div>

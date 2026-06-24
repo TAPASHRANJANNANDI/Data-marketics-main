@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -10,10 +10,20 @@ import DemandGeneration from './pages/DemandGeneration';
 import ExhibitorsData from './pages/ExhibitorsData';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Sitemap from './pages/Sitemap';
+import DataEnrichment from './pages/DataEnrichment';
+import AppointmentSetting from './pages/AppointmentSetting';
+import IntentData from './pages/IntentData';
+import B2BLeadGeneration from './pages/B2BLeadGeneration';
 
 import ScrollToTop from './components/ScrollToTop';
 import ChatBot from './pages/ChatBot';
 import LeadPopup from './components/LeadPopup';
+
+import FinanceIndustry from './pages/industries/FinanceIndustry';
+import ManufacturingIndustry from './pages/industries/ManufacturingIndustry';
+import SaaSIndustry from './pages/industries/SaaSIndustry';
+import HealthcareIndustry from './pages/industries/HealthcareIndustry';
+import TechnologyIndustry from './pages/industries/TechnologyIndustry';
 
 function App() {
     return (
@@ -22,7 +32,8 @@ function App() {
                 <ScrollToTop />
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/about" element={<About />} />
+                    <Route path="/about-us" element={<About />} />
+                    <Route path="/about" element={<Navigate to="/about-us" replace />} />
                     <Route path="/features" element={<Features />} />
                     <Route path="/services" element={<Services />} />
                     <Route path="/demand-generation" element={<DemandGeneration />} />
@@ -30,6 +41,18 @@ function App() {
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                     <Route path="/sitemap" element={<Sitemap />} />
+                    {/* Service sub-pages */}
+                    <Route path="/data-enrichment" element={<DataEnrichment />} />
+                    <Route path="/appointment-setting" element={<AppointmentSetting />} />
+                    <Route path="/intent-data" element={<IntentData />} />
+                    <Route path="/b2b-lead-generation" element={<B2BLeadGeneration />} />
+
+                    {/* Industry Pages */}
+                    <Route path="/industries/finance" element={<FinanceIndustry />} />
+                    <Route path="/industries/manufacturing" element={<ManufacturingIndustry />} />
+                    <Route path="/industries/saas" element={<SaaSIndustry />} />
+                    <Route path="/industries/healthcare" element={<HealthcareIndustry />} />
+                    <Route path="/industries/technology" element={<TechnologyIndustry />} />
                 </Routes>
                 <ChatBot />
             </Layout>
@@ -39,3 +62,4 @@ function App() {
 }
 
 export default App;
+
