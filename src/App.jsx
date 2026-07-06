@@ -18,6 +18,7 @@ import B2BLeadGeneration from './pages/B2BLeadGeneration';
 import ScrollToTop from './components/ScrollToTop';
 import ChatBot from './pages/ChatBot';
 import LeadPopup from './components/LeadPopup';
+import SplashScreen from './components/SplashScreen';
 
 import FinanceIndustry from './pages/industries/FinanceIndustry';
 import ManufacturingIndustry from './pages/industries/ManufacturingIndustry';
@@ -28,6 +29,7 @@ import TechnologyIndustry from './pages/industries/TechnologyIndustry';
 function App() {
     return (
         <>
+            <SplashScreen />
             <Layout>
                 <ScrollToTop />
                 <Routes>
