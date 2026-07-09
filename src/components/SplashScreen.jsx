@@ -22,6 +22,7 @@ export default function SplashScreen() {
         if (!visible) return;
 
         document.body.style.overflow = 'hidden';
+
         sessionStorage.setItem(SESSION_KEY, '1');
         const startFade = () => {
             setFading(true);
