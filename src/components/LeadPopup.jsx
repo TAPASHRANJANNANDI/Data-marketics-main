@@ -4,6 +4,8 @@ const SCROLL_THRESHOLD = 0.4; // Trigger at 40% scroll depth
 const DISMISS_RESET_MS = 10000; // 10 seconds
 const STORAGE_KEY = 'pd_popup_dismissed_at';
 const SUCCESS_KEY = 'pd_popup_success';
+const SHOW_COUNT_KEY = 'pd_popup_show_count';
+const MAX_SHOWS_PER_SESSION = 2;
 
 const NAME_REGEX = /^[a-zA-Z][a-zA-Z ]{2,50}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -21,6 +23,9 @@ export default function LeadPopup() {
         if (localStorage.getItem(SUCCESS_KEY)) return;
 
         const checkAndShow = () => {
+            const showCount = parseInt(sessionStorage.getItem(SHOW_COUNT_KEY) || '0', 10);
+            if (showCount >= MAX_SHOWS_PER_SESSION) return false;
+
             const dismissedAt = sessionStorage.getItem(STORAGE_KEY);
             if (dismissedAt) {
                 const timePassed = Date.now() - parseInt(dismissedAt, 10);
@@ -67,6 +72,15 @@ export default function LeadPopup() {
             if (abortControllerRef.current) abortControllerRef.current.abort();
         };
     }, [visible]); // Re-run when visible changes to reset the triggers if dismissed
+
+    // Every time the popup becomes visible, increment the per-session show
+    // counter. Once it reaches MAX_SHOWS_PER_SESSION the checkAndShow guard
+    // above will refuse to open it again for the rest of the session.
+    useEffect(() => {
+        if (!visible) return;
+        const current = parseInt(sessionStorage.getItem(SHOW_COUNT_KEY) || '0', 10);
+        sessionStorage.setItem(SHOW_COUNT_KEY, String(current + 1));
+    }, [visible]);
 
     const dismiss = () => {
         sessionStorage.setItem(STORAGE_KEY, Date.now().toString());
