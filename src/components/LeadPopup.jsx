@@ -1,4 +1,161 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
+import { createPortal } from 'react-dom';
+import PhoneInput, { isValidPhoneNumber, getCountryCallingCode } from 'react-phone-number-input';
+import flags from 'react-phone-number-input/flags';
+import 'react-phone-number-input/style.css';
+
+// Custom searchable country dropdown. Replaces the native <select> the
+// library uses by default, which was rendering the OS country list far
+// outside the popup on desktop browsers.
+function CountrySelect({ value, onChange, options, disabled, iconComponent: Icon, ariaLabel }) {
+    const [open, setOpen] = useState(false);
+    const [search, setSearch] = useState('');
+    const [pos, setPos] = useState({ top: 0, left: 0, width: 320 });
+    const btnRef = useRef(null);
+    const dropdownRef = useRef(null);
+    const searchRef = useRef(null);
+
+    // Position the fixed dropdown from the button's viewport rect. Runs
+    // synchronously before paint so the dropdown never flashes at (0,0).
+    // Uses viewport dimensions so the dropdown flips upward or shrinks
+    // when it would overflow the screen.
+    useLayoutEffect(() => {
+        if (!open || !btnRef.current) return;
+        const rect = btnRef.current.getBoundingClientRect();
+        const dropdownW = Math.min(320, window.innerWidth - 24);
+        const dropdownMaxH = 320;
+        const spaceBelow = window.innerHeight - rect.bottom;
+        const spaceAbove = rect.top;
+        const flipUp = spaceBelow < dropdownMaxH && spaceAbove > spaceBelow;
+        // Prefer left-aligned to the button; nudge left if we'd overflow.
+        let left = rect.left;
+        if (left + dropdownW > window.innerWidth - 12) {
+            left = Math.max(12, window.innerWidth - 12 - dropdownW);
+        }
+        const top = flipUp ? rect.top - 8 : rect.bottom + 8;
+        setPos({ top, left, width: dropdownW, flipUp });
+    }, [open]);
+
+    useEffect(() => {
+        if (!open) return;
+        const handleClick = (e) => {
+            if (btnRef.current?.contains(e.target)) return;
+            if (dropdownRef.current?.contains(e.target)) return;
+            setOpen(false);
+        };
+        const handleKey = (e) => e.key === 'Escape' && setOpen(false);
+        // Close on page scroll (fixed positioning won't track scroll
+        // offsets). Ignore scrolls that originate *inside* the dropdown
+        // itself — the country list is designed to scroll internally.
+        const handlePageScroll = (e) => {
+            if (dropdownRef.current?.contains(e.target)) return;
+            setOpen(false);
+        };
+        const handleResize = () => setOpen(false);
+        document.addEventListener('mousedown', handleClick);
+        document.addEventListener('keydown', handleKey);
+        window.addEventListener('scroll', handlePageScroll, true);
+        window.addEventListener('resize', handleResize);
+        searchRef.current?.focus();
+        return () => {
+            document.removeEventListener('mousedown', handleClick);
+            document.removeEventListener('keydown', handleKey);
+            window.removeEventListener('scroll', handlePageScroll, true);
+            window.removeEventListener('resize', handleResize);
+        };
+    }, [open]);
+
+    const q = search.trim().toLowerCase();
+    const filtered = q
+        ? options.filter(o =>
+            (o.label && o.label.toLowerCase().includes(q)) ||
+            (o.value && o.value.toLowerCase().includes(q))
+        )
+        : options;
+
+    const dropdown = open ? createPortal(
+        <div
+            ref={dropdownRef}
+            className="dm-country-dropdown"
+            role="listbox"
+            style={{
+                top: pos.flipUp ? 'auto' : pos.top,
+                bottom: pos.flipUp ? window.innerHeight - pos.top : 'auto',
+                left: pos.left,
+                width: pos.width,
+            }}
+        >
+            <div className="dm-country-search-wrap">
+                <input
+                    ref={searchRef}
+                    type="text"
+                    className="dm-country-search"
+                    placeholder="Search country..."
+                    value={search}
+                    onChange={e => setSearch(e.target.value)}
+                    aria-label="Search countries"
+                />
+            </div>
+            <ul className="dm-country-list">
+                {filtered.map((opt) => {
+                    if (opt.divider) return null;
+                    const Flag = opt.value ? flags[opt.value] : null;
+                    let callingCode = null;
+                    if (opt.value) {
+                        try { callingCode = getCountryCallingCode(opt.value); } catch (_) {}
+                    }
+                    const isActive = opt.value === value;
+                    return (
+                        <li
+                            key={opt.value || 'intl'}
+                            className={`dm-country-item${isActive ? ' is-active' : ''}`}
+                            role="option"
+                            aria-selected={isActive}
+                            onClick={() => {
+                                onChange(opt.value);
+                                setOpen(false);
+                                setSearch('');
+                            }}
+                        >
+                            <span className="dm-country-flag">
+                                {Flag ? <Flag title={opt.label} /> : <span aria-hidden="true">🌐</span>}
+                            </span>
+                            <span className="dm-country-name">{opt.label || 'International'}</span>
+                            {callingCode && <span className="dm-country-code">+{callingCode}</span>}
+                        </li>
+                    );
+                })}
+                {filtered.length === 0 && (
+                    <li className="dm-country-empty">No matches</li>
+                )}
+            </ul>
+        </div>,
+        document.body
+    ) : null;
+
+    return (
+        <div className="dm-country-select">
+            <button
+                ref={btnRef}
+                type="button"
+                className="dm-country-btn"
+                onClick={() => !disabled && setOpen(o => !o)}
+                disabled={disabled}
+                aria-label={ariaLabel || 'Select country'}
+                aria-haspopup="listbox"
+                aria-expanded={open}
+            >
+                {Icon ? (
+                    <Icon country={value} label="" aspectRatio={1} />
+                ) : (
+                    <span className="dm-country-globe">🌐</span>
+                )}
+                <span className="dm-country-caret" aria-hidden="true">▾</span>
+            </button>
+            {dropdown}
+        </div>
+    );
+}
 
 const SCROLL_THRESHOLD = 0.4; // Trigger at 40% scroll depth
 const DISMISS_RESET_MS = 10000; // 10 seconds
@@ -9,7 +166,6 @@ const MAX_SHOWS_PER_SESSION = 2;
 
 const NAME_REGEX = /^[a-zA-Z][a-zA-Z ]{2,50}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-const PHONE_REGEX = /^[+\d\s\-(). ]{7,20}$/;
 
 export default function LeadPopup() {
     const [visible, setVisible] = useState(false);
@@ -96,8 +252,10 @@ export default function LeadPopup() {
         if (!EMAIL_REGEX.test(fields.email.trim())) {
             errs.email = 'Please enter a valid company email address.';
         }
-        if (fields.phone.trim() && !PHONE_REGEX.test(fields.phone.trim())) {
-            errs.phone = 'Please enter a valid phone number.';
+        // Phone is optional. If provided, it must be a valid number for the
+        // selected country per libphonenumber-js metadata.
+        if (fields.phone && !isValidPhoneNumber(fields.phone)) {
+            errs.phone = 'Please enter a valid phone number for the selected country.';
         }
         return errs;
     };
@@ -194,7 +352,27 @@ export default function LeadPopup() {
 
                             <div style={styles.fieldGroup}>
                                 <label style={styles.label} htmlFor="popup-phone">Phone Number <span style={styles.optional}>(Optional)</span></label>
-                                <input id="popup-phone" name="phone" type="tel" value={fields.phone} onChange={handleChange} placeholder="e.g. +1 609 123 4567" style={{ ...styles.input, ...(errors.phone ? styles.inputError : {}) }} disabled={status === 'sending'} autoComplete="tel" />
+                                <div className={`dm-phone-wrap ${errors.phone ? 'has-error' : ''}`}>
+                                    <PhoneInput
+                                        id="popup-phone"
+                                        name="phone"
+                                        international
+                                        withCountryCallingCode
+                                        defaultCountry="US"
+                                        countrySelectComponent={CountrySelect}
+                                        flags={flags}
+                                        value={fields.phone}
+                                        onChange={(value) => {
+                                            setFields(prev => ({ ...prev, phone: value || '' }));
+                                            if (errors.phone) {
+                                                setErrors(prev => ({ ...prev, phone: undefined }));
+                                            }
+                                        }}
+                                        placeholder="Enter phone number"
+                                        disabled={status === 'sending'}
+                                        autoComplete="tel"
+                                    />
+                                </div>
                                 {errors.phone && <p style={styles.errorMsg}>{errors.phone}</p>}
                             </div>
 
@@ -217,6 +395,207 @@ export default function LeadPopup() {
                     to   { opacity: 1; transform: translateY(0) scale(1); }
                 }
                 @keyframes dm-spin { to { transform: rotate(360deg); } }
+
+                /* PhoneInput theme override — match the other popup inputs */
+                .dm-phone-wrap .PhoneInput {
+                    width: 100%;
+                    padding: 4px 12px;
+                    border: 1.5px solid #d8eeea;
+                    border-radius: 10px;
+                    background-color: #f0fdfa;
+                    box-sizing: border-box;
+                    transition: border-color 0.2s, box-shadow 0.2s;
+                }
+                .dm-phone-wrap.has-error .PhoneInput {
+                    border-color: #e53e3e;
+                    background-color: #fff5f5;
+                }
+                .dm-phone-wrap .PhoneInput--focus,
+                .dm-phone-wrap .PhoneInput:focus-within {
+                    border-color: #14b8a6;
+                    box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.18);
+                }
+                .dm-phone-wrap .PhoneInputInput {
+                    padding: 8px 4px;
+                    background: transparent;
+                    border: none;
+                    outline: none;
+                    font-size: 14px;
+                    color: #0b2727;
+                    font-family: inherit;
+                    width: 100%;
+                    min-width: 0;
+                }
+                .dm-phone-wrap .PhoneInputInput::placeholder {
+                    color: #94a8a8;
+                }
+                .dm-phone-wrap .PhoneInputInput:disabled {
+                    opacity: 0.6;
+                    cursor: not-allowed;
+                }
+
+                /* Custom country select — searchable dropdown */
+                .dm-country-select {
+                    position: relative;
+                    margin-right: 10px;
+                    padding-right: 10px;
+                    border-right: 1px solid rgba(20, 184, 166, 0.25);
+                    display: flex;
+                    align-items: center;
+                    flex-shrink: 0;
+                }
+                .dm-country-btn {
+                    background: transparent;
+                    border: none;
+                    padding: 6px 4px;
+                    display: flex;
+                    align-items: center;
+                    gap: 4px;
+                    cursor: pointer;
+                    border-radius: 6px;
+                    transition: background 0.15s;
+                    font-family: inherit;
+                }
+                .dm-country-btn:hover:not(:disabled) {
+                    background: rgba(20, 184, 166, 0.08);
+                }
+                .dm-country-btn:disabled {
+                    cursor: not-allowed;
+                    opacity: 0.5;
+                }
+                .dm-country-btn > :first-child {
+                    width: 24px;
+                    height: 18px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .dm-country-btn > :first-child svg,
+                .dm-country-btn > :first-child img {
+                    width: 24px;
+                    height: 18px;
+                    display: block;
+                    border-radius: 2px;
+                    object-fit: cover;
+                }
+                .dm-country-caret {
+                    color: #0d7377;
+                    font-size: 12px;
+                    line-height: 1;
+                    opacity: 0.75;
+                }
+                .dm-country-globe {
+                    font-size: 18px;
+                }
+
+                /* Rendered via portal to document.body so it can escape the
+                   modal's overflow: hidden. Position (top/left/width) is
+                   computed from the button's viewport rect in JS. */
+                .dm-country-dropdown {
+                    position: fixed;
+                    z-index: 100000;
+                    background: #ffffff;
+                    border: 1px solid rgba(20, 184, 166, 0.25);
+                    border-radius: 12px;
+                    box-shadow: 0 18px 40px rgba(13, 115, 119, 0.28);
+                    overflow: hidden;
+                    display: flex;
+                    flex-direction: column;
+                    max-height: 320px;
+                    animation: dm-country-fadein 0.15s ease-out both;
+                }
+                @keyframes dm-country-fadein {
+                    from { opacity: 0; transform: translateY(-4px); }
+                    to   { opacity: 1; transform: translateY(0); }
+                }
+                .dm-country-search-wrap {
+                    padding: 10px;
+                    border-bottom: 1px solid rgba(20, 184, 166, 0.18);
+                    background: #f0fdfa;
+                    flex-shrink: 0;
+                }
+                .dm-country-search {
+                    width: 100%;
+                    padding: 8px 12px;
+                    border: 1.5px solid #d8eeea;
+                    border-radius: 8px;
+                    font-size: 14px;
+                    color: #0b2727;
+                    background: #ffffff;
+                    outline: none;
+                    box-sizing: border-box;
+                    font-family: inherit;
+                    transition: border-color 0.15s, box-shadow 0.15s;
+                }
+                .dm-country-search:focus {
+                    border-color: #14b8a6;
+                    box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.18);
+                }
+                .dm-country-list {
+                    list-style: none;
+                    margin: 0;
+                    padding: 4px 0;
+                    overflow-y: auto;
+                    flex: 1 1 auto;
+                }
+                .dm-country-list::-webkit-scrollbar {
+                    width: 8px;
+                }
+                .dm-country-list::-webkit-scrollbar-thumb {
+                    background: rgba(20, 184, 166, 0.3);
+                    border-radius: 8px;
+                }
+                .dm-country-item {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    padding: 8px 12px;
+                    cursor: pointer;
+                    font-size: 14px;
+                    color: #0b2727;
+                    transition: background 0.12s;
+                }
+                .dm-country-item:hover {
+                    background: rgba(20, 184, 166, 0.10);
+                }
+                .dm-country-item.is-active {
+                    background: rgba(20, 184, 166, 0.16);
+                    font-weight: 600;
+                }
+                .dm-country-flag {
+                    width: 24px;
+                    height: 18px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-shrink: 0;
+                }
+                .dm-country-flag svg,
+                .dm-country-flag img {
+                    width: 24px;
+                    height: 18px;
+                    display: block;
+                    border-radius: 2px;
+                    object-fit: cover;
+                }
+                .dm-country-name {
+                    flex: 1 1 auto;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+                .dm-country-code {
+                    color: #4f6b6b;
+                    font-size: 13px;
+                    flex-shrink: 0;
+                }
+                .dm-country-empty {
+                    padding: 20px 12px;
+                    text-align: center;
+                    color: #94a8a8;
+                    font-size: 13px;
+                }
+
             `}</style>
         </div>
     );
