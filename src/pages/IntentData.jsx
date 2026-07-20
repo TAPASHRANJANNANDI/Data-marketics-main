@@ -50,9 +50,16 @@ const IntentData = () => {
     return (
         <>
             <Helmet>
-                <title>Intent Data Solutions | Identify In-Market Buyers & Sales Opportunities</title>
-                <meta name="description" content="Discover buyer intent signals with Data Marketics Intent Data Solutions. Identify prospects actively researching your products and engage decision-makers at the right time." />
+                <title>Intent Data Solutions | Identify High-Intent B2B Buyers</title>
+                <meta name="description" content="Find prospects actively researching your solutions using Data Marketics' intent data services." />
                 <link rel="canonical" href="https://datamarketics.com/intent-data" />
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content="Intent Data Solutions | Identify High-Intent B2B Buyers" />
+                <meta property="og:description" content="Find prospects actively researching your solutions using Data Marketics' intent data services." />
+                <meta property="og:url" content="https://datamarketics.com/intent-data" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Intent Data Solutions | Identify High-Intent B2B Buyers" />
+                <meta name="twitter:description" content="Find prospects actively researching your solutions using Data Marketics' intent data services." />
             </Helmet>
 
             {/* Hero */}

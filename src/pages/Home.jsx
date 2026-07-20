@@ -162,9 +162,16 @@ const Home = () => {
     return (
         <>
             <Helmet>
+                <title>Data Marketics | B2B Data Provider, Demand Generation &amp; Lead Generation Services</title>
+                <meta name="description" content="Accelerate business growth with verified B2B data, demand generation, lead generation, intent data, data enrichment, and content syndication services." />
                 <link rel="canonical" href="https://datamarketics.com/" />
-                <title>B2B Lead Generation & Demand Generation Services | Data Marketics</title>
-                <meta name="description" content="Data Marketics helps businesses accelerate growth through high-quality B2B lead generation, demand generation, intent data, content syndication, appointment setting, and data enrichment services." />
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content="Data Marketics | B2B Data Provider, Demand Generation & Lead Generation Services" />
+                <meta property="og:description" content="Accelerate business growth with verified B2B data, demand generation, lead generation, intent data, data enrichment, and content syndication services." />
+                <meta property="og:url" content="https://datamarketics.com/" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Data Marketics | B2B Data Provider, Demand Generation & Lead Generation Services" />
+                <meta name="twitter:description" content="Accelerate business growth with verified B2B data, demand generation, lead generation, intent data, data enrichment, and content syndication services." />
             </Helmet>
 
             {/* HERO */}

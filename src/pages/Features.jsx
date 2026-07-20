@@ -158,9 +158,16 @@ const Features = () => {
     return (
         <>
             <Helmet>
-                <title>Features | Advanced B2B Data &amp; Marketing Solutions | Data Marketics</title>
-                <meta name="description" content="Explore the powerful features of Data Marketics including verified B2B data, intent intelligence, data enrichment, CRM integration, and global business coverage." />
+                <title>B2B Marketing Features | Verified Data, Intent Data &amp; Lead Solutions</title>
+                <meta name="description" content="Explore Data Marketics features including verified B2B databases, intent data, data enrichment, lead generation, and demand generation solutions." />
                 <link rel="canonical" href="https://datamarketics.com/features" />
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content="B2B Marketing Features | Verified Data, Intent Data & Lead Solutions" />
+                <meta property="og:description" content="Explore Data Marketics features including verified B2B databases, intent data, data enrichment, lead generation, and demand generation solutions." />
+                <meta property="og:url" content="https://datamarketics.com/features" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="B2B Marketing Features | Verified Data, Intent Data & Lead Solutions" />
+                <meta name="twitter:description" content="Explore Data Marketics features including verified B2B databases, intent data, data enrichment, lead generation, and demand generation solutions." />
             </Helmet>
 
             {/* ── HERO ── */}

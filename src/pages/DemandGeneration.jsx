@@ -23,9 +23,16 @@ const DemandGeneration = () => {
     return (
         <>
             <Helmet>
-                <meta name="title" content="B2B Demand Generation Services | Data Marketics" />
-                <meta name="description" content="Generate qualified B2B leads with Data Marketics demand generation services. Improve pipeline growth using data-driven targeting and personalized outreach strategies." />
+                <title>Demand Generation Services | Generate Qualified B2B Pipeline</title>
+                <meta name="description" content="Generate qualified leads and build a stronger sales pipeline with Data Marketics' demand generation solutions." />
                 <link rel="canonical" href="https://datamarketics.com/demand-generation" />
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content="Demand Generation Services | Generate Qualified B2B Pipeline" />
+                <meta property="og:description" content="Generate qualified leads and build a stronger sales pipeline with Data Marketics' demand generation solutions." />
+                <meta property="og:url" content="https://datamarketics.com/demand-generation" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Demand Generation Services | Generate Qualified B2B Pipeline" />
+                <meta name="twitter:description" content="Generate qualified leads and build a stronger sales pipeline with Data Marketics' demand generation solutions." />
             </Helmet>
 
             {/* Hero */}

@@ -102,9 +102,16 @@ const Services = () => {
     return (
         <>
          <Helmet>
-            <meta name="title" content= "B2B Marketing Services | Data & Demand Generation – Data Marketics" />
-            <meta name="description" content="Explore Data Marketics’ B2B marketing services including ABM data, verified contact intelligence, demand generation, and event intelligence solutions."/>
+            <title>B2B Marketing Services | Demand Generation &amp; Lead Generation</title>
+            <meta name="description" content="Discover Data Marketics' services including demand generation, lead generation, intent data, data enrichment, appointment setting, and content syndication." />
             <link rel="canonical" href="https://datamarketics.com/services" />
+            <meta property="og:type" content="website" />
+            <meta property="og:title" content="B2B Marketing Services | Demand Generation & Lead Generation" />
+            <meta property="og:description" content="Discover Data Marketics' services including demand generation, lead generation, intent data, data enrichment, appointment setting, and content syndication." />
+            <meta property="og:url" content="https://datamarketics.com/services" />
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:title" content="B2B Marketing Services | Demand Generation & Lead Generation" />
+            <meta name="twitter:description" content="Discover Data Marketics' services including demand generation, lead generation, intent data, data enrichment, appointment setting, and content syndication." />
          </Helmet>
             <div className="pages-hero">
                 <div className="container">
