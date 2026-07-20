@@ -52,9 +52,16 @@ const Contact = () => {
     return (
         <>
             <Helmet>
-                <meta name="title" content="Contact Data Marketics | B2B Data & Demand Generation Experts" />
-                <meta name="description" content="Get in touch with Data Marketics for verified B2B contact data, account-based marketing lists, and demand generation solutions. Request a free consultation today." />
+                <title>Contact Data Marketics | Let's Grow Your Pipeline</title>
+                <meta name="description" content="Contact Data Marketics for B2B data, lead generation, demand generation, and marketing solutions." />
                 <link rel="canonical" href="https://datamarketics.com/contact" />
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content="Contact Data Marketics | Let's Grow Your Pipeline" />
+                <meta property="og:description" content="Contact Data Marketics for B2B data, lead generation, demand generation, and marketing solutions." />
+                <meta property="og:url" content="https://datamarketics.com/contact" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Contact Data Marketics | Let's Grow Your Pipeline" />
+                <meta name="twitter:description" content="Contact Data Marketics for B2B data, lead generation, demand generation, and marketing solutions." />
             </Helmet>
             <div className="contact-page-area sp">
 

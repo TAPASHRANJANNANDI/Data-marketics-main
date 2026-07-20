@@ -145,9 +145,16 @@ const About = () => (
     <>
         {/* ── SEO HEAD ─────────────────────────────────────────── */}
         <Helmet>
-            <title>About Data Marketics | B2B Data &amp; Demand Generation Company</title>
-            <meta name="description" content="Learn about Data Marketics, a trusted provider of B2B marketing data, demand generation, lead generation, intent data, and business growth solutions." />
+            <title>About Data Marketics | Trusted B2B Data &amp; Demand Generation Company</title>
+            <meta name="description" content="Learn how Data Marketics helps businesses achieve growth through verified B2B data, lead generation, demand generation, and intelligent marketing solutions." />
             <link rel="canonical" href="https://datamarketics.com/about-us" />
+            <meta property="og:type" content="website" />
+            <meta property="og:title" content="About Data Marketics | Trusted B2B Data & Demand Generation Company" />
+            <meta property="og:description" content="Learn how Data Marketics helps businesses achieve growth through verified B2B data, lead generation, demand generation, and intelligent marketing solutions." />
+            <meta property="og:url" content="https://datamarketics.com/about-us" />
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:title" content="About Data Marketics | Trusted B2B Data & Demand Generation Company" />
+            <meta name="twitter:description" content="Learn how Data Marketics helps businesses achieve growth through verified B2B data, lead generation, demand generation, and intelligent marketing solutions." />
             <script type="application/ld+json">{orgSchema}</script>
             <script type="application/ld+json">{faqSchema}</script>
         </Helmet>

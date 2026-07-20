@@ -62,9 +62,16 @@ const HealthcareIndustry = () => {
     return (
         <>
             <Helmet>
-                <title>Healthcare Marketing Solutions | B2B Lead Generation for Healthcare Companies</title>
-                <meta name="description" content="Drive healthcare business growth with Data Marketics Healthcare Marketing Solutions. Generate qualified leads, engage healthcare decision-makers, and improve marketing performance." />
+                <title>Healthcare B2B Data &amp; Lead Generation Solutions</title>
+                <meta name="description" content="Drive healthcare marketing success using accurate B2B data, intent insights, and demand generation." />
                 <link rel="canonical" href="https://datamarketics.com/industries/healthcare" />
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content="Healthcare B2B Data & Lead Generation Solutions" />
+                <meta property="og:description" content="Drive healthcare marketing success using accurate B2B data, intent insights, and demand generation." />
+                <meta property="og:url" content="https://datamarketics.com/industries/healthcare" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Healthcare B2B Data & Lead Generation Solutions" />
+                <meta name="twitter:description" content="Drive healthcare marketing success using accurate B2B data, intent insights, and demand generation." />
             </Helmet>
 
             {/* Hero */}

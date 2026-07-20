@@ -69,9 +69,16 @@ const ManufacturingIndustry = () => {
     return (
         <>
             <Helmet>
-                <title>Manufacturing Marketing Solutions | B2B Lead Generation for Manufacturing Companies</title>
-                <meta name="description" content="Drive growth with Data Marketics Manufacturing Marketing Solutions. Generate qualified leads, engage decision-makers, and accelerate business opportunities in the manufacturing sector." />
+                <title>Manufacturing Lead Generation &amp; B2B Data Solutions</title>
+                <meta name="description" content="Connect with manufacturing decision-makers through verified B2B data and targeted lead generation." />
                 <link rel="canonical" href="https://datamarketics.com/industries/manufacturing" />
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content="Manufacturing Lead Generation & B2B Data Solutions" />
+                <meta property="og:description" content="Connect with manufacturing decision-makers through verified B2B data and targeted lead generation." />
+                <meta property="og:url" content="https://datamarketics.com/industries/manufacturing" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Manufacturing Lead Generation & B2B Data Solutions" />
+                <meta name="twitter:description" content="Connect with manufacturing decision-makers through verified B2B data and targeted lead generation." />
             </Helmet>
 
             {/* Hero */}

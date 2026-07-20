@@ -63,9 +63,16 @@ const SaaSIndustry = () => {
     return (
         <>
             <Helmet>
-                <title>SaaS Marketing Solutions | B2B Lead Generation for SaaS Companies</title>
-                <meta name="description" content="Accelerate customer acquisition with Data Marketics SaaS Marketing Solutions. Generate qualified leads, engage software buyers, and grow your SaaS business." />
+                <title>SaaS Demand Generation &amp; B2B Lead Generation Services</title>
+                <meta name="description" content="Grow your SaaS pipeline with verified B2B data, demand generation, and intent-based marketing." />
                 <link rel="canonical" href="https://datamarketics.com/industries/saas" />
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content="SaaS Demand Generation & B2B Lead Generation Services" />
+                <meta property="og:description" content="Grow your SaaS pipeline with verified B2B data, demand generation, and intent-based marketing." />
+                <meta property="og:url" content="https://datamarketics.com/industries/saas" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="SaaS Demand Generation & B2B Lead Generation Services" />
+                <meta name="twitter:description" content="Grow your SaaS pipeline with verified B2B data, demand generation, and intent-based marketing." />
             </Helmet>
 
             {/* Hero */}
