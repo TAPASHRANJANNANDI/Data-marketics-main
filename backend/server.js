@@ -153,18 +153,55 @@ app.post('/api/chat', async (req, res) => {
     }
 });
 
+// Verify a Google reCAPTCHA v2 token against Google's siteverify endpoint.
+// Returns true when the token is valid AND the client passed the challenge.
+async function verifyRecaptcha(token, remoteIp) {
+    if (!token) return false;
+    const secret = process.env.RECAPTCHA_SECRET_KEY;
+    if (!secret) {
+        console.error('⚠️ RECAPTCHA_SECRET_KEY is not configured; rejecting submission.');
+        return false;
+    }
+    try {
+        const params = new URLSearchParams({ secret, response: token });
+        if (remoteIp) params.append('remoteip', remoteIp);
+        const resp = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: params.toString(),
+        });
+        const data = await resp.json();
+        if (!data.success) {
+            console.warn('⚠️ reCAPTCHA verify failed:', data['error-codes']);
+        }
+        return data.success === true;
+    } catch (err) {
+        console.error('⚠️ reCAPTCHA verify error:', err.message);
+        return false;
+    }
+}
+
 app.post('/api/send-email', async (req, res) => {
     const body = req.body || {};
-    const { first_name, email, phone, website, industry, services, message, source } = body;
-    
+    const { first_name, email, phone, website, industry, services, message, source, captcha } = body;
+
     const host = process.env.EMAIL_HOST || 'smtp.gmail.com'; // Hard fallback to Gmail
     console.log(`📩 Outgoing Email Request. Host: ${host}, User: ${process.env.EMAIL_USER}`);
-    
+
     const isPopup = source === 'popup';
 
     // Popup only requires name + email. Contact form requires message too.
     if (!first_name || !email || (!isPopup && !message)) {
         return res.status(400).json({ success: false, message: 'Missing required fields' });
+    }
+
+    // Contact form must pass reCAPTCHA. The popup lead form is left as-is
+    // (short-lived scroll-triggered widget with no captcha field yet).
+    if (!isPopup) {
+        const ok = await verifyRecaptcha(captcha, req.ip);
+        if (!ok) {
+            return res.status(400).json({ success: false, message: 'reCAPTCHA verification failed. Please try again.' });
+        }
     }
 
     try {

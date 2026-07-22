@@ -1,9 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+import ReCAPTCHA from 'react-google-recaptcha';
 import contactIcon1 from '../assets/img/icons/contact-page-icon1.png';
 import contactIcon2 from '../assets/img/icons/contact-page-icon2.png';
 import contactIcon3 from '../assets/img/icons/contact-page-icon3.png';
 import { Helmet } from 'react-helmet';
+
+// Site key is a public identifier and is injected at build time by Vite.
+// Falls back to Google's public test key so `npm run dev` still works
+// without an .env; production builds must supply the real site key.
+const RECAPTCHA_SITE_KEY =
+    import.meta.env.VITE_RECAPTCHA_SITE_KEY ||
+    '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI';
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -16,6 +24,8 @@ const Contact = () => {
         message: ''
     });
     const [status, setStatus] = useState('');
+    const [captchaToken, setCaptchaToken] = useState(null);
+    const recaptchaRef = useRef(null);
 
     useEffect(() => {
         if (status && status !== 'Sending...') {
@@ -32,20 +42,36 @@ const Contact = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (!captchaToken) {
+            setStatus('Please confirm you are not a robot.');
+            return;
+        }
+
         setStatus('Sending...');
 
         try {
             const baseUrl = import.meta.env.DEV ? '' : (import.meta.env.VITE_API_URL || '');
-            const response = await axios.post(`${baseUrl}/api/send-email`, formData);
+            const response = await axios.post(`${baseUrl}/api/send-email`, {
+                ...formData,
+                captcha: captchaToken,
+            });
             if (response.data.success) {
                 setStatus('Message sent successfully!');
                 setFormData({ first_name: '', email: '', phone: '', website: '', industry: '', services: '', message: '' });
+                recaptchaRef.current?.reset();
+                setCaptchaToken(null);
             } else {
                 setStatus('Failed to send message.');
+                recaptchaRef.current?.reset();
+                setCaptchaToken(null);
             }
         } catch (error) {
             console.error('Error submitting form:', error);
-            setStatus('An error occurred. Please try again later.');
+            const serverMsg = error.response?.data?.message;
+            setStatus(serverMsg || 'An error occurred. Please try again later.');
+            recaptchaRef.current?.reset();
+            setCaptchaToken(null);
         }
     };
 
@@ -181,8 +207,27 @@ const Contact = () => {
                                                         required
                                                     ></textarea>
                                                 </div>
+                                                <div style={{ margin: '10px 0 20px 0', display: 'flex', justifyContent: 'flex-start' }}>
+                                                    <ReCAPTCHA
+                                                        ref={recaptchaRef}
+                                                        sitekey={RECAPTCHA_SITE_KEY}
+                                                        onChange={(token) => setCaptchaToken(token)}
+                                                        onExpired={() => setCaptchaToken(null)}
+                                                        onErrored={() => setCaptchaToken(null)}
+                                                    />
+                                                </div>
                                                 <div className="button">
-                                                    <button type="submit" className="theme-btn2">Submit Now</button>
+                                                    <button
+                                                        type="submit"
+                                                        className="theme-btn2"
+                                                        disabled={!captchaToken || status === 'Sending...'}
+                                                        style={{
+                                                            opacity: (!captchaToken || status === 'Sending...') ? 0.6 : 1,
+                                                            cursor: (!captchaToken || status === 'Sending...') ? 'not-allowed' : 'pointer'
+                                                        }}
+                                                    >
+                                                        Submit Now
+                                                    </button>
                                                 </div>
                                                 {status && (
                                                     <div style={{
