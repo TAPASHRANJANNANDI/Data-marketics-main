@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { useNavigate } from 'react-router-dom';
 import PhoneInput, { isValidPhoneNumber, getCountryCallingCode } from 'react-phone-number-input';
 import flags from 'react-phone-number-input/flags';
 import 'react-phone-number-input/style.css';
@@ -173,6 +174,7 @@ export default function LeadPopup() {
     const [fields, setFields] = useState({ name: '', email: '', phone: '' });
     const [errors, setErrors] = useState({});
     const abortControllerRef = useRef(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         // If they already succeeded, never show again on this device
@@ -298,12 +300,12 @@ export default function LeadPopup() {
             const data = await res.json();
             if (!res.ok || !data.success) throw new Error(data.message || 'Failed');
 
-            setStatus('success');
+            // Mark the popup as satisfied for the rest of this browser, hide
+            // it, and hand the user off to the celebratory /thank-you page
+            // instead of the inline success box (which briefly flashed before).
             localStorage.setItem(SUCCESS_KEY, 'true');
-
-            setTimeout(() => {
-                setVisible(false);
-            }, 3000);
+            setVisible(false);
+            navigate('/thank-you');
         } catch (err) {
             if (err.name === 'AbortError') return;
             setStatus('error');
