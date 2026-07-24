@@ -34,12 +34,6 @@ const servicesMenu = [
         desc: 'Build awareness and drive sustainable revenue pipeline',
     },
     {
-        label: 'Content Syndication',
-        to: '/services',
-        icon: '📢',
-        desc: 'Expand content reach and capture high-quality leads',
-    },
-    {
         label: 'Exhibitors Data',
         to: '/exhibitors-data',
         icon: '🏛️',
