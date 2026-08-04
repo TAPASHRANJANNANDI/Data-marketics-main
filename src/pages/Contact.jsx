@@ -1,17 +1,20 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import ReCAPTCHA from 'react-google-recaptcha';
 import contactIcon1 from '../assets/img/icons/contact-page-icon1.png';
 import contactIcon2 from '../assets/img/icons/contact-page-icon2.png';
 import contactIcon3 from '../assets/img/icons/contact-page-icon3.png';
 import { Helmet } from 'react-helmet';
 
-// Site key is a public identifier and is injected at build time by Vite.
-// Falls back to Google's public test key so `npm run dev` still works
-// without an .env; production builds must supply the real site key.
-const RECAPTCHA_SITE_KEY =
-    import.meta.env.VITE_RECAPTCHA_SITE_KEY ||
-    '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI';
+// Lightweight math CAPTCHA. Numbers 1..9 with +, -, x. Subtraction is
+// ordered so the result is always non-negative to avoid a "-3" answer.
+function generateMathChallenge() {
+    const ops = ['+', '-', 'x'];
+    const op = ops[Math.floor(Math.random() * ops.length)];
+    let a = Math.floor(Math.random() * 9) + 1;
+    let b = Math.floor(Math.random() * 9) + 1;
+    if (op === '-' && b > a) [a, b] = [b, a];
+    return { a, b, op };
+}
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -24,8 +27,8 @@ const Contact = () => {
         message: ''
     });
     const [status, setStatus] = useState('');
-    const [captchaToken, setCaptchaToken] = useState(null);
-    const recaptchaRef = useRef(null);
+    const [captcha, setCaptcha] = useState(generateMathChallenge);
+    const [captchaAnswer, setCaptchaAnswer] = useState('');
 
     useEffect(() => {
         if (status && status !== 'Sending...') {
@@ -40,11 +43,16 @@ const Contact = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
+    const resetCaptcha = () => {
+        setCaptcha(generateMathChallenge());
+        setCaptchaAnswer('');
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!captchaToken) {
-            setStatus('Please confirm you are not a robot.');
+        if (captchaAnswer.trim() === '') {
+            setStatus('Please solve the security question.');
             return;
         }
 
@@ -54,24 +62,26 @@ const Contact = () => {
             const baseUrl = import.meta.env.DEV ? '' : (import.meta.env.VITE_API_URL || '');
             const response = await axios.post(`${baseUrl}/api/send-email`, {
                 ...formData,
-                captcha: captchaToken,
+                captcha: {
+                    a: captcha.a,
+                    b: captcha.b,
+                    op: captcha.op,
+                    answer: captchaAnswer.trim(),
+                },
             });
             if (response.data.success) {
                 setStatus('Message sent successfully!');
                 setFormData({ first_name: '', email: '', phone: '', website: '', industry: '', services: '', message: '' });
-                recaptchaRef.current?.reset();
-                setCaptchaToken(null);
+                resetCaptcha();
             } else {
                 setStatus('Failed to send message.');
-                recaptchaRef.current?.reset();
-                setCaptchaToken(null);
+                resetCaptcha();
             }
         } catch (error) {
             console.error('Error submitting form:', error);
             const serverMsg = error.response?.data?.message;
             setStatus(serverMsg || 'An error occurred. Please try again later.');
-            recaptchaRef.current?.reset();
-            setCaptchaToken(null);
+            resetCaptcha();
         }
     };
 
@@ -207,23 +217,104 @@ const Contact = () => {
                                                         required
                                                     ></textarea>
                                                 </div>
-                                                <div style={{ margin: '10px 0 20px 0', display: 'flex', justifyContent: 'flex-start' }}>
-                                                    <ReCAPTCHA
-                                                        ref={recaptchaRef}
-                                                        sitekey={RECAPTCHA_SITE_KEY}
-                                                        onChange={(token) => setCaptchaToken(token)}
-                                                        onExpired={() => setCaptchaToken(null)}
-                                                        onErrored={() => setCaptchaToken(null)}
+                                                <div style={{
+                                                    margin: '14px 0 22px 0',
+                                                    padding: '14px 18px',
+                                                    background: '#f8fbfa',
+                                                    border: '1px solid #e1eae7',
+                                                    borderRadius: '10px',
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    gap: '14px',
+                                                    flexWrap: 'wrap',
+                                                }}>
+                                                    <label htmlFor="dm-captcha-answer" style={{
+                                                        fontSize: '15px',
+                                                        color: '#0b2727',
+                                                        fontWeight: 600,
+                                                        margin: 0,
+                                                    }}>
+                                                        Security check: what is <span style={{ fontFamily: 'monospace', fontSize: '17px' }}>{captcha.a} {captcha.op} {captcha.b}</span> ?
+                                                    </label>
+                                                    <input
+                                                        id="dm-captcha-answer"
+                                                        type="text"
+                                                        inputMode="numeric"
+                                                        autoComplete="off"
+                                                        placeholder="?"
+                                                        value={captchaAnswer}
+                                                        onChange={(e) => setCaptchaAnswer(e.target.value)}
+                                                        required
+                                                        style={{
+                                                            width: '80px',
+                                                            padding: '8px 12px',
+                                                            border: '1.5px solid #d1ddd9',
+                                                            borderRadius: '6px',
+                                                            fontSize: '16px',
+                                                            outline: 'none',
+                                                            textAlign: 'center',
+                                                            background: '#fff',
+                                                        }}
                                                     />
+                                                    <button
+                                                        type="button"
+                                                        onClick={resetCaptcha}
+                                                        title="Get a new question"
+                                                        aria-label="Get a new security question"
+                                                        style={{
+                                                            background: '#ffffff',
+                                                            border: '1.5px solid #d1ddd9',
+                                                            color: '#0d7377',
+                                                            width: '38px',
+                                                            height: '38px',
+                                                            borderRadius: '50%',
+                                                            display: 'flex',
+                                                            alignItems: 'center',
+                                                            justifyContent: 'center',
+                                                            cursor: 'pointer',
+                                                            padding: 0,
+                                                            transition: 'transform 0.4s ease, background 0.2s, border-color 0.2s',
+                                                        }}
+                                                        onMouseEnter={(e) => {
+                                                            e.currentTarget.style.background = '#f0fdfa';
+                                                            e.currentTarget.style.borderColor = '#0d7377';
+                                                            const svg = e.currentTarget.querySelector('svg');
+                                                            if (svg) svg.style.transform = 'rotate(180deg)';
+                                                        }}
+                                                        onMouseLeave={(e) => {
+                                                            e.currentTarget.style.background = '#ffffff';
+                                                            e.currentTarget.style.borderColor = '#d1ddd9';
+                                                            const svg = e.currentTarget.querySelector('svg');
+                                                            if (svg) svg.style.transform = 'rotate(0deg)';
+                                                        }}
+                                                    >
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="18"
+                                                            height="18"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            strokeWidth="2.2"
+                                                            strokeLinecap="round"
+                                                            strokeLinejoin="round"
+                                                            style={{ transition: 'transform 0.4s ease' }}
+                                                            aria-hidden="true"
+                                                        >
+                                                            <polyline points="23 4 23 10 17 10" />
+                                                            <polyline points="1 20 1 14 7 14" />
+                                                            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
+                                                        </svg>
+                                                    </button>
                                                 </div>
                                                 <div className="button">
                                                     <button
                                                         type="submit"
                                                         className="theme-btn2"
-                                                        disabled={!captchaToken || status === 'Sending...'}
+                                                        disabled={status === 'Sending...'}
                                                         style={{
-                                                            opacity: (!captchaToken || status === 'Sending...') ? 0.6 : 1,
-                                                            cursor: (!captchaToken || status === 'Sending...') ? 'not-allowed' : 'pointer'
+                                                            opacity: status === 'Sending...' ? 0.6 : 1,
+                                                            cursor: status === 'Sending...' ? 'not-allowed' : 'pointer'
                                                         }}
                                                     >
                                                         Submit Now

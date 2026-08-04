@@ -153,32 +153,25 @@ app.post('/api/chat', async (req, res) => {
     }
 });
 
-// Verify a Google reCAPTCHA v2 token against Google's siteverify endpoint.
-// Returns true when the token is valid AND the client passed the challenge.
-async function verifyRecaptcha(token, remoteIp) {
-    if (!token) return false;
-    const secret = process.env.RECAPTCHA_SECRET_KEY;
-    if (!secret) {
-        console.error('⚠️ RECAPTCHA_SECRET_KEY is not configured; rejecting submission.');
-        return false;
-    }
-    try {
-        const params = new URLSearchParams({ secret, response: token });
-        if (remoteIp) params.append('remoteip', remoteIp);
-        const resp = await fetch('https://www.google.com/recaptcha/api/siteverify', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: params.toString(),
-        });
-        const data = await resp.json();
-        if (!data.success) {
-            console.warn('⚠️ reCAPTCHA verify failed:', data['error-codes']);
-        }
-        return data.success === true;
-    } catch (err) {
-        console.error('⚠️ reCAPTCHA verify error:', err.message);
-        return false;
-    }
+// Local math CAPTCHA check. The client sends { a, b, op, answer }.
+// We recompute a<op>b on the server and compare to the user's answer.
+// Bounds-check a and b (1..9) so a bot can't submit a=b=0 → 0 == 0
+// as a trivial always-pass.
+function verifyMathCaptcha(captcha) {
+    if (!captcha || typeof captcha !== 'object') return false;
+    const a = Number(captcha.a);
+    const b = Number(captcha.b);
+    const op = captcha.op;
+    const answer = Number(String(captcha.answer).trim());
+    if (!Number.isInteger(a) || !Number.isInteger(b)) return false;
+    if (a < 1 || a > 9 || b < 1 || b > 9) return false;
+    if (!Number.isInteger(answer)) return false;
+    let expected;
+    if (op === '+') expected = a + b;
+    else if (op === '-') expected = a - b;
+    else if (op === 'x' || op === '*') expected = a * b;
+    else return false;
+    return answer === expected;
 }
 
 app.post('/api/send-email', async (req, res) => {
@@ -195,12 +188,11 @@ app.post('/api/send-email', async (req, res) => {
         return res.status(400).json({ success: false, message: 'Missing required fields' });
     }
 
-    // Contact form must pass reCAPTCHA. The popup lead form is left as-is
-    // (short-lived scroll-triggered widget with no captcha field yet).
+    // Contact form must pass the math CAPTCHA. The popup lead form has no
+    // captcha field yet, so we skip the check when source === 'popup'.
     if (!isPopup) {
-        const ok = await verifyRecaptcha(captcha, req.ip);
-        if (!ok) {
-            return res.status(400).json({ success: false, message: 'reCAPTCHA verification failed. Please try again.' });
+        if (!verifyMathCaptcha(captcha)) {
+            return res.status(400).json({ success: false, message: 'Incorrect answer to the security question. Please try again.' });
         }
     }
 
