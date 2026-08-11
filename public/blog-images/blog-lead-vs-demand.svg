@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Lead Generation vs Demand Generation">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#042f2e"/>
+      <stop offset="55%" stop-color="#0d7377"/>
+      <stop offset="100%" stop-color="#14b8a6"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="80%" cy="20%" r="55%">
+      <stop offset="0%" stop-color="#5eead4" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#5eead4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="15%" cy="85%" r="45%">
+      <stop offset="0%" stop-color="#2dd4bf" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#2dd4bf" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="dots1" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#ccfbf1" fill-opacity="0.10"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg1)"/>
+  <rect width="1200" height="630" fill="url(#dots1)"/>
+  <rect width="1200" height="630" fill="url(#glow1)"/>
+  <rect width="1200" height="630" fill="url(#glow2)"/>
+  <!-- Left circle: Demand Generation -->
+  <g transform="translate(430, 315)">
+    <circle r="150" fill="#5eead4" fill-opacity="0.22" stroke="#5eead4" stroke-opacity="0.55" stroke-width="2"/>
+    <text x="0" y="-8" fill="#ecfdf5" font-family="'Figtree','IBM Plex Sans',sans-serif" font-weight="700" font-size="26" text-anchor="middle">Demand</text>
+    <text x="0" y="28" fill="#ccfbf1" font-family="'Figtree','IBM Plex Sans',sans-serif" font-weight="600" font-size="18" text-anchor="middle">Awareness</text>
+  </g>
+  <!-- Right circle: Lead Generation (overlapping) -->
+  <g transform="translate(670, 315)">
+    <circle r="150" fill="#f0abfc" fill-opacity="0.16" stroke="#fbcfe8" stroke-opacity="0.55" stroke-width="2"/>
+    <text x="0" y="-8" fill="#fdf4ff" font-family="'Figtree','IBM Plex Sans',sans-serif" font-weight="700" font-size="26" text-anchor="middle">Lead</text>
+    <text x="0" y="28" fill="#fbcfe8" font-family="'Figtree','IBM Plex Sans',sans-serif" font-weight="600" font-size="18" text-anchor="middle">Conversion</text>
+  </g>
+  <!-- Overlap label -->
+  <g transform="translate(550, 315)">
+    <text x="0" y="-90" fill="#ffffff" font-family="'Figtree','IBM Plex Sans',sans-serif" font-weight="800" font-size="14" letter-spacing="3" text-anchor="middle">VS</text>
+  </g>
+  <text x="600" y="130" fill="#ffffff" font-family="'Figtree','IBM Plex Sans',sans-serif" font-weight="800" font-size="42" text-anchor="middle" letter-spacing="-0.5">Demand Gen vs Lead Gen</text>
+  <text x="600" y="540" fill="#ccfbf1" font-family="'Figtree','IBM Plex Sans',sans-serif" font-weight="500" font-size="20" text-anchor="middle" opacity="0.85">Two strategies. One growth engine.</text>
+</svg>

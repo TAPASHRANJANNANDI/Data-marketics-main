@@ -266,6 +266,7 @@ const Header = () => {
                                         </span>
                                     </li>
 
+                                    <li><NavLink to="/blog">Blog</NavLink></li>
                                 </ul>
                             </nav>
 
@@ -377,6 +378,7 @@ const Header = () => {
                             </ul>
                         </li>
 
+                        <li><NavLink to="/blog"            onClick={toggleMobile}>Blog</NavLink></li>
                         <li><NavLink to="/contact"         onClick={toggleMobile}>Contact Us</NavLink></li>
                     </ul>
                 </div>

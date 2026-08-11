@@ -15,6 +15,8 @@ import AppointmentSetting from './pages/AppointmentSetting';
 import IntentData from './pages/IntentData';
 import B2BLeadGeneration from './pages/B2BLeadGeneration';
 import ThankYou from './pages/ThankYou';
+import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
 
 import ScrollToTop from './components/ScrollToTop';
 import ChatBot from './pages/ChatBot';
@@ -48,6 +50,10 @@ function App() {
                     <Route path="/appointment-setting" element={<AppointmentSetting />} />
                     <Route path="/intent-data" element={<IntentData />} />
                     <Route path="/b2b-lead-generation" element={<B2BLeadGeneration />} />
+
+                    {/* Blog */}
+                    <Route path="/blog" element={<Blog />} />
+                    <Route path="/blog/:slug" element={<BlogPost />} />
 
                     {/* Industry Pages */}
                     <Route path="/industries/finance" element={<FinanceIndustry />} />
