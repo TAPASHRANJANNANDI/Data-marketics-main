@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" preserveAspectRatio="xMidYMid slice" role="img" aria-label="What is B2B Lead Generation">
+  <defs>
+    <linearGradient id="bg5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b2727"/>
+      <stop offset="55%" stop-color="#0e7490"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+    <radialGradient id="glow9" cx="70%" cy="30%" r="55%">
+      <stop offset="0%" stop-color="#a5f3fc" stop-opacity="0.30"/>
+      <stop offset="100%" stop-color="#a5f3fc" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow10" cx="15%" cy="80%" r="45%">
+      <stop offset="0%" stop-color="#5eead4" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#5eead4" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="dots5" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#cffafe" fill-opacity="0.10"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg5)"/>
+  <rect width="1200" height="630" fill="url(#dots5)"/>
+  <rect width="1200" height="630" fill="url(#glow9)"/>
+  <rect width="1200" height="630" fill="url(#glow10)"/>
+  <!-- Funnel shape (lead funnel) -->
+  <g transform="translate(600, 330)">
+    <path d="M -180 -140 L 180 -140 L 90 40 L 90 140 L -90 140 L -90 40 Z"
+          fill="#22d3ee" fill-opacity="0.16" stroke="#a5f3fc" stroke-opacity="0.55" stroke-width="2.5"/>
+    <!-- Horizontal segments inside the funnel -->
+    <line x1="-160" y1="-90" x2="160" y2="-90" stroke="#a5f3fc" stroke-opacity="0.35" stroke-width="1.5"/>
+    <line x1="-130" y1="-30" x2="130" y2="-30" stroke="#a5f3fc" stroke-opacity="0.45" stroke-width="1.5"/>
+    <line x1="-95" y1="35" x2="95" y2="35" stroke="#5eead4" stroke-opacity="0.6" stroke-width="1.5"/>
+    <!-- Dots being funneled at top -->
+    <g fill="#cffafe">
+      <circle cx="-140" cy="-165" r="6"/>
+      <circle cx="-80" cy="-175" r="5"/>
+      <circle cx="-20" cy="-165" r="7"/>
+      <circle cx="40" cy="-175" r="5"/>
+      <circle cx="100" cy="-165" r="6"/>
+      <circle cx="160" cy="-175" r="4"/>
+    </g>
+    <!-- Highlighted qualified lead at the bottom -->
+    <circle cx="0" cy="180" r="14" fill="#fcd34d"/>
+    <circle cx="0" cy="180" r="24" fill="none" stroke="#fcd34d" stroke-opacity="0.5" stroke-width="2"/>
+    <!-- Labels -->
+    <text x="0" y="-105" fill="#ecfeff" font-family="'Figtree','IBM Plex Sans',sans-serif" font-weight="700" font-size="15" text-anchor="middle">Prospects</text>
+    <text x="0" y="-45" fill="#cffafe" font-family="'Figtree','IBM Plex Sans',sans-serif" font-weight="600" font-size="13" text-anchor="middle">MQLs</text>
+    <text x="0" y="20" fill="#a5f3fc" font-family="'Figtree','IBM Plex Sans',sans-serif" font-weight="600" font-size="13" text-anchor="middle">SQLs</text>
+    <text x="0" y="90" fill="#5eead4" font-family="'Figtree','IBM Plex Sans',sans-serif" font-weight="700" font-size="12" text-anchor="middle">CUSTOMER</text>
+  </g>
+  <text x="600" y="115" fill="#ffffff" font-family="'Figtree','IBM Plex Sans',sans-serif" font-weight="800" font-size="44" text-anchor="middle" letter-spacing="-0.5">What Is B2B Lead Generation?</text>
+  <text x="600" y="570" fill="#a5f3fc" font-family="'Figtree','IBM Plex Sans',sans-serif" font-weight="500" font-size="20" text-anchor="middle" opacity="0.9">The complete 2026 guide to turning prospects into customers.</text>
+</svg>

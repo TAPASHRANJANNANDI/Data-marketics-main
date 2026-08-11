@@ -142,4 +142,49 @@
     <priority>0.3</priority>
   </url>
 
+  <!-- =================================================================
+       Blog
+       ================================================================= -->
+  <url>
+    <loc>https://datamarketics.com/blog</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://datamarketics.com/blog/what-is-b2b-lead-generation</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datamarketics.com/blog/b2b-lead-generation-vs-demand-generation</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datamarketics.com/blog/how-to-generate-high-quality-b2b-leads</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datamarketics.com/blog/inbound-vs-outbound-b2b-lead-generation</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datamarketics.com/blog/top-b2b-lead-generation-strategies</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>
