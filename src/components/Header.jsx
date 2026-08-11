@@ -266,7 +266,6 @@ const Header = () => {
                                         </span>
                                     </li>
 
-                                    <li><NavLink to="/exhibitors-data">Exhibitors Data</NavLink></li>
                                 </ul>
                             </nav>
 
@@ -378,7 +377,6 @@ const Header = () => {
                             </ul>
                         </li>
 
-                        <li><NavLink to="/exhibitors-data" onClick={toggleMobile}>Exhibitors Data</NavLink></li>
                         <li><NavLink to="/contact"         onClick={toggleMobile}>Contact Us</NavLink></li>
                     </ul>
                 </div>
