@@ -17,6 +17,7 @@ import B2BLeadGeneration from './pages/B2BLeadGeneration';
 import ThankYou from './pages/ThankYou';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
+import NotFound from './pages/NotFound';
 
 import ScrollToTop from './components/ScrollToTop';
 import ChatBot from './pages/ChatBot';
@@ -61,6 +62,13 @@ function App() {
                     <Route path="/industries/saas" element={<SaaSIndustry />} />
                     <Route path="/industries/healthcare" element={<HealthcareIndustry />} />
                     <Route path="/industries/technology" element={<TechnologyIndustry />} />
+
+                    {/* Catch-all — anything not matched above lands here. React can't
+                        return an actual HTTP 404 (SPA serves 200 for every path via the
+                        nginx fallback), but this at least gives users a real page and
+                        emits <meta name="prerender-status-code" content="404"> for
+                        pre-render / rendertron style crawlers. */}
+                    <Route path="*" element={<NotFound />} />
                 </Routes>
             </Layout>
             {/* Rendered outside <Layout> so the chatbot's z-index isn't trapped
