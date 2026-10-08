@@ -17,8 +17,9 @@ const Sitemap = () => {
     return (
         <>
             <Helmet>
-                <meta name="title" content="Sitemap | Data Marketics" />
-                <meta name="description" content="Sitemap for Data Marketics website. Navigate through our pages and services." />
+                <title>HTML Sitemap | Datamarketics</title>
+                <meta name="description" content="Browse the Datamarketics website sitemap to find our services, industry solutions, resources, blog articles and other important website pages." />
+                <meta name="keywords" content="Datamarketics sitemap, HTML sitemap, website sitemap" />
                 <link rel="canonical" href="https://datamarketics.com/sitemap" />
             </Helmet>
             <div className="testimonial-page sp">

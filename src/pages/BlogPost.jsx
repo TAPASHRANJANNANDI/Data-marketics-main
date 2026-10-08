@@ -245,6 +245,7 @@ export default function BlogPost() {
             <Helmet>
                 <title>{post.metaTitle}</title>
                 <meta name="description" content={post.metaDescription} />
+                <meta name="keywords" content={post.metaKeywords} />
                 <link rel="canonical" href={canonical} />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content={post.title} />

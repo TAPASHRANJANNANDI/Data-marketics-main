@@ -50,8 +50,9 @@ const B2BLeadGeneration = () => {
     return (
         <>
             <Helmet>
-                <title>B2B Lead Generation Services | Verified Sales Leads</title>
-                <meta name="description" content="Reach verified decision-makers with targeted B2B lead generation services designed to improve sales conversions." />
+                <title>B2B Lead Generation Services | Datamarketics</title>
+                <meta name="description" content="Generate qualified prospects with verified leads, targeted contact data and prospecting solutions that help sales teams build a stronger and more consistent pipeline." />
+                <meta name="keywords" content="B2B lead generation services, B2B leads provider, B2B sales leads, verified B2B leads, targeted B2B leads, B2B prospecting data" />
                 <link rel="canonical" href="https://datamarketics.com/b2b-lead-generation" />
                 <meta property="og:type" content="website" />
                 <meta property="og:title" content="B2B Lead Generation Services | Verified Sales Leads" />
