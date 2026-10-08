@@ -50,8 +50,9 @@ const AppointmentSetting = () => {
     return (
         <>
             <Helmet>
-                <title>Appointment Setting Services | Connect with Decision-Makers</title>
-                <meta name="description" content="Book qualified sales meetings with targeted appointment setting services from Data Marketics." />
+                <title>Appointment Setting Services | Datamarketics</title>
+                <meta name="description" content="Connect your sales team with qualified prospects through targeted outreach and appointment setting services designed to create meaningful sales conversations." />
+                <meta name="keywords" content="B2B appointment setting, appointment setting services, B2B sales leads, B2B leads provider, targeted B2B leads" />
                 <link rel="canonical" href="https://datamarketics.com/appointment-setting" />
                 <meta property="og:type" content="website" />
                 <meta property="og:title" content="Appointment Setting Services | Connect with Decision-Makers" />

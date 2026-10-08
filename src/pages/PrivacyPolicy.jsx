@@ -16,8 +16,9 @@ const PrivacyPolicy = () => {
     return (
         <>
             <Helmet>
-                <meta name="title" content="Privacy Policy | Data Marketics" />
-                <meta name="description" content="Read the Privacy Policy for Data Marketics. We respect your privacy and protect your personal information." />
+                <title>Privacy Policy | Datamarketics</title>
+                <meta name="description" content="Read the Datamarketics privacy policy to understand how we collect, use, protect and manage information when you use our website and services." />
+                <meta name="keywords" content="Datamarketics privacy policy, privacy policy, data privacy" />
                 <link rel="canonical" href="https://datamarketics.com/privacy-policy" />
             </Helmet>
 

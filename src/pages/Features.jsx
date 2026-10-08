@@ -158,8 +158,9 @@ const Features = () => {
     return (
         <>
             <Helmet>
-                <title>B2B Marketing Features | Verified Data, Intent Data &amp; Lead Solutions</title>
-                <meta name="description" content="Explore Data Marketics features including verified B2B databases, intent data, data enrichment, lead generation, and demand generation solutions." />
+                <title>Data &amp; Lead Generation Features | Datamarketics</title>
+                <meta name="description" content="Explore features for contact databases, company profiles, business email lists, prospecting data and targeted leads designed to support smarter sales outreach." />
+                <meta name="keywords" content="B2B contact database, business email list, B2B email list, company database with emails, B2B Company profile, B2B prospecting data" />
                 <link rel="canonical" href="https://datamarketics.com/features" />
                 <meta property="og:type" content="website" />
                 <meta property="og:title" content="B2B Marketing Features | Verified Data, Intent Data & Lead Solutions" />

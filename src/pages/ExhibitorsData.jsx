@@ -26,8 +26,9 @@ const ExhibitorsData = () => {
     return (
         <>
         <Helmet>
-            <title>Exhibitors Data Provider | Trade Show &amp; Event Contact Database</title>
-            <meta name="description" content="Access verified exhibitors data for trade shows and events to improve prospecting and sales outreach." />
+            <title>Exhibitor Data &amp; Prospecting Solutions | Datamarketics</title>
+            <meta name="description" content="Discover potential customers with exhibitor data, company information and prospecting solutions designed to turn trade show audiences into sales opportunities." />
+            <meta name="keywords" content="exhibitor data, exhibitor lists, trade show leads, B2B prospecting data, B2B Company profile, targeted B2B leads" />
             <link rel="canonical" href="https://datamarketics.com/exhibitors-data" />
             <meta property="og:type" content="website" />
             <meta property="og:title" content="Exhibitors Data Provider | Trade Show & Event Contact Database" />

@@ -47,8 +47,9 @@ const DataEnrichment = () => {
     return (
         <>
             <Helmet>
-                <title>Data Enrichment Services | Improve CRM Data Accuracy</title>
-                <meta name="description" content="Enhance your CRM with accurate and enriched B2B contact data to improve campaign performance." />
+                <title>Data Enrichment Services | Datamarketics</title>
+                <meta name="description" content="Improve company and contact records with data enrichment services that help update, complete and enhance prospect information for more effective sales outreach." />
+                <meta name="keywords" content="B2B data enrichment, data enrichment services, B2B data services, B2B Company profile, company database with emails" />
                 <link rel="canonical" href="https://datamarketics.com/data-enrichment" />
                 <meta property="og:type" content="website" />
                 <meta property="og:title" content="Data Enrichment Services | Improve CRM Data Accuracy" />
