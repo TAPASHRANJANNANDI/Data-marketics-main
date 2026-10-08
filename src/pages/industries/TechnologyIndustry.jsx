@@ -6,7 +6,7 @@ import DancingChart from '../../components/DancingChart';
 
 const IMGS = {
     hero:     'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80',
-    section1: 'https://images.unsplash.com/photo-1531297172864-fd15d50f1532?auto=format&fit=crop&w=900&q=80',
+    section1: '/assets/industries/technology-challenges.jpg',
     section2: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=80',
 };
 
@@ -26,7 +26,6 @@ const challenges = [
 
 const organizations = [
     { icon: '💻', title: 'Software Companies', desc: 'Promote software solutions and engage potential buyers actively seeking technology products.' },
-    { icon: '☁️', title: 'SaaS Providers', desc: 'Generate qualified opportunities and accelerate customer acquisition.' },
     { icon: '🔒', title: 'Cybersecurity Companies', desc: 'Reach IT security leaders and decision-makers responsible for protecting business infrastructure.' },
     { icon: '🌐', title: 'Cloud Service Providers', desc: 'Connect with organizations evaluating cloud migration and digital transformation initiatives.' },
     { icon: '🤝', title: 'IT Services & Consulting Firms', desc: 'Generate awareness and identify businesses looking for technology expertise and support.' },
@@ -141,7 +140,7 @@ const TechnologyIndustry = () => {
                         </div>
                     </div>
                     <div className="space40"></div>
-                    <div className="row g-4">
+                    <div className="row g-4 justify-content-center">
                         {organizations.map((org, i) => (
                             <div className="col-md-6 col-lg-4" key={i}>
                                 <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.08 }} style={{ background: '#fff', borderRadius: '16px', padding: '28px 24px', border: '1px solid rgba(45,212,191,0.2)', boxShadow: '0 8px 24px rgba(13,115,119,0.08)', height: '100%' }}>
