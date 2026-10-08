@@ -7,3 +7,11 @@ node_modules
 SSS & Toiletries & Stationary_Structure.docx
 secure-host-3 -key.pem
 *.pem
+
+# Timestamped .env backups. These are copies of a real .env, so they carry
+# live credentials — one was tracked and committed by mistake.
+.env.bak.*
+
+# Local compose overrides are per-host by nature (published ports depend on
+# what else is running on that machine), so they must not be shared.
+docker-compose.override.yml
