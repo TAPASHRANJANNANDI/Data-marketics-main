@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet';
 import DancingChart from '../../components/DancingChart';
 
 const IMGS = {
-    hero:     'https://images.unsplash.com/photo-1565793979461-27c9eee9a97a?auto=format&fit=crop&w=1200&q=80',
+    hero:     '/assets/industries/manufacturing-hero.jpg',
     section1: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=900&q=80',
     section2: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=900&q=80',
 };

@@ -17,64 +17,64 @@ import {
 
 const PROFILES = [
     {
-        name: "James Thornton",
-        title: "Dir. Marketing",
-        company: "SaaS Co",
+        name: "Name of a Person",
+        title: "Designation",
+        company: "Company Name",
         score: 82,
         email: 92,
         phone: 78,
         linkedin: 96,
         tags: ["Job Change", "Funding Round", "Product Launch"],
         avatarColor: "linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%)",
-        initials: "JT"
+        initials: "NP"
     },
     {
-        name: "Sophia Martinez",
-        title: "VP of Sales",
-        company: "ScaleAI",
+        name: "Name of a Person",
+        title: "Designation",
+        company: "Company Name",
         score: 94,
         email: 97,
         phone: 89,
         linkedin: 98,
         tags: ["Expansion", "Hire Signal", "C-Suite Match"],
         avatarColor: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
-        initials: "SM"
+        initials: "NP"
     },
     {
-        name: "Liam O'Connor",
-        title: "CTO & Co-Founder",
-        company: "Fintech Solutions",
+        name: "Name of a Person",
+        title: "Designation",
+        company: "Company Name",
         score: 88,
         email: 95,
         phone: 81,
         linkedin: 92,
         tags: ["Tech Update", "Series B+", "Security Match"],
         avatarColor: "linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)",
-        initials: "LO"
+        initials: "NP"
     },
     {
-        name: "Aisha Rahman",
-        title: "Head of Growth",
-        company: "CyberSec Labs",
+        name: "Name of a Person",
+        title: "Designation",
+        company: "Company Name",
         score: 91,
         email: 94,
         phone: 85,
         linkedin: 97,
         tags: ["Intent Spike", "USA Target", "SaaS Filter"],
         avatarColor: "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)",
-        initials: "AR"
+        initials: "NP"
     },
     {
-        name: "Daniel Kim",
-        title: "Director of HR",
-        company: "AutoCorp Global",
+        name: "Name of a Person",
+        title: "Designation",
+        company: "Company Name",
         score: 79,
         email: 88,
         phone: 75,
         linkedin: 91,
         tags: ["New Hiring", "500+ Staff", "Scale Signal"],
         avatarColor: "linear-gradient(135deg, #ec4899 0%, #db2777 100%)",
-        initials: "DK"
+        initials: "NP"
     }
 ];
 
@@ -650,7 +650,7 @@ const ThreeDDashboard = () => {
                         <AnimatePresence mode="wait">
                             {activeTab === 'Profile' ? (
                                 <motion.div
-                                    key={activeProfile.name}
+                                    key={profileIndex}
                                     initial={{ opacity: 0, scale: 0.96, y: 5 }}
                                     animate={{ opacity: 1, scale: 1, y: 0 }}
                                     exit={{ opacity: 0, scale: 0.96, y: -5 }}
@@ -689,8 +689,8 @@ const ThreeDDashboard = () => {
                                             <div style={{ position: 'absolute', bottom: 0, right: 0, width: '9.5px', height: '9.5px', borderRadius: '50%', background: '#10b981', border: '2px solid #ffffff' }} />
                                         </div>
                                         <div style={{ flexGrow: 1, overflow: 'hidden' }}>
-                                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                                <h4 style={{ margin: 0, fontSize: '15.5px', color: '#0f172a', fontWeight: 800, textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>{activeProfile.name}</h4>
+                                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '6px' }}>
+                                                <h4 style={{ margin: 0, fontSize: '14px', color: '#0f172a', fontWeight: 800, textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>{activeProfile.name}</h4>
                                                 <span style={{ fontSize: '9px', background: 'rgba(14, 165, 233, 0.08)', color: '#0ea5e9', padding: '2px 7px', borderRadius: '20px', fontWeight: 800, flexShrink: 0 }}>HIGH MATCH</span>
                                             </div>
                                             <div style={{ fontSize: '12px', color: '#0ea5e9', fontWeight: 700, marginTop: '1px' }}>{activeProfile.title}</div>
@@ -813,11 +813,11 @@ const ThreeDDashboard = () => {
                                             <span style={{ color: '#0ea5e9', fontWeight: 700 }}>Decision Maker</span>
                                         </div>
                                         <div style={{ background: '#f8fafc', padding: '5px 10px', borderRadius: '6px', fontSize: '10px', display: 'flex', justifyContent: 'space-between', borderLeft: '3px solid #10b981' }}>
-                                            <span><strong>Sarah Jenkins</strong> (VP Finance)</span>
+                                            <span><strong>Name of a Person</strong> (Designation)</span>
                                             <span style={{ color: '#10b981', fontWeight: 700 }}>Approver</span>
                                         </div>
                                         <div style={{ background: '#f8fafc', padding: '5px 10px', borderRadius: '6px', fontSize: '10px', display: 'flex', justifyContent: 'space-between', borderLeft: '3px solid #6366f1' }}>
-                                            <span><strong>David Ross</strong> (Sales Ops Mgr)</span>
+                                            <span><strong>Name of a Person</strong> (Designation)</span>
                                             <span style={{ color: '#6366f1', fontWeight: 700 }}>Influencer</span>
                                         </div>
                                     </div>

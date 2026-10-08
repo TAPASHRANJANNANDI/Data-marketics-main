@@ -5,9 +5,9 @@ import { Helmet } from 'react-helmet';
 import DancingChart from '../../components/DancingChart';
 
 const IMGS = {
-    hero:     'https://images.unsplash.com/photo-1576091160550-2173ff9e5ee5?auto=format&fit=crop&w=1200&q=80',
+    hero:     '/assets/industries/healthcare-hero.jpg',
     section1: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=900&q=80',
-    section2: 'https://images.unsplash.com/photo-1551076805-e166946c9ebf?auto=format&fit=crop&w=900&q=80',
+    section2: '/assets/industries/healthcare-expertise.jpg',
 };
 
 const fadeUp = {
