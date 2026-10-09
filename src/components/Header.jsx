@@ -72,6 +72,12 @@ const industriesMenu = [
         icon: '💻',
         desc: 'Technology vendors and IT services',
     },
+    {
+        label: 'Technographic Data',
+        to: '/technographic-data',
+        icon: '📊',
+        desc: 'Technology stack insights for B2B prospecting',
+    },
 ];
 
 const Header = () => {

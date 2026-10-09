@@ -27,6 +27,7 @@ import ManufacturingIndustry from './pages/industries/ManufacturingIndustry';
 import SaaSIndustry from './pages/industries/SaaSIndustry';
 import HealthcareIndustry from './pages/industries/HealthcareIndustry';
 import TechnologyIndustry from './pages/industries/TechnologyIndustry';
+import TechnographicData from './pages/TechnographicData';
 
 function App() {
     return (
@@ -61,6 +62,7 @@ function App() {
                     <Route path="/industries/saas" element={<SaaSIndustry />} />
                     <Route path="/industries/healthcare" element={<HealthcareIndustry />} />
                     <Route path="/industries/technology" element={<TechnologyIndustry />} />
+                    <Route path="/technographic-data" element={<TechnographicData />} />
                 </Routes>
             </Layout>
             {/* Rendered outside <Layout> so the chatbot's z-index isn't trapped
