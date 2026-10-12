@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import DancingChart from '../../components/DancingChart';
+import { pageSchema } from '../../data/schema';
 
 const IMGS = {
     hero:     'https://images.unsplash.com/photo-1601597111158-2fceff292cdc?auto=format&fit=crop&w=1200&q=80',
@@ -74,6 +75,7 @@ const FinanceIndustry = () => {
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="B2B Data Solutions for Finance Industry" />
                 <meta name="twitter:description" content="Accelerate financial services marketing with verified B2B data and demand generation solutions." />
+                <script type="application/ld+json">{pageSchema('/industries/finance', { faqs })}</script>
             </Helmet>
 
             {/* Hero */}

@@ -6,6 +6,7 @@ import DancingChart from '../components/DancingChart';
 import strategyIcon from '../assets/img/icons/about-page-sec-icon1.png';
 import customIcon from '../assets/img/icons/about-page-sec-icon2.png';
 import analyticsIcon from '../assets/img/icons/about-page-sec-icon3.png';
+import { pageSchema } from '../data/schema';
 
 // Distinct corporate imagery for the Demand Generation page
 const CORP_IMG = {
@@ -34,6 +35,7 @@ const DemandGeneration = () => {
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Demand Generation Services | Generate Qualified B2B Pipeline" />
                 <meta name="twitter:description" content="Generate qualified leads and build a stronger sales pipeline with Data Marketics' demand generation solutions." />
+                <script type="application/ld+json">{pageSchema('/demand-generation')}</script>
             </Helmet>
 
             {/* Hero */}

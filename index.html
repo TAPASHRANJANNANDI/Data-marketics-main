@@ -54,26 +54,51 @@
   <meta name="twitter:image" content="https://datamarketics.com/og-banner.jpg" />
   <meta name="twitter:image:alt" content="Data Marketics B2B Lead Generation Services Banner" />
 
-  <!-- Organization Schema -->
+  <!-- Organization + WebSite Schema (site-wide; pages reference these by @id) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Data Marketics",
-    "url": "https://datamarketics.com",
-    "logo": "https://datamarketics.com/logo.png",
-    "image": "https://datamarketics.com/og-banner.jpg",
-    "description": "Data Marketics provides verified B2B contact data, lead generation services, demand generation, and marketing database solutions worldwide.",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "100 Horizon Center Blvd",
-      "addressLocality": "Hamilton",
-      "addressRegion": "NJ",
-      "postalCode": "08691",
-      "addressCountry": "US"
-    },
-    "sameAs": [
-      "https://www.linkedin.com/company/data-marketics"
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://datamarketics.com/#organization",
+        "name": "Data Marketics",
+        "alternateName": "Datamarketics",
+        "url": "https://datamarketics.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://datamarketics.com/logo.png"
+        },
+        "image": "https://datamarketics.com/DataMarketics.png",
+        "description": "Data Marketics provides verified B2B contact data, lead generation services, demand generation, and marketing database solutions worldwide.",
+        "email": "sales@datamarketics.com",
+        "telephone": "+1-609-322-2666",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "100 Horizon Center Blvd",
+          "addressLocality": "Hamilton",
+          "addressRegion": "NJ",
+          "postalCode": "08691",
+          "addressCountry": "US"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "sales",
+          "email": "sales@datamarketics.com",
+          "telephone": "+1-609-322-2666",
+          "url": "https://datamarketics.com/contact"
+        },
+        "sameAs": "__SOCIAL_SAME_AS__"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://datamarketics.com/#website",
+        "url": "https://datamarketics.com/",
+        "name": "Data Marketics",
+        "alternateName": "Datamarketics",
+        "publisher": { "@id": "https://datamarketics.com/#organization" },
+        "inLanguage": "en"
+      }
     ]
   }
   </script>

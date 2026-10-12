@@ -6,6 +6,7 @@ import DancingChart from '../components/DancingChart';
 import strategyIcon from '../assets/img/icons/about-page-sec-icon1.png';
 import customIcon from '../assets/img/icons/about-page-sec-icon2.png';
 import analyticsIcon from '../assets/img/icons/about-page-sec-icon3.png';
+import { pageSchema } from '../data/schema';
 
 const CORP_IMG = {
     hero: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=1200&q=80',
@@ -58,6 +59,7 @@ const DataEnrichment = () => {
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Data Enrichment Services | Improve CRM Data Accuracy" />
                 <meta name="twitter:description" content="Enhance your CRM with accurate and enriched B2B contact data to improve campaign performance." />
+                <script type="application/ld+json">{pageSchema('/data-enrichment', { faqs })}</script>
             </Helmet>
 
             {/* Hero */}

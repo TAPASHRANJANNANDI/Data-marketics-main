@@ -20,6 +20,7 @@ import CRMIntegrationDashboard from '../components/CRMIntegrationDashboard';
 import AnalyticalOverviewDashboard from '../components/AnalyticalOverviewDashboard';
 import innovationShape1 from '../assets/img/shapes/others2-shape1.png';
 import innovationShape2 from '../assets/img/shapes/others2-shape2.png';
+import { pageSchema } from '../data/schema';
 
 /* ─────────────────────────────────────────────
    Shared check-list item component
@@ -169,6 +170,7 @@ const Features = () => {
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="B2B Marketing Features | Verified Data, Intent Data & Lead Solutions" />
                 <meta name="twitter:description" content="Explore Data Marketics features including verified B2B databases, intent data, data enrichment, lead generation, and demand generation solutions." />
+                <script type="application/ld+json">{pageSchema('/features', { faqs: faqs.map(f => ({ q: f.question, a: f.answer })) })}</script>
             </Helmet>
 
             {/* ── HERO ── */}

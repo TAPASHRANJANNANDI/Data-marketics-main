@@ -6,6 +6,7 @@ import DancingChart from '../components/DancingChart';
 import strategyIcon from '../assets/img/icons/about-page-sec-icon1.png';
 import customIcon from '../assets/img/icons/about-page-sec-icon2.png';
 import analyticsIcon from '../assets/img/icons/about-page-sec-icon3.png';
+import { pageSchema } from '../data/schema';
 
 const CORP_IMG = {
     hero: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80',
@@ -61,6 +62,7 @@ const AppointmentSetting = () => {
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Appointment Setting Services | Connect with Decision-Makers" />
                 <meta name="twitter:description" content="Book qualified sales meetings with targeted appointment setting services from Data Marketics." />
+                <script type="application/ld+json">{pageSchema('/appointment-setting', { faqs })}</script>
             </Helmet>
 
             {/* Hero */}

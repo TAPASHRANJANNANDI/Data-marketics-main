@@ -41,6 +41,7 @@ import {
     UserCheck,
     BadgeCheck
 } from 'lucide-react';
+import { pageSchema } from '../data/schema';
 
 const GRAD_PRIMARY = 'linear-gradient(135deg, #0d7377 0%, #14b8a6 50%, #2dd4bf 100%)';
 const GRAD_ACCENT = 'linear-gradient(135deg, #2dd4bf 0%, #5eead4 100%)';
@@ -95,6 +96,16 @@ const scaleIn = {
         transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } 
     }
 };
+
+// Shown in the FAQ section below and mirrored in the FAQPage structured data.
+const homeFaqs = [
+    { q: 'What is B2B Lead Generation?', a: 'B2B lead generation is the process of identifying and attracting potential business customers who may be interested in your products or services. It involves targeted outreach, data intelligence, and strategic engagement to convert prospects into qualified sales opportunities.' },
+    { q: 'What is Demand Generation?', a: 'Demand generation focuses on creating awareness and interest among potential buyers through strategic marketing initiatives. It encompasses the full funnel — from brand awareness to lead nurturing — to build a sustainable pipeline of engaged prospects.' },
+    { q: 'How Accurate Is Your Data?', a: 'Our data undergoes rigorous validation processes to maintain high levels of accuracy and reliability. We maintain a 98%+ accuracy rate through monthly verification cycles, AI-powered checks, and human validation to ensure low bounce rates and high deliverability.' },
+    { q: 'What Industries Do You Serve?', a: 'We serve technology, SaaS, healthcare, manufacturing, finance, education, retail, and other industries. Our industry-specific databases are tailored to the unique targeting requirements of each sector.' },
+    { q: 'Is Your Data GDPR Compliant?', a: 'Yes. We follow industry best practices and compliance standards for data management and usage. Our data collection and processing methods adhere to GDPR, CCPA, and other relevant privacy regulations.' },
+    { q: 'What does a marketing data provider do?', a: 'A marketing data provider supplies accurate B2B contact lists, firmographic data, technographic profiles, and insights to help sales & marketing teams reach key decision makers with the right message at the right time.' },
+];
 
 // --- FAQ Item Component ---
 const FaqItem = ({ faq, index }) => {
@@ -173,6 +184,7 @@ const Home = () => {
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Data Marketics | B2B Data Provider, Demand Generation & Lead Generation Services" />
                 <meta name="twitter:description" content="Accelerate business growth with verified B2B data, demand generation, lead generation, intent data, data enrichment, and content syndication services." />
+                <script type="application/ld+json">{pageSchema('/', { faqs: homeFaqs })}</script>
             </Helmet>
 
             {/* HERO */}
@@ -969,14 +981,7 @@ const Home = () => {
                                 viewport={{ once: true }}
                                 variants={staggerContainer}
                             >
-                                {[
-                                    { q: 'What is B2B Lead Generation?', a: 'B2B lead generation is the process of identifying and attracting potential business customers who may be interested in your products or services. It involves targeted outreach, data intelligence, and strategic engagement to convert prospects into qualified sales opportunities.' },
-                                    { q: 'What is Demand Generation?', a: 'Demand generation focuses on creating awareness and interest among potential buyers through strategic marketing initiatives. It encompasses the full funnel — from brand awareness to lead nurturing — to build a sustainable pipeline of engaged prospects.' },
-                                    { q: 'How Accurate Is Your Data?', a: 'Our data undergoes rigorous validation processes to maintain high levels of accuracy and reliability. We maintain a 98%+ accuracy rate through monthly verification cycles, AI-powered checks, and human validation to ensure low bounce rates and high deliverability.' },
-                                    { q: 'What Industries Do You Serve?', a: 'We serve technology, SaaS, healthcare, manufacturing, finance, education, retail, and other industries. Our industry-specific databases are tailored to the unique targeting requirements of each sector.' },
-                                    { q: 'Is Your Data GDPR Compliant?', a: 'Yes. We follow industry best practices and compliance standards for data management and usage. Our data collection and processing methods adhere to GDPR, CCPA, and other relevant privacy regulations.' },
-                                    { q: 'What does a marketing data provider do?', a: 'A marketing data provider supplies accurate B2B contact lists, firmographic data, technographic profiles, and insights to help sales & marketing teams reach key decision makers with the right message at the right time.' },
-                                ].map((faq, index) => (
+                                {homeFaqs.map((faq, index) => (
                                     <FaqItem key={index} faq={faq} index={index} />
                                 ))}
                             </motion.div>

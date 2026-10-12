@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { pageSchema } from '../data/schema';
 
 const GRAD_HEADING = 'linear-gradient(90deg, #042f2e 0%, #064e4a 18%, #0d7377 42%, #14b8a6 70%, #2dd4bf 100%)';
 
@@ -20,6 +21,7 @@ const PrivacyPolicy = () => {
                 <meta name="description" content="Read the Datamarketics privacy policy to understand how we collect, use, protect and manage information when you use our website and services." />
                 <meta name="keywords" content="Datamarketics privacy policy, privacy policy, data privacy" />
                 <link rel="canonical" href="https://datamarketics.com/privacy-policy" />
+                <script type="application/ld+json">{pageSchema('/privacy-policy')}</script>
             </Helmet>
 
             {/* Hero */}

@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { ArrowRight, Calendar, Clock } from 'lucide-react';
 import blogs from '../data/blogs';
+import { pageSchema } from '../data/schema';
 
 const cardVariants = {
     hidden: { opacity: 0, y: 22 },
@@ -39,6 +40,7 @@ export default function Blog() {
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Data Marketics Blog | B2B Data & Lead Generation Insights" />
                 <meta name="twitter:description" content="Practical guides, playbooks, and insights on B2B lead generation, demand generation, intent data, and sales pipeline growth." />
+                <script type="application/ld+json">{pageSchema('/blog')}</script>
             </Helmet>
 
             <div style={{ background: 'transparent', position: 'relative', padding: '90px 20px 120px' }}>

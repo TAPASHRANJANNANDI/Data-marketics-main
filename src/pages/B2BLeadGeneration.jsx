@@ -6,6 +6,7 @@ import DancingChart from '../components/DancingChart';
 import strategyIcon from '../assets/img/icons/about-page-sec-icon1.png';
 import customIcon from '../assets/img/icons/about-page-sec-icon2.png';
 import analyticsIcon from '../assets/img/icons/about-page-sec-icon3.png';
+import { pageSchema } from '../data/schema';
 
 const CORP_IMG = {
     hero: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=80',
@@ -61,6 +62,7 @@ const B2BLeadGeneration = () => {
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="B2B Lead Generation Services | Verified Sales Leads" />
                 <meta name="twitter:description" content="Reach verified decision-makers with targeted B2B lead generation services designed to improve sales conversions." />
+                <script type="application/ld+json">{pageSchema('/b2b-lead-generation', { faqs })}</script>
             </Helmet>
 
             {/* Hero */}

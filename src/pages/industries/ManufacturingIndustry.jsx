@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import DancingChart from '../../components/DancingChart';
+import { pageSchema } from '../../data/schema';
 
 const IMGS = {
     hero:     '/assets/industries/manufacturing-hero.jpg',
@@ -80,6 +81,7 @@ const ManufacturingIndustry = () => {
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Manufacturing Lead Generation & B2B Data Solutions" />
                 <meta name="twitter:description" content="Connect with manufacturing decision-makers through verified B2B data and targeted lead generation." />
+                <script type="application/ld+json">{pageSchema('/industries/manufacturing', { faqs })}</script>
             </Helmet>
 
             {/* Hero */}

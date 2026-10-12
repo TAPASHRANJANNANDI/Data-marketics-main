@@ -8,6 +8,7 @@ import icon3 from '../assets/img/icons/work5-icon3.png';
 import icon4 from '../assets/img/icons/work5-icon4.png';
 import { Link } from 'react-router-dom';
 import {Helmet} from 'react-helmet';
+import { pageSchema } from '../data/schema';
 
 // Corporate stock imagery (Unsplash CDN) — used in the service tabs to show
 // real business / data-team / analytics scenes instead of cartoon illustrations.
@@ -113,6 +114,7 @@ const Services = () => {
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content="B2B Marketing Services | Demand Generation & Lead Generation" />
             <meta name="twitter:description" content="Discover Data Marketics' services including demand generation, lead generation, intent data, data enrichment, appointment setting, and content syndication." />
+            <script type="application/ld+json">{pageSchema('/services')}</script>
          </Helmet>
             <div className="pages-hero">
                 <div className="container">
