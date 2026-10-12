@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import { pageSchema } from '../data/schema';
 
 const fadeUp = {
     hidden: { opacity: 0, y: 28 },
@@ -166,6 +167,7 @@ const TechnographicData = () => {
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={SEO.title} />
                 <meta name="twitter:description" content={SEO.description} />
+                <script type="application/ld+json">{pageSchema('/technographic-data', { faqs })}</script>
             </Helmet>
 
             {/* 1. Hero */}

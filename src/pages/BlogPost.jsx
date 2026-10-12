@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Calendar, Clock, ChevronDown, Sparkles } from 'lucide-react';
 import blogs, { getBlogBySlug } from '../data/blogs';
+import { ORG_ID, WEBSITE_ID, LOGO_URL, breadcrumbNode } from '../data/schema';
 
 function formatDate(iso) {
     try {
@@ -223,21 +224,34 @@ export default function BlogPost() {
     const canonical = `https://datamarketics.com/blog/${post.slug}`;
 
     // BlogPosting JSON-LD for richer search results.
+    // The Organization and WebSite nodes are defined site-wide in index.html.
     const jsonLd = JSON.stringify({
         '@context': 'https://schema.org',
-        '@type': 'BlogPosting',
-        headline: post.title,
-        description: post.metaDescription,
-        image: `https://datamarketics.com${post.heroImage}`,
-        datePublished: post.date,
-        dateModified: post.date,
-        author: { '@type': 'Organization', name: 'Data Marketics' },
-        publisher: {
-            '@type': 'Organization', name: 'Data Marketics',
-            logo: { '@type': 'ImageObject', url: 'https://datamarketics.com/og-banner.jpg' },
-        },
-        mainEntityOfPage: canonical,
-        keywords: [post.primaryKeyword, ...(post.secondaryKeywords || [])].join(', '),
+        '@graph': [
+            {
+                '@type': 'BlogPosting',
+                '@id': `${canonical}#article`,
+                headline: post.title,
+                description: post.metaDescription,
+                image: `https://datamarketics.com${post.heroImage}`,
+                datePublished: post.date,
+                dateModified: post.date,
+                author: { '@type': 'Organization', '@id': ORG_ID, name: 'Data Marketics' },
+                publisher: {
+                    '@type': 'Organization', '@id': ORG_ID, name: 'Data Marketics',
+                    logo: { '@type': 'ImageObject', url: LOGO_URL },
+                },
+                mainEntityOfPage: canonical,
+                isPartOf: { '@id': WEBSITE_ID },
+                inLanguage: 'en',
+                keywords: [post.primaryKeyword, ...(post.secondaryKeywords || [])].join(', '),
+            },
+            breadcrumbNode([
+                { name: 'Home', path: '/' },
+                { name: 'Blog', path: '/blog' },
+                { name: post.title, path: `/blog/${post.slug}` },
+            ], `${canonical}#breadcrumb`),
+        ],
     });
 
     return (

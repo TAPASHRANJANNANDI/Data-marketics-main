@@ -33,6 +33,7 @@ import {
     BadgeCheck,
     UserCheck,
 } from 'lucide-react';
+import { pageSchema } from '../data/schema';
 
 /* ─── Design tokens ─────────────────────────────────────────── */
 const GRAD_PRIMARY  = 'linear-gradient(135deg, #0d7377 0%, #14b8a6 50%, #2dd4bf 100%)';
@@ -106,37 +107,15 @@ const FaqItem = ({ faq }) => {
 };
 
 /* ─── Schema JSON-LD ─────────────────────────────────────────── */
-const orgSchema = JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Data Marketics",
-    "url": "https://datamarketics.com",
-    "logo": "https://datamarketics.com/logo.png",
-    "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "customer support",
-        "url": "https://datamarketics.com/contact"
-    },
-    "sameAs": []
-});
-
-const faqSchemaItems = [
-    { q: "What is Data Marketics?",                         a: "Data Marketics is a trusted B2B marketing data and demand generation company that helps organizations connect with the right audience, generate qualified leads, and accelerate business growth." },
-    { q: "What services does Data Marketics provide?",      a: "We offer demand generation, B2B lead generation, intent data solutions, content syndication, appointment setting, and data enrichment services." },
-    { q: "How accurate is your data?",                      a: "We follow structured verification and quality assurance processes to maintain high standards of data accuracy and reliability, achieving a 98%+ accuracy rate." },
-    { q: "Which industries do you serve?",                  a: "We serve technology, healthcare, SaaS, manufacturing, finance, and many other business sectors." },
-    { q: "How can I contact Data Marketics?",               a: "You can reach us through our contact page at https://datamarketics.com/contact or by requesting a free consultation on our website." },
+// Shown in the FAQ section below and mirrored in the FAQPage structured data.
+const aboutFaqs = [
+    { q: 'What is Data Marketics?',                         a: 'Data Marketics is a trusted B2B marketing data and demand generation company that helps organizations connect with the right audience, generate qualified leads, and accelerate business growth through verified contact data and strategic marketing solutions.' },
+    { q: 'What services does Data Marketics provide?',      a: 'We offer a full suite of B2B marketing services including demand generation, B2B lead generation, intent data solutions, content syndication, appointment setting, and data enrichment services.' },
+    { q: 'How accurate is your data?',                      a: 'We follow structured verification and multi-level quality assurance processes to maintain a 98%+ data accuracy rate. Our databases are regularly updated to ensure reliability and maximum campaign effectiveness.' },
+    { q: 'Which industries do you serve?',                  a: 'We serve technology, healthcare, SaaS, manufacturing, finance, education, retail, and many other business sectors, providing customized data and marketing solutions for each industry\'s unique challenges.' },
+    { q: 'How can I contact Data Marketics?',               a: 'You can reach us through our Contact Us page to request a free consultation, learn about our services, or start building a stronger sales pipeline with our team.' },
+    { q: 'Can Data Marketics provide customized solutions?', a: 'Yes. Every business has unique goals and requirements. Our solutions are fully tailored to meet specific business objectives, ensuring maximum relevance and long-term marketing success.' },
 ];
-
-const faqSchema = JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqSchemaItems.map(({ q, a }) => ({
-        "@type": "Question",
-        "name": q,
-        "acceptedAnswer": { "@type": "Answer", "text": a },
-    })),
-});
 
 /* ═══════════════════════════════════════════════════════════════
    ABOUT PAGE
@@ -156,8 +135,7 @@ const About = () => (
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content="About Data Marketics | Trusted B2B Data & Demand Generation Company" />
             <meta name="twitter:description" content="Learn how Data Marketics helps businesses achieve growth through verified B2B data, lead generation, demand generation, and intelligent marketing solutions." />
-            <script type="application/ld+json">{orgSchema}</script>
-            <script type="application/ld+json">{faqSchema}</script>
+            <script type="application/ld+json">{pageSchema('/about-us', { faqs: aboutFaqs })}</script>
         </Helmet>
 
         {/* ── HERO ─────────────────────────────────────────────── */}
@@ -781,14 +759,7 @@ const About = () => (
                             initial="hidden" whileInView="visible" viewport={{ once: true }}
                             variants={staggerContainer}
                         >
-                            {[
-                                { q: 'What is Data Marketics?',                         a: 'Data Marketics is a trusted B2B marketing data and demand generation company that helps organizations connect with the right audience, generate qualified leads, and accelerate business growth through verified contact data and strategic marketing solutions.' },
-                                { q: 'What services does Data Marketics provide?',      a: 'We offer a full suite of B2B marketing services including demand generation, B2B lead generation, intent data solutions, content syndication, appointment setting, and data enrichment services.' },
-                                { q: 'How accurate is your data?',                      a: 'We follow structured verification and multi-level quality assurance processes to maintain a 98%+ data accuracy rate. Our databases are regularly updated to ensure reliability and maximum campaign effectiveness.' },
-                                { q: 'Which industries do you serve?',                  a: 'We serve technology, healthcare, SaaS, manufacturing, finance, education, retail, and many other business sectors, providing customized data and marketing solutions for each industry\'s unique challenges.' },
-                                { q: 'How can I contact Data Marketics?',               a: 'You can reach us through our Contact Us page to request a free consultation, learn about our services, or start building a stronger sales pipeline with our team.' },
-                                { q: 'Can Data Marketics provide customized solutions?', a: 'Yes. Every business has unique goals and requirements. Our solutions are fully tailored to meet specific business objectives, ensuring maximum relevance and long-term marketing success.' },
-                            ].map((faq, i) => (
+                            {aboutFaqs.map((faq, i) => (
                                 <FaqItem key={i} faq={faq} />
                             ))}
                         </motion.div>

@@ -10,6 +10,7 @@ import edit3 from '../assets/img/icons/editing6-icon3.svg';
 import edit4 from '../assets/img/icons/editing6-icon4.svg';
 import secIcon1 from '../assets/img/icons/about-page-sec-icon1.png';
 import secIcon2 from '../assets/img/icons/about-page-sec-icon2.png';
+import { pageSchema } from '../data/schema';
 
 // Distinct corporate event imagery for this page
 const CORP_EVENT = {
@@ -37,6 +38,7 @@ const ExhibitorsData = () => {
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content="Exhibitors Data Provider | Trade Show & Event Contact Database" />
             <meta name="twitter:description" content="Access verified exhibitors data for trade shows and events to improve prospecting and sales outreach." />
+            <script type="application/ld+json">{pageSchema('/exhibitors-data')}</script>
         </Helmet>
             <div className="pages-hero">
                 <div className="container">

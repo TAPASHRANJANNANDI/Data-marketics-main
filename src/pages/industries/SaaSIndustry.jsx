@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import DancingChart from '../../components/DancingChart';
+import { pageSchema } from '../../data/schema';
 
 const IMGS = {
     hero:     'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1200&q=80',
@@ -74,6 +75,7 @@ const SaaSIndustry = () => {
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="SaaS Demand Generation & B2B Lead Generation Services" />
                 <meta name="twitter:description" content="Grow your SaaS pipeline with verified B2B data, demand generation, and intent-based marketing." />
+                <script type="application/ld+json">{pageSchema('/industries/saas', { faqs })}</script>
             </Helmet>
 
             {/* Hero */}

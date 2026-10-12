@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import DancingChart from '../../components/DancingChart';
+import { pageSchema } from '../../data/schema';
 
 const IMGS = {
     hero:     'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80',
@@ -72,6 +73,7 @@ const TechnologyIndustry = () => {
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Technology Industry B2B Data & Demand Generation" />
                 <meta name="twitter:description" content="Generate qualified technology leads with accurate B2B databases and demand generation solutions." />
+                <script type="application/ld+json">{pageSchema('/industries/technology', { faqs })}</script>
             </Helmet>
 
             {/* Hero */}

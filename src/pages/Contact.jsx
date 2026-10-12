@@ -4,6 +4,7 @@ import contactIcon1 from '../assets/img/icons/contact-page-icon1.png';
 import contactIcon2 from '../assets/img/icons/contact-page-icon2.png';
 import contactIcon3 from '../assets/img/icons/contact-page-icon3.png';
 import { Helmet } from 'react-helmet';
+import { pageSchema } from '../data/schema';
 
 // Lightweight math CAPTCHA. Numbers 1..9 with +, -, x. Subtraction is
 // ordered so the result is always non-negative to avoid a "-3" answer.
@@ -99,6 +100,7 @@ const Contact = () => {
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Contact Data Marketics | Let's Grow Your Pipeline" />
                 <meta name="twitter:description" content="Contact Data Marketics for B2B data, lead generation, demand generation, and marketing solutions." />
+                <script type="application/ld+json">{pageSchema('/contact')}</script>
             </Helmet>
             <div className="contact-page-area sp">
 

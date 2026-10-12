@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import DancingChart from '../../components/DancingChart';
+import { pageSchema } from '../../data/schema';
 
 const IMGS = {
     hero:     '/assets/industries/healthcare-hero.jpg',
@@ -73,6 +74,7 @@ const HealthcareIndustry = () => {
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Healthcare B2B Data & Lead Generation Solutions" />
                 <meta name="twitter:description" content="Drive healthcare marketing success using accurate B2B data, intent insights, and demand generation." />
+                <script type="application/ld+json">{pageSchema('/industries/healthcare', { faqs })}</script>
             </Helmet>
 
             {/* Hero */}

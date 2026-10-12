@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import { pageSchema } from '../data/schema';
 
 const Sitemap = () => {
     const links = [
@@ -21,6 +22,7 @@ const Sitemap = () => {
                 <meta name="description" content="Browse the Datamarketics website sitemap to find our services, industry solutions, resources, blog articles and other important website pages." />
                 <meta name="keywords" content="Datamarketics sitemap, HTML sitemap, website sitemap" />
                 <link rel="canonical" href="https://datamarketics.com/sitemap" />
+                <script type="application/ld+json">{pageSchema('/sitemap')}</script>
             </Helmet>
             <div className="testimonial-page sp">
             <div className="container">
