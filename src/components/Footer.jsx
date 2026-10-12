@@ -4,6 +4,7 @@ import logo2 from '../assets/img/logo/header-logo2.png';
 import footerIcon1 from '../assets/img/icons/footer-icon1.png';
 import footerIcon2 from '../assets/img/icons/footer-icon2.png';
 import footerIcon3 from '../assets/img/icons/footer-icon3.png';
+import SocialLinks from './SocialLinks';
 // import footerShape1 from '../assets/img/shapes/footer2-shape.png';
 // import footerShape2 from '../assets/img/shapes/footer2-shape2.png';
 
@@ -45,6 +46,7 @@ const Footer = () => {
                         <div className="single-footer-items">
                             <h3>Data Marketics</h3>
                             <p>Data Marketics is a leading provider of data-driven marketing solutions. Founded six years ago, we have been on a journey to help businesses increase sales and expand their customer base by providing them with accurate and up-to-date data.</p>
+                            <SocialLinks variant="footer" />
                         </div>
                     </div>
                     <div className="col-lg col-md-6 col-6">

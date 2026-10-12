@@ -4196,3 +4196,118 @@ button,
 
 
 
+
+/* ============================================================
+   SOCIAL MEDIA BUTTONS — footer, header and mobile menu
+   (components/SocialLinks.jsx, links from data/social.js)
+   ============================================================ */
+.dm-social {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.dm-social-link {
+    width: 40px;
+    height: 40px;
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 16px;
+    line-height: 1;
+    text-decoration: none;
+    transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.dm-social-link:hover {
+    transform: translateY(-2px);
+}
+
+/* Keep the focus ring round (the global ring squares its corners) */
+.dm-social-link:focus-visible {
+    border-radius: 50% !important;
+}
+
+/* Footer — on the dark teal gradient */
+.dm-social-footer {
+    margin-top: 20px;
+}
+
+.footer2 .dm-social-link {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(94, 234, 212, 0.45);
+    box-shadow: 0 4px 12px rgba(4, 47, 46, 0.18);
+}
+
+.footer2 .dm-social-link:hover,
+.footer2 .dm-social-link:focus-visible {
+    color: var(--dm-teal-900) !important;
+    background: var(--dm-grad-accent);
+    border-color: transparent;
+    box-shadow: 0 8px 20px rgba(45, 212, 191, 0.4);
+}
+
+.footer2 .dm-social-link:focus-visible {
+    outline-color: #ffffff !important;
+}
+
+/* Header and mobile menu — on light backgrounds */
+.dm-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.dm-social-header {
+    gap: 8px;
+}
+
+.dm-social-header .dm-social-link {
+    width: 36px;
+    height: 36px;
+    font-size: 15px;
+    color: var(--dm-teal-800);
+    background: #ffffff;
+    border: 1px solid rgba(45, 212, 191, 0.4);
+    box-shadow: 0 4px 12px rgba(13, 115, 119, 0.08);
+}
+
+.dm-social-header .dm-social-link:hover,
+.dm-social-header .dm-social-link:focus-visible {
+    color: #ffffff;
+    background: var(--dm-grad-primary);
+    border-color: transparent;
+    box-shadow: 0 8px 20px rgba(20, 184, 166, 0.35);
+}
+
+/* Narrow desktops (992–1199px): the nav bar has no spare room, so the header
+   icons step aside rather than squeeze the logo. They remain in the footer. */
+@media (max-width: 1199.98px) {
+    .header-area .dm-social-header {
+        display: none;
+    }
+}
+
+/* Inside the mobile sidebar */
+.dm-social-mobile {
+    padding: 18px 14px 6px;
+    gap: 12px;
+}
+
+.dm-social-mobile .dm-social-link {
+    width: 42px;
+    height: 42px;
+    font-size: 17px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dm-social-link,
+    .dm-social-link:hover {
+        transition: none;
+        transform: none;
+    }
+}

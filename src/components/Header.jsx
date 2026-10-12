@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo2 from '../assets/img/logo/header-logo2.png';
+import SocialLinks from './SocialLinks';
 
 const servicesMenu = [
     {
@@ -276,7 +277,8 @@ const Header = () => {
                                 </ul>
                             </nav>
 
-                            <div className="header2-buttons">
+                            <div className="header2-buttons dm-header-actions">
+                                <SocialLinks variant="header" headerOnly />
                                 <Link to="/contact" className="theme-btn2" aria-label="Contact Us">Contact Us</Link>
                             </div>
                         </div>
@@ -388,6 +390,7 @@ const Header = () => {
                         <li><NavLink to="/contact"         onClick={toggleMobile}>Contact Us</NavLink></li>
                     </ul>
                 </div>
+                <SocialLinks variant="header" headerOnly className="dm-social-mobile" />
             </div>
             {isMobileMenuOpen && <div className="menu-overlay d-lg-none" onClick={toggleMobile}></div>}
         </header>
