@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
 
+Disallow: /css/**
+Disallow: /style/**
+Disallow: /new/**
+Disallow: /js/**
+
 Sitemap: https://datamarketics.com/sitemap.xml

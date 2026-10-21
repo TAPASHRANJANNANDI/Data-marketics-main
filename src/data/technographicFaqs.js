@@ -1,0 +1,7 @@
+export const faqs = [
+    { q: 'What is a technographic database?', a: 'A technographic database organizes information about the technologies companies use. Depending on its coverage, it may include software, cloud infrastructure, security tools, and other business applications.' },
+    { q: 'How do businesses use technographic data for sales prospecting?', a: 'Sales teams can use technology-related insights to identify potentially relevant accounts, research technology environments, tailor outreach, and prioritize prospects based on their ideal customer profile.' },
+    { q: 'What is the difference between technographic and intent data?', a: 'Technographic data describes the technologies a company uses or is associated with. Intent data provides indicators that a company may be researching a topic, solution, or purchase. Neither type of data alone guarantees that a company is ready to buy.' },
+    { q: 'Can technographic data be combined with contact data?', a: 'Yes. Where suitable data is available, technology insights can be combined with company profiles and professional contact information to support more targeted prospecting and account research.' },
+    { q: 'How can I get started with Datamarketics?', a: 'Contact Datamarketics to discuss your target industries, technology categories, markets, and prospecting objectives. Our team can help clarify which data options are relevant to your requirements.' },
+];

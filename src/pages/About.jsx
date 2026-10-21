@@ -1,3 +1,4 @@
+import { aboutFaqs } from '../data/aboutFaqs.js';
 import React, { useState } from 'react';
 import TiltCard from '../components/TiltCard';
 import AboutHeroDashboard from '../components/AboutHeroDashboard';
@@ -108,14 +109,7 @@ const FaqItem = ({ faq }) => {
 
 /* ─── Schema JSON-LD ─────────────────────────────────────────── */
 // Shown in the FAQ section below and mirrored in the FAQPage structured data.
-const aboutFaqs = [
-    { q: 'What is Data Marketics?',                         a: 'Data Marketics is a trusted B2B marketing data and demand generation company that helps organizations connect with the right audience, generate qualified leads, and accelerate business growth through verified contact data and strategic marketing solutions.' },
-    { q: 'What services does Data Marketics provide?',      a: 'We offer a full suite of B2B marketing services including demand generation, B2B lead generation, intent data solutions, content syndication, appointment setting, and data enrichment services.' },
-    { q: 'How accurate is your data?',                      a: 'We follow structured verification and multi-level quality assurance processes to maintain a 98%+ data accuracy rate. Our databases are regularly updated to ensure reliability and maximum campaign effectiveness.' },
-    { q: 'Which industries do you serve?',                  a: 'We serve technology, healthcare, SaaS, manufacturing, finance, education, retail, and many other business sectors, providing customized data and marketing solutions for each industry\'s unique challenges.' },
-    { q: 'How can I contact Data Marketics?',               a: 'You can reach us through our Contact Us page to request a free consultation, learn about our services, or start building a stronger sales pipeline with our team.' },
-    { q: 'Can Data Marketics provide customized solutions?', a: 'Yes. Every business has unique goals and requirements. Our solutions are fully tailored to meet specific business objectives, ensuring maximum relevance and long-term marketing success.' },
-];
+
 
 /* ═══════════════════════════════════════════════════════════════
    ABOUT PAGE

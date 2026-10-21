@@ -1,3 +1,5 @@
+import { SEO } from '../data/technographicSeo.js';
+import { faqs } from '../data/technographicFaqs.js';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -9,12 +11,6 @@ const fadeUp = {
     visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
 };
 
-const SEO = {
-    title: 'Technographic Data Solutions for B2B Sales | Datamarketics',
-    description: 'Discover the technologies companies use with technographic data solutions from Datamarketics. Identify relevant accounts and improve targeted sales prospecting.',
-    keywords: 'Technographic data providers, technographic data services, technographic intelligence, technology stack data, technology install data, technographic database',
-    url: 'https://datamarketics.com/technographic-data',
-};
 
 const benefits = [
     { t: 'Identify Better-Fit Prospects', d: 'Use technology adoption insights to help identify companies whose existing technology environment aligns with your product or service.' },
@@ -65,13 +61,6 @@ const approach = [
     { t: 'Sales-focused use cases', d: 'Apply prospect insights to account selection, campaign planning, and outreach.' },
 ];
 
-const faqs = [
-    { q: 'What is a technographic database?', a: 'A technographic database organizes information about the technologies companies use. Depending on its coverage, it may include software, cloud infrastructure, security tools, and other business applications.' },
-    { q: 'How do businesses use technographic data for sales prospecting?', a: 'Sales teams can use technology-related insights to identify potentially relevant accounts, research technology environments, tailor outreach, and prioritize prospects based on their ideal customer profile.' },
-    { q: 'What is the difference between technographic and intent data?', a: 'Technographic data describes the technologies a company uses or is associated with. Intent data provides indicators that a company may be researching a topic, solution, or purchase. Neither type of data alone guarantees that a company is ready to buy.' },
-    { q: 'Can technographic data be combined with contact data?', a: 'Yes. Where suitable data is available, technology insights can be combined with company profiles and professional contact information to support more targeted prospecting and account research.' },
-    { q: 'How can I get started with Datamarketics?', a: 'Contact Datamarketics to discuss your target industries, technology categories, markets, and prospecting objectives. Our team can help clarify which data options are relevant to your requirements.' },
-];
 
 // Shared inline styles, matching the cards used on the industry pages.
 const card = { background: '#fff', borderRadius: '16px', padding: '26px 24px', border: '1px solid rgba(45,212,191,0.2)', boxShadow: '0 8px 24px rgba(13,115,119,0.08)', height: '100%' };

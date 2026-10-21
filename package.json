@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/TAPASHRANJANNANDI/Data-marketics#readme",
   "devDependencies": {
+    "@babel/parser": "7.29.9",
     "@vitejs/plugin-react": "^5.1.4",
     "vite": "^7.3.1"
   },
