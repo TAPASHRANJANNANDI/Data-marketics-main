@@ -1,0 +1,8 @@
+export const homeFaqs = [
+    { q: 'What is B2B Lead Generation?', a: 'B2B lead generation is the process of identifying and attracting potential business customers who may be interested in your products or services. It involves targeted outreach, data intelligence, and strategic engagement to convert prospects into qualified sales opportunities.' },
+    { q: 'What is Demand Generation?', a: 'Demand generation focuses on creating awareness and interest among potential buyers through strategic marketing initiatives. It encompasses the full funnel — from brand awareness to lead nurturing — to build a sustainable pipeline of engaged prospects.' },
+    { q: 'How Accurate Is Your Data?', a: 'Our data undergoes rigorous validation processes to maintain high levels of accuracy and reliability. We maintain a 98%+ accuracy rate through monthly verification cycles, AI-powered checks, and human validation to ensure low bounce rates and high deliverability.' },
+    { q: 'What Industries Do You Serve?', a: 'We serve technology, SaaS, healthcare, manufacturing, finance, education, retail, and other industries. Our industry-specific databases are tailored to the unique targeting requirements of each sector.' },
+    { q: 'Is Your Data GDPR Compliant?', a: 'Yes. We follow industry best practices and compliance standards for data management and usage. Our data collection and processing methods adhere to GDPR, CCPA, and other relevant privacy regulations.' },
+    { q: 'What does a marketing data provider do?', a: 'A marketing data provider supplies accurate B2B contact lists, firmographic data, technographic profiles, and insights to help sales & marketing teams reach key decision makers with the right message at the right time.' },
+];
