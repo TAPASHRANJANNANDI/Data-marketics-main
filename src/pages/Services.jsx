@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import DancingChart from '../components/DancingChart';
-import corporateIndustry from '../assets/img/about/corporate_industry.png';
+import corporateIndustry from '../assets/img/about/corporate_industry.webp';
 import icon1 from '../assets/img/icons/work5-icon1.png';
 import icon2 from '../assets/img/icons/work5-icon2.png';
 import icon3 from '../assets/img/icons/work5-icon3.png';
@@ -103,7 +103,7 @@ const Services = () => {
     return (
         <>
          <Helmet>
-            <title>B2B Data &amp; Lead Generation Services | Datamarketics</title>
+            <title>B2B Data &amp; Lead Generation Services | Data Marketics</title>
             <meta name="description" content="Explore data services, lead generation, prospecting, demand generation, appointment setting and other solutions designed to help businesses generate qualified opportunities." />
             <meta name="keywords" content="B2B data services, B2B lead generation services, B2B data provider, B2B database provider, B2B leads provider, B2B sales leads" />
             <link rel="canonical" href="https://datamarketics.com/services" />
@@ -195,7 +195,7 @@ const Services = () => {
                                                 type="button"
                                             >
                                                 <span className="svc-tab-icon">
-                                                    <img src={tab.icon} alt={tab.name} />
+                                                    <img src={tab.icon} alt={tab.name} loading="lazy" />
                                                 </span>
                                                 <span className="svc-tab-label">{tab.name}</span>
                                             </button>

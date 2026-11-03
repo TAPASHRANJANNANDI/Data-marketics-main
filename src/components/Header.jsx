@@ -206,7 +206,7 @@ const Header = () => {
                         <div className="header-elements">
                             <div className="site-logo home1-site-logo">
                                 <Link to="/" aria-label="Go to Home Page">
-                                    <img className="img-fluid" src={logo2} alt="Data Marketics Logo" />
+                                    <img className="img-fluid" src={logo2} alt="Data Marketics logo" width="150" height="42" loading="eager" fetchPriority="high" />
                                 </Link>
                             </div>
 
@@ -300,7 +300,7 @@ const Header = () => {
                 <div className="container"><div className="col-12">
                     <div className="mobile-header-elements">
                         <div className="mobile-logo">
-                            <Link to="/"><img src={logo2} alt="Logo" width="150" /></Link>
+                            <Link to="/"><img src={logo2} alt="Data Marketics logo" width="150" height="42" loading="eager" fetchPriority="high" /></Link>
                         </div>
                         <div className="mobile-nav-icon" onClick={toggleMobile} aria-label="Toggle menu">
                             {isMobileMenuOpen

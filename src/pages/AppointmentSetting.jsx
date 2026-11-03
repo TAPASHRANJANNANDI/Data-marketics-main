@@ -7,6 +7,7 @@ import strategyIcon from '../assets/img/icons/about-page-sec-icon1.png';
 import customIcon from '../assets/img/icons/about-page-sec-icon2.png';
 import analyticsIcon from '../assets/img/icons/about-page-sec-icon3.png';
 import { pageSchema } from '../data/schema';
+import { RelatedPosts } from '../components/RelatedLinks';
 
 const CORP_IMG = {
     hero: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80',
@@ -51,7 +52,7 @@ const AppointmentSetting = () => {
     return (
         <>
             <Helmet>
-                <title>Appointment Setting Services | Datamarketics</title>
+                <title>Appointment Setting Services | Data Marketics</title>
                 <meta name="description" content="Connect your sales team with qualified prospects through targeted outreach and appointment setting services designed to create meaningful sales conversations." />
                 <meta name="keywords" content="B2B appointment setting, appointment setting services, B2B sales leads, B2B leads provider, targeted B2B leads" />
                 <link rel="canonical" href="https://datamarketics.com/appointment-setting" />
@@ -101,7 +102,7 @@ const AppointmentSetting = () => {
                                     src={CORP_IMG.hero}
                                     alt="Appointment setting services connecting sales teams with decision-makers"
                                     style={{ borderRadius: '20px', boxShadow: '0 24px 60px rgba(13, 115, 119, 0.22)', width: '100%', height: '420px', objectFit: 'cover' }}
-                                    loading="eager"
+                                    loading="eager" fetchPriority="high"
                                 />
                             </motion.div>
                         </div>
@@ -204,7 +205,7 @@ const AppointmentSetting = () => {
                             >
                                 {services.map((s) => (
                                     <motion.div className="single-box" variants={fadeUp} key={s.title}>
-                                        <div className="icon"><img src={s.icon} alt={s.title} /></div>
+                                        <div className="icon"><img src={s.icon} alt={s.title} loading="lazy" /></div>
                                         <div className="space20"></div>
                                         <div className="headding2">
                                             <h3>{s.title}</h3>
@@ -337,6 +338,10 @@ const AppointmentSetting = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Posts that cover this service, so the blog and the
+                service pages link to each other in both directions. */}
+            <RelatedPosts service="/appointment-setting" />
         </>
     );
 };

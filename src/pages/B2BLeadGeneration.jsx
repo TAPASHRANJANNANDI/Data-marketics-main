@@ -7,6 +7,7 @@ import strategyIcon from '../assets/img/icons/about-page-sec-icon1.png';
 import customIcon from '../assets/img/icons/about-page-sec-icon2.png';
 import analyticsIcon from '../assets/img/icons/about-page-sec-icon3.png';
 import { pageSchema } from '../data/schema';
+import { RelatedPosts } from '../components/RelatedLinks';
 
 const CORP_IMG = {
     hero: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=80',
@@ -51,7 +52,7 @@ const B2BLeadGeneration = () => {
     return (
         <>
             <Helmet>
-                <title>B2B Lead Generation Services | Datamarketics</title>
+                <title>B2B Lead Generation Services | Data Marketics</title>
                 <meta name="description" content="Generate qualified prospects with verified leads, targeted contact data and prospecting solutions that help sales teams build a stronger and more consistent pipeline." />
                 <meta name="keywords" content="B2B lead generation services, B2B leads provider, B2B sales leads, verified B2B leads, targeted B2B leads, B2B prospecting data" />
                 <link rel="canonical" href="https://datamarketics.com/b2b-lead-generation" />
@@ -101,7 +102,7 @@ const B2BLeadGeneration = () => {
                                     src={CORP_IMG.hero}
                                     alt="B2B lead generation services connecting decision-makers"
                                     style={{ borderRadius: '20px', boxShadow: '0 24px 60px rgba(13, 115, 119, 0.22)', width: '100%', height: '420px', objectFit: 'cover' }}
-                                    loading="eager"
+                                    loading="eager" fetchPriority="high"
                                 />
                             </motion.div>
                         </div>
@@ -204,7 +205,7 @@ const B2BLeadGeneration = () => {
                             >
                                 {services.map((s) => (
                                     <motion.div className="single-box" variants={fadeUp} key={s.title}>
-                                        <div className="icon"><img src={s.icon} alt={s.title} /></div>
+                                        <div className="icon"><img src={s.icon} alt={s.title} loading="lazy" /></div>
                                         <div className="space20"></div>
                                         <div className="headding2">
                                             <h3>{s.title}</h3>
@@ -337,6 +338,10 @@ const B2BLeadGeneration = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Posts that cover this service, so the blog and the
+                service pages link to each other in both directions. */}
+            <RelatedPosts service="/b2b-lead-generation" />
         </>
     );
 };

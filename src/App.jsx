@@ -17,6 +17,7 @@ import B2BLeadGeneration from './pages/B2BLeadGeneration';
 import ThankYou from './pages/ThankYou';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
+import NotFound from './pages/NotFound';
 
 import ScrollToTop from './components/ScrollToTop';
 import ChatBot from './pages/ChatBot';
@@ -63,6 +64,11 @@ function App() {
                     <Route path="/industries/healthcare" element={<HealthcareIndustry />} />
                     <Route path="/industries/technology" element={<TechnologyIndustry />} />
                     <Route path="/technographic-data" element={<TechnographicData />} />
+                    
+                    {/* Unknown URLs: a real 404 page, not a silent fall-through to
+                        the homepage. The web server serves dist/404.html with an
+                        HTTP 404 status for these paths. */}
+                    <Route path="*" element={<NotFound />} />
                 </Routes>
             </Layout>
             {/* Rendered outside <Layout> so the chatbot's z-index isn't trapped

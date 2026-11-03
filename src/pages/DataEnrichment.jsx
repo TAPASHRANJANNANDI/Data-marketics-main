@@ -7,6 +7,7 @@ import strategyIcon from '../assets/img/icons/about-page-sec-icon1.png';
 import customIcon from '../assets/img/icons/about-page-sec-icon2.png';
 import analyticsIcon from '../assets/img/icons/about-page-sec-icon3.png';
 import { pageSchema } from '../data/schema';
+import { RelatedPosts } from '../components/RelatedLinks';
 
 const CORP_IMG = {
     hero: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=1200&q=80',
@@ -48,7 +49,7 @@ const DataEnrichment = () => {
     return (
         <>
             <Helmet>
-                <title>Data Enrichment Services | Datamarketics</title>
+                <title>Data Enrichment Services | Data Marketics</title>
                 <meta name="description" content="Improve company and contact records with data enrichment services that help update, complete and enhance prospect information for more effective sales outreach." />
                 <meta name="keywords" content="B2B data enrichment, data enrichment services, B2B data services, B2B Company profile, company database with emails" />
                 <link rel="canonical" href="https://datamarketics.com/data-enrichment" />
@@ -98,7 +99,7 @@ const DataEnrichment = () => {
                                     src={CORP_IMG.hero}
                                     alt="Data enrichment services improving CRM data quality"
                                     style={{ borderRadius: '20px', boxShadow: '0 24px 60px rgba(13, 115, 119, 0.22)', width: '100%', height: '420px', objectFit: 'cover' }}
-                                    loading="eager"
+                                    loading="eager" fetchPriority="high"
                                 />
                             </motion.div>
                         </div>
@@ -206,7 +207,7 @@ const DataEnrichment = () => {
                             >
                                 {services.map((s) => (
                                     <motion.div className="single-box" variants={fadeUp} key={s.title}>
-                                        <div className="icon"><img src={s.icon} alt={s.title} /></div>
+                                        <div className="icon"><img src={s.icon} alt={s.title} loading="lazy" /></div>
                                         <div className="space20"></div>
                                         <div className="headding2">
                                             <h3>{s.title}</h3>
@@ -344,6 +345,10 @@ const DataEnrichment = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Posts that cover this service, so the blog and the
+                service pages link to each other in both directions. */}
+            <RelatedPosts service="/data-enrichment" />
         </>
     );
 };

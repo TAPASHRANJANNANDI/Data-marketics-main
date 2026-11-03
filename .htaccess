@@ -1,16 +1,105 @@
-# BEGIN WordPress
+# Apache config for the built site (copied into dist/ by the Vite build).
+#
+# Replaces the old WordPress-era catch-all, which rewrote every unknown URL
+# to /index.html with a 200. That made the site serve the homepage for
+# addresses like /this-page-does-not-exist — a soft 404 that Google treats as
+# low quality and that wastes crawl budget. Every real route is now
+# pre-rendered to <route>/index.html by scripts/prerender.mjs, so anything
+# that does not match a generated page is genuinely not a page.
+#
+# The nginx equivalent lives in nginx.conf; keep the two in step.
+
+# Stop mod_negotiation guessing that /about-us means about-us.html.
+Options -MultiViews
+
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /
-RewriteRule ^index\.html$ - [L]
+
+# ---------------------------------------------------------------------------
+# 1. Canonical scheme and host, in a single hop.
+#
+# Each rule normalises scheme AND host at once, so http://www.example.com/x
+# reaches https://example.com/x with one 301 rather than a chain.
+# ---------------------------------------------------------------------------
+
+# http -> https (dropping www at the same time). X-Forwarded-Proto is checked
+# as well so this still behaves when TLS is terminated by a proxy in front.
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+
+# www -> non-www for requests that are already on https.
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+
+# ---------------------------------------------------------------------------
+# 2. Legacy URLs from the previous site, which Google still has indexed.
+# ---------------------------------------------------------------------------
+RewriteRule ^index\.html?$                   /                     [L,R=301]
+RewriteRule ^index\.php$                     /                     [L,R=301]
+RewriteRule ^index[0-9]+\.html$              /                     [L,R=301]
+# /about-us itself must not match here, or it would redirect to itself.
+RewriteRule ^about$                          /about-us             [L,R=301]
+RewriteRule ^about\.html$                    /about-us             [L,R=301]
+RewriteRule ^about-us\.html$                 /about-us             [L,R=301]
+RewriteRule ^contact\.html$                  /contact              [L,R=301]
+RewriteRule ^(?:our-)?services\.html$        /services             [L,R=301]
+RewriteRule ^features\.html$                 /features             [L,R=301]
+RewriteRule ^privacy-policy\.html$           /privacy-policy       [L,R=301]
+RewriteRule ^sitemap\.html$                  /sitemap              [L,R=301]
+RewriteRule ^demand-generation\.html$        /demand-generation    [L,R=301]
+RewriteRule ^b2b-lead-generation\.html$      /b2b-lead-generation  [L,R=301]
+RewriteRule ^data-enrichment\.html$          /data-enrichment      [L,R=301]
+RewriteRule ^intent-data\.html$              /intent-data          [L,R=301]
+RewriteRule ^appointment-setting\.html$      /appointment-setting  [L,R=301]
+RewriteRule ^exhibitors-data\.html$          /exhibitors-data      [L,R=301]
+
+# Retired service name; data enrichment is the closest current equivalent.
+RewriteRule ^data-segmentation-services(?:\.html)?$ /data-enrichment [L,R=301]
+
+# ---------------------------------------------------------------------------
+# 3. One URL per page: /about-us/ -> /about-us (the canonical form).
+# ---------------------------------------------------------------------------
+RewriteCond %{REQUEST_URI} !^/$
+RewriteRule ^(.+)/$ /$1 [L,R=301]
+
+# ---------------------------------------------------------------------------
+# 4. Serve the pre-rendered page for a clean URL, without a redirect.
+# ---------------------------------------------------------------------------
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.html [L]
+RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
+RewriteRule ^(.+?)/?$ /$1/index.html [L]
+
+# Anything left over is not a page: Apache returns 404 and serves
+# ErrorDocument below. There is deliberately no fallback to /index.html.
 </IfModule>
-# END WordPress
+
+ErrorDocument 404 /404.html
+
+# Long cache for the content-hashed build output; the HTML stays revalidated
+# so a deploy is picked up immediately.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css|woff2?|ttf|png|jpe?g|gif|svg|webp|avif|mp4)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json image/svg+xml
+</IfModule>
 
 # php -- BEGIN cPanel-generated handler, do not edit
-# Set the “ea-php73” package as the default “PHP” programming language.
+# Set the "ea-php73" package as the default "PHP" programming language.
 <IfModule mime_module>
   AddHandler application/x-httpd-ea-php73 .php .php7 .phtml
 </IfModule>

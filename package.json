@@ -5,10 +5,15 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "node scripts/generate-sitemap.mjs && vite build && node scripts/prerender.mjs",
     "preview": "vite preview",
     "index": "node backend/index-data.js",
-    "start:bot": "node backend/server.js"
+    "start:bot": "node backend/server.js",
+    "build:client": "vite build",
+    "sitemap": "node scripts/generate-sitemap.mjs",
+    "verify": "node scripts/verify-build.mjs",
+    "share-images": "node scripts/generate-share-images.mjs",
+    "og-images": "node scripts/generate-og-images.mjs"
   },
   "repository": {
     "type": "git",

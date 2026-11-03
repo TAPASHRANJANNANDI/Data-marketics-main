@@ -1,9 +1,13 @@
+# robots.txt for datamarketics.com
+#
+# Never block /js/, /css/ or /style/: Google must be able to load the
+# scripts and stylesheets it needs to render pages. Blocking them makes
+# every page look blank to the crawler.
+
 User-agent: *
 Allow: /
 
-Disallow: /css/**
-Disallow: /style/**
-Disallow: /new/**
-Disallow: /js/**
+# Unfinished pages only.
+Disallow: /new/
 
 Sitemap: https://datamarketics.com/sitemap.xml

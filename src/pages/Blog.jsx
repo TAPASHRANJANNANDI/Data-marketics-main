@@ -29,8 +29,8 @@ export default function Blog() {
     return (
         <>
             <Helmet>
-                <title>B2B Lead Generation &amp; Data Insights Blog | Datamarketics</title>
-                <meta name="description" content="Explore insights on lead generation, prospecting, business data, demand generation, sales strategies and marketing trends from Datamarketics." />
+                <title>B2B Lead Generation &amp; Data Insights Blog | Data Marketics</title>
+                <meta name="description" content="Explore insights on lead generation, prospecting, business data, demand generation, sales strategies and marketing trends from Data Marketics." />
                 <meta name="keywords" content="B2B lead generation blog, B2B prospecting data, B2B sales leads, B2B data provider, demand generation" />
                 <link rel="canonical" href="https://datamarketics.com/blog" />
                 <meta property="og:type" content="website" />
@@ -119,7 +119,7 @@ export default function Blog() {
                                     }}
                                     >
                                         <div style={{ aspectRatio: '1200 / 630', overflow: 'hidden', background: 'linear-gradient(135deg,#042f2e,#0d7377)' }}>
-                                            <img src={post.heroImage} alt="" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                                            <img src={post.heroImage} alt={post.title} width="1200" height="630" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                                         </div>
                                         <div style={{ padding: '22px 24px 26px', display: 'flex', flexDirection: 'column', gap: '12px', flex: '1 1 auto' }}>
                                             <span style={{ alignSelf: 'flex-start', fontSize: '11px', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#0d7377', background: 'rgba(45,212,191,0.10)', padding: '4px 10px', borderRadius: '999px' }}>{post.category}</span>

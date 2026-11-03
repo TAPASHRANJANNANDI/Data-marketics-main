@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { createRoot, hydrateRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App.jsx';
 
@@ -18,10 +18,23 @@ import './assets/css/responsive-fixes.css';
 // Gradient design system — loaded last so it can override the legacy theme
 import './index.css';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+const container = document.getElementById('root');
+
+const app = (
     <React.StrictMode>
         <BrowserRouter>
             <App />
         </BrowserRouter>
     </React.StrictMode>
 );
+
+// `npm run build` pre-renders every route into #root (scripts/prerender.mjs),
+// so in production there is already markup to adopt. Hydrating reuses it
+// instead of discarding and re-painting the whole page. In dev — and if the
+// pre-render step is ever skipped — #root is empty, so fall back to a plain
+// client render.
+if (container.hasChildNodes()) {
+    hydrateRoot(container, app);
+} else {
+    createRoot(container).render(app);
+}

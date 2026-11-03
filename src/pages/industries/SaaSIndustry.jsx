@@ -64,7 +64,7 @@ const SaaSIndustry = () => {
     return (
         <>
             <Helmet>
-                <title>SaaS Leads &amp; Contact Data | Datamarketics</title>
+                <title>SaaS Leads &amp; Contact Data | Data Marketics</title>
                 <meta name="description" content="Connect with SaaS companies and decision-makers using targeted contact data, business email lists and prospecting solutions designed for sales growth." />
                 <meta name="keywords" content="SaaS leads, SaaS database, B2B contact database, B2B email list, business email list" />
                 <link rel="canonical" href="https://datamarketics.com/industries/saas" />
@@ -97,7 +97,7 @@ const SaaSIndustry = () => {
                         </div>
                         <div className="col-lg-6">
                             <motion.div className="hero-image hero-image-static" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.2 }}>
-                                <img className="img-fluid" src={IMGS.hero} alt="SaaS industry marketing solutions" style={{ borderRadius: '20px', boxShadow: '0 24px 60px rgba(13,115,119,0.22)', width: '100%', height: '420px', objectFit: 'cover' }} loading="eager" />
+                                <img className="img-fluid" src={IMGS.hero} alt="SaaS industry marketing solutions" style={{ borderRadius: '20px', boxShadow: '0 24px 60px rgba(13,115,119,0.22)', width: '100%', height: '420px', objectFit: 'cover' }} loading="eager" fetchPriority="high" />
                             </motion.div>
                         </div>
                     </div>

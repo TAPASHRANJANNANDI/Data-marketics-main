@@ -7,6 +7,7 @@ import strategyIcon from '../assets/img/icons/about-page-sec-icon1.png';
 import customIcon from '../assets/img/icons/about-page-sec-icon2.png';
 import analyticsIcon from '../assets/img/icons/about-page-sec-icon3.png';
 import { pageSchema } from '../data/schema';
+import { RelatedPosts } from '../components/RelatedLinks';
 
 const CORP_IMG = {
     hero: 'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1200&q=80',
@@ -51,7 +52,7 @@ const IntentData = () => {
     return (
         <>
             <Helmet>
-                <title>Intent Data &amp; Buyer Insights | Datamarketics</title>
+                <title>Intent Data &amp; Buyer Insights | Data Marketics</title>
                 <meta name="description" content="Identify businesses showing buying interest with intent data and buyer insights that help sales and marketing teams prioritize high-potential prospects." />
                 <meta name="keywords" content="B2B intent data, intent data services, buyer intent data, B2B prospecting data, targeted B2B leads" />
                 <link rel="canonical" href="https://datamarketics.com/intent-data" />
@@ -204,7 +205,7 @@ const IntentData = () => {
                             >
                                 {services.map((s) => (
                                     <motion.div className="single-box" variants={fadeUp} key={s.title}>
-                                        <div className="icon"><img src={s.icon} alt={s.title} /></div>
+                                        <div className="icon"><img src={s.icon} alt={s.title} loading="lazy" /></div>
                                         <div className="space20"></div>
                                         <div className="headding2">
                                             <h3>{s.title}</h3>
@@ -337,6 +338,10 @@ const IntentData = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Posts that cover this service, so the blog and the
+                service pages link to each other in both directions. */}
+            <RelatedPosts service="/intent-data" />
         </>
     );
 };

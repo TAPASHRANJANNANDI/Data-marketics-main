@@ -7,6 +7,7 @@ import strategyIcon from '../assets/img/icons/about-page-sec-icon1.png';
 import customIcon from '../assets/img/icons/about-page-sec-icon2.png';
 import analyticsIcon from '../assets/img/icons/about-page-sec-icon3.png';
 import { pageSchema } from '../data/schema';
+import { RelatedPosts } from '../components/RelatedLinks';
 
 // Distinct corporate imagery for the Demand Generation page
 const CORP_IMG = {
@@ -24,7 +25,7 @@ const DemandGeneration = () => {
     return (
         <>
             <Helmet>
-                <title>Demand Generation Services | Datamarketics</title>
+                <title>Demand Generation Services | Data Marketics</title>
                 <meta name="description" content="Create awareness and generate qualified demand with targeted campaigns, prospecting data and demand generation strategies designed to support sustainable business growth." />
                 <meta name="keywords" content="demand generation, B2B demand generation, B2B lead generation services, targeted B2B leads, B2B prospecting data" />
                 <link rel="canonical" href="https://datamarketics.com/demand-generation" />
@@ -69,7 +70,7 @@ const DemandGeneration = () => {
                                     src={CORP_IMG.hero}
                                     alt="B2B demand generation team driving pipeline growth"
                                     style={{ borderRadius: '20px', boxShadow: '0 24px 60px rgba(13, 115, 119, 0.22)', width: '100%', height: '420px', objectFit: 'cover' }}
-                                    loading="eager"
+                                    loading="eager" fetchPriority="high"
                                 />
                             </motion.div>
                         </div>
@@ -181,7 +182,7 @@ const DemandGeneration = () => {
                                 }}
                             >
                                 <motion.div className="single-box" variants={fadeUp}>
-                                    <div className="icon"><img src={strategyIcon} alt="strategy icon" /></div>
+                                    <div className="icon"><img src={strategyIcon} alt="strategy icon" loading="lazy" /></div>
                                     <div className="space20"></div>
                                     <div className="headding2">
                                         <h3><Link to="/features">Data-Driven Targeting</Link></h3>
@@ -190,7 +191,7 @@ const DemandGeneration = () => {
                                     </div>
                                 </motion.div>
                                 <motion.div className="single-box" variants={fadeUp}>
-                                    <div className="icon"><img src={customIcon} alt="Custom Campaigns" /></div>
+                                    <div className="icon"><img src={customIcon} alt="Custom Campaigns" loading="lazy" /></div>
                                     <div className="space20"></div>
                                     <div className="headding2">
                                         <h3><Link to="/features">Custom Campaign Design</Link></h3>
@@ -199,7 +200,7 @@ const DemandGeneration = () => {
                                     </div>
                                 </motion.div>
                                 <motion.div className="single-box" variants={fadeUp}>
-                                    <div className="icon"><img src={analyticsIcon} alt="Performance" /></div>
+                                    <div className="icon"><img src={analyticsIcon} alt="Performance" loading="lazy" /></div>
                                     <div className="space20"></div>
                                     <div className="headding2">
                                         <h3><Link to="/features">Performance Monitoring &amp; Adjustment</Link></h3>
@@ -212,6 +213,10 @@ const DemandGeneration = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Posts that cover this service, so the blog and the
+                service pages link to each other in both directions. */}
+            <RelatedPosts service="/demand-generation" />
         </>
     );
 };
