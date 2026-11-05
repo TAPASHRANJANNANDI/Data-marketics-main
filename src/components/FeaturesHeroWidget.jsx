@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import corporateHero from '../assets/img/about/corporate_hero.png';
+import corporateHero from '../assets/img/about/corporate_hero.webp';
 import { Sparkles } from 'lucide-react';
 
 const FeaturesHeroWidget = () => {
@@ -214,8 +214,7 @@ const FeaturesHeroWidget = () => {
                         height: 'auto',
                         display: 'block',
                         objectFit: 'cover'
-                    }} 
-                />
+                    }} loading="eager" fetchPriority="high" />
             </div>
 
             {/* Floating Metric Card Overlay (Inherits absolute desktop positions) */}

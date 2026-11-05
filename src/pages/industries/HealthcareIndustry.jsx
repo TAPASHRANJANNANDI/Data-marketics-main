@@ -6,9 +6,9 @@ import DancingChart from '../../components/DancingChart';
 import { pageSchema } from '../../data/schema';
 
 const IMGS = {
-    hero:     '/assets/industries/healthcare-hero.jpg',
+    hero:     '/assets/industries/healthcare-hero.webp',
     section1: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=900&q=80',
-    section2: '/assets/industries/healthcare-expertise.jpg',
+    section2: '/assets/industries/healthcare-expertise.webp',
 };
 
 const fadeUp = {
@@ -63,7 +63,7 @@ const HealthcareIndustry = () => {
     return (
         <>
             <Helmet>
-                <title>Healthcare Leads &amp; Business Data | Datamarketics</title>
+                <title>Healthcare Leads &amp; Business Data | Data Marketics</title>
                 <meta name="description" content="Find healthcare companies and decision-makers with targeted contact data, verified leads and prospecting solutions built for healthcare sales and marketing teams." />
                 <meta name="keywords" content="healthcare leads, healthcare database, healthcare contact list, verified B2B leads, B2B prospecting data" />
                 <link rel="canonical" href="https://datamarketics.com/industries/healthcare" />
@@ -96,7 +96,7 @@ const HealthcareIndustry = () => {
                         </div>
                         <div className="col-lg-6">
                             <motion.div className="hero-image hero-image-static" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.2 }}>
-                                <img className="img-fluid" src={IMGS.hero} alt="Healthcare industry marketing solutions" style={{ borderRadius: '20px', boxShadow: '0 24px 60px rgba(13,115,119,0.22)', width: '100%', height: '420px', objectFit: 'cover' }} loading="eager" />
+                                <img className="img-fluid" src={IMGS.hero} alt="Healthcare industry marketing solutions" style={{ borderRadius: '20px', boxShadow: '0 24px 60px rgba(13,115,119,0.22)', width: '100%', height: '420px', objectFit: 'cover' }} loading="eager" fetchPriority="high" />
                             </motion.div>
                         </div>
                     </div>

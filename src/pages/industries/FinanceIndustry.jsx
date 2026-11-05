@@ -64,7 +64,7 @@ const FinanceIndustry = () => {
     return (
         <>
             <Helmet>
-                <title>Finance Industry Leads &amp; Business Data | Datamarketics</title>
+                <title>Finance Industry Leads &amp; Business Data | Data Marketics</title>
                 <meta name="description" content="Reach finance companies and decision-makers with targeted business data, contact information and lead generation solutions for financial services marketing and sales." />
                 <meta name="keywords" content="finance leads, financial services leads, finance database, B2B contact database, company database with emails" />
                 <link rel="canonical" href="https://datamarketics.com/industries/finance" />
@@ -97,7 +97,7 @@ const FinanceIndustry = () => {
                         </div>
                         <div className="col-lg-6">
                             <motion.div className="hero-image hero-image-static" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.2 }}>
-                                <img className="img-fluid" src={IMGS.hero} alt="Finance industry marketing solutions" style={{ borderRadius: '20px', boxShadow: '0 24px 60px rgba(13,115,119,0.22)', width: '100%', height: '420px', objectFit: 'cover' }} loading="eager" />
+                                <img className="img-fluid" src={IMGS.hero} alt="Finance industry marketing solutions" style={{ borderRadius: '20px', boxShadow: '0 24px 60px rgba(13,115,119,0.22)', width: '100%', height: '420px', objectFit: 'cover' }} loading="eager" fetchPriority="high" />
                             </motion.div>
                         </div>
                     </div>

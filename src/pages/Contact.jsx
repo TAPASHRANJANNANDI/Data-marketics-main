@@ -5,6 +5,7 @@ import contactIcon2 from '../assets/img/icons/contact-page-icon2.png';
 import contactIcon3 from '../assets/img/icons/contact-page-icon3.png';
 import { Helmet } from 'react-helmet';
 import { pageSchema } from '../data/schema';
+import { trackFormSubmission } from '../data/analytics';
 
 // Lightweight math CAPTCHA. Numbers 1..9 with +, -, x. Subtraction is
 // ordered so the result is always non-negative to avoid a "-3" answer.
@@ -28,8 +29,15 @@ const Contact = () => {
         message: ''
     });
     const [status, setStatus] = useState('');
-    const [captcha, setCaptcha] = useState(generateMathChallenge);
+    // Generated on the client only. The page is pre-rendered at build time,
+    // so picking random numbers during render would bake one puzzle into the
+    // HTML and then disagree with whatever the browser generated on hydration.
+    const [captcha, setCaptcha] = useState(null);
     const [captchaAnswer, setCaptchaAnswer] = useState('');
+
+    useEffect(() => {
+        setCaptcha(generateMathChallenge());
+    }, []);
 
     useEffect(() => {
         if (status && status !== 'Sending...') {
@@ -52,7 +60,7 @@ const Contact = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (captchaAnswer.trim() === '') {
+        if (!captcha || captchaAnswer.trim() === '') {
             setStatus('Please solve the security question.');
             return;
         }
@@ -72,6 +80,7 @@ const Contact = () => {
             });
             if (response.data.success) {
                 setStatus('Message sent successfully!');
+                trackFormSubmission('contact_page');
                 setFormData({ first_name: '', email: '', phone: '', website: '', industry: '', services: '', message: '' });
                 resetCaptcha();
             } else {
@@ -89,8 +98,8 @@ const Contact = () => {
     return (
         <>
             <Helmet>
-                <title>Contact Datamarketics | Data &amp; Lead Generation Solutions</title>
-                <meta name="description" content="Get in touch with Datamarketics for business data, contact databases, targeted leads and lead generation solutions tailored to your sales and marketing goals." />
+                <title>Contact Data Marketics | Data &amp; Lead Generation Solutions</title>
+                <meta name="description" content="Get in touch with Data Marketics for business data, contact databases, targeted leads and lead generation solutions tailored to your sales and marketing goals." />
                 <meta name="keywords" content="B2B data provider, B2B data services, B2B database provider, B2B leads provider, B2B lead generation services" />
                 <link rel="canonical" href="https://datamarketics.com/contact" />
                 <meta property="og:type" content="website" />
@@ -237,7 +246,7 @@ const Contact = () => {
                                                         fontWeight: 600,
                                                         margin: 0,
                                                     }}>
-                                                        Security check: what is <span style={{ fontFamily: 'monospace', fontSize: '17px' }}>{captcha.a} {captcha.op} {captcha.b}</span> ?
+                                                        Security check: what is <span style={{ fontFamily: 'monospace', fontSize: '17px' }}>{captcha ? `${captcha.a} ${captcha.op} ${captcha.b}` : '…'}</span> ?
                                                     </label>
                                                     <input
                                                         id="dm-captcha-answer"

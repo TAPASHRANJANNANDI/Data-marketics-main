@@ -3,7 +3,8 @@ import { Link, useParams, Navigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Calendar, Clock, ChevronDown, Sparkles } from 'lucide-react';
-import blogs, { getBlogBySlug } from '../data/blogs';
+import blogs, { getBlogBySlug, shareImageFor } from '../data/blogs';
+import { RelatedServices } from '../components/RelatedLinks';
 import { ORG_ID, WEBSITE_ID, LOGO_URL, breadcrumbNode } from '../data/schema';
 
 function formatDate(iso) {
@@ -175,7 +176,7 @@ function CTA({ title, text }) {
         }}>
             <div aria-hidden="true" style={{ position: 'absolute', top: '-80px', right: '-40px', width: '260px', height: '260px', background: 'radial-gradient(circle, rgba(94,234,212,0.30) 0%, rgba(94,234,212,0) 70%)', pointerEvents: 'none' }} />
             <div style={{ position: 'relative', zIndex: 1 }}>
-                <h3 style={{ fontSize: 'clamp(22px, 3vw, 26px)', fontWeight: 800, margin: '0 0 12px', lineHeight: 1.25 }}>{title}</h3>
+                <h3 className="dm-blog-cta-title" style={{ fontSize: 'clamp(22px, 3vw, 26px)', fontWeight: 800, margin: '0 0 12px', lineHeight: 1.25 }}>{title}</h3>
                 <p style={{ fontSize: '16px', color: '#ccfbf1', lineHeight: 1.7, margin: '0 0 22px' }}>{text}</p>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
                     <Link to="/contact" className="theme-btn2" style={{ background: '#ffffff', color: '#0d7377' }}>
@@ -233,7 +234,7 @@ export default function BlogPost() {
                 '@id': `${canonical}#article`,
                 headline: post.title,
                 description: post.metaDescription,
-                image: `https://datamarketics.com${post.heroImage}`,
+                image: `https://datamarketics.com${shareImageFor(post)}`,
                 datePublished: post.date,
                 dateModified: post.date,
                 author: { '@type': 'Organization', '@id': ORG_ID, name: 'Data Marketics' },
@@ -265,12 +266,12 @@ export default function BlogPost() {
                 <meta property="og:title" content={post.title} />
                 <meta property="og:description" content={post.metaDescription} />
                 <meta property="og:url" content={canonical} />
-                <meta property="og:image" content={`https://datamarketics.com${post.heroImage}`} />
+                <meta property="og:image" content={`https://datamarketics.com${shareImageFor(post)}`} />
                 <meta property="article:published_time" content={post.date} />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={post.title} />
                 <meta name="twitter:description" content={post.metaDescription} />
-                <meta name="twitter:image" content={`https://datamarketics.com${post.heroImage}`} />
+                <meta name="twitter:image" content={`https://datamarketics.com${shareImageFor(post)}`} />
                 <script type="application/ld+json">{jsonLd}</script>
             </Helmet>
 
@@ -309,7 +310,7 @@ export default function BlogPost() {
                     <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.1 }}
                         style={{ borderRadius: '20px', overflow: 'hidden', border: '1px solid rgba(45,212,191,0.22)', boxShadow: '0 26px 60px rgba(13,115,119,0.15)' }}>
                         <div style={{ aspectRatio: '1200 / 630', background: 'linear-gradient(135deg,#042f2e,#0d7377)' }}>
-                            <img src={post.heroImage} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                            <img src={post.heroImage} alt={post.heroImageAlt || post.title} width="1200" height="630" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} loading="eager" fetchPriority="high" />
                         </div>
                     </motion.div>
                 </div>
@@ -319,6 +320,8 @@ export default function BlogPost() {
             <div style={{ padding: '40px 20px 90px' }}>
                 <article className="container" style={{ maxWidth: '780px', position: 'relative', zIndex: 1 }}>
                     {post.content.map((block, i) => renderBlock(block, i))}
+
+                    <RelatedServices paths={post.relatedServices} />
                 </article>
 
                 {/* RELATED */}
@@ -339,7 +342,7 @@ export default function BlogPost() {
                                             onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 22px rgba(13,115,119,0.06)'; }}
                                         >
                                             <div style={{ flex: '0 0 96px', aspectRatio: '1 / 1', borderRadius: '10px', overflow: 'hidden', background: 'linear-gradient(135deg,#042f2e,#0d7377)' }}>
-                                                <img src={rp.heroImage} alt="" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                                                <img src={rp.heroImage} alt={rp.title} width="1200" height="630" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                                             </div>
                                             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
                                                 <span style={{ fontSize: '10.5px', fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#0d7377' }}>{rp.category}</span>

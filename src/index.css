@@ -167,6 +167,13 @@ h1, h2, h3, h4, h5, h6 {
     color: #ffffff !important;
 }
 
+/* Blog post CTA heading sits on a dark teal gradient; the global
+   h1-h6 ink color above would make it near-black and unreadable. */
+.dm-blog-cta-title {
+    -webkit-text-fill-color: #F5FFFD !important;
+    color: #F5FFFD !important;
+}
+
 p, li, span, label, td, th {
     color: var(--dm-ink-soft);
 }
@@ -2785,6 +2792,28 @@ body {
 
 .footer2 .menu-list li {
     margin-bottom: 10px;
+}
+
+/* Company name, address, phone and email in the footer. Kept as an
+   <address> so it reads as the business NAP, and matched word-for-word to
+   the Google Business Profile and directory listings. */
+.footer2 .footer-nap {
+    font-style: normal;
+    margin: 18px 0 20px;
+}
+
+.footer2 .footer-nap p {
+    margin-bottom: 10px;
+    font-size: 14.5px;
+}
+
+.footer2 .footer-nap a {
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.footer2 .footer-nap a:hover {
+    color: var(--dm-teal-300) !important;
 }
 
 .footer2 .menu-list li a:hover {

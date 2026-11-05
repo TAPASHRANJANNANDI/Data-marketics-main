@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import corporateIndustry from '../assets/img/about/corporate_industry.png';
+import corporateIndustry from '../assets/img/about/corporate_industry.webp';
 
 const ThreeDIndustryWidget = () => {
     const [scannedCount, setScannedCount] = useState(2591);
@@ -203,8 +203,7 @@ const ThreeDIndustryWidget = () => {
                         height: 'auto',
                         display: 'block',
                         objectFit: 'cover'
-                    }} 
-                />
+                    }} loading="lazy" />
             </div>
 
             {/* Floating Metric Card Overlay - Single DOM Node positioned responsively */}

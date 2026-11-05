@@ -5,8 +5,37 @@ import footerIcon1 from '../assets/img/icons/footer-icon1.png';
 import footerIcon2 from '../assets/img/icons/footer-icon2.png';
 import footerIcon3 from '../assets/img/icons/footer-icon3.png';
 import SocialLinks from './SocialLinks';
-// import footerShape1 from '../assets/img/shapes/footer2-shape.png';
-// import footerShape2 from '../assets/img/shapes/footer2-shape2.png';
+
+// Every service and industry page is linked from here. The footer is on all
+// pages, so it is what gives the deeper pages the internal links a crawler
+// needs to find and rank them — previously only five pages were reachable
+// from the footer.
+const SERVICE_LINKS = [
+    { to: '/b2b-lead-generation', label: 'B2B Lead Generation' },
+    { to: '/demand-generation', label: 'Demand Generation' },
+    { to: '/data-enrichment', label: 'Data Enrichment' },
+    { to: '/intent-data', label: 'Intent Data' },
+    { to: '/technographic-data', label: 'Technographic Data' },
+    { to: '/appointment-setting', label: 'Appointment Setting' },
+    { to: '/exhibitors-data', label: 'Exhibitors Data' },
+];
+
+const INDUSTRY_LINKS = [
+    { to: '/industries/technology', label: 'Technology' },
+    { to: '/industries/healthcare', label: 'Healthcare' },
+    { to: '/industries/finance', label: 'Finance' },
+    { to: '/industries/manufacturing', label: 'Manufacturing' },
+    { to: '/industries/saas', label: 'SaaS' },
+];
+
+const COMPANY_LINKS = [
+    { to: '/about-us', label: 'About Us' },
+    { to: '/features', label: 'Features' },
+    { to: '/services', label: 'Our Services' },
+    { to: '/blog', label: 'Blog' },
+    { to: '/contact', label: 'Contact Us' },
+    { to: '/sitemap', label: 'Sitemap' },
+];
 
 const Footer = () => {
     return (
@@ -42,29 +71,56 @@ const Footer = () => {
                 </div>
                 <div className="space50"></div>
                 <div className="row">
-                    <div className="col-lg-6 col-md-6">
+                    <div className="col-lg-4 col-md-12">
                         <div className="single-footer-items">
                             <h3>Data Marketics</h3>
                             <p>Data Marketics is a leading provider of data-driven marketing solutions. Founded six years ago, we have been on a journey to help businesses increase sales and expand their customer base by providing them with accurate and up-to-date data.</p>
+
+                            {/* Name, address, phone and email in plain text so they
+                                match the Google Business Profile and directory
+                                listings exactly. */}
+                            <address className="footer-nap">
+                                <p>
+                                    100 Horizon Center Blvd,<br />
+                                    Hamilton, NJ 08691, United States
+                                </p>
+                                <p>
+                                    <a href="tel:+16093222666">+1 (609) 322-2666</a>
+                                    <br />
+                                    <a href="mailto:sales@datamarketics.com">sales@datamarketics.com</a>
+                                </p>
+                            </address>
+
                             <SocialLinks variant="footer" />
                         </div>
                     </div>
-                    <div className="col-lg col-md-6 col-6">
+                    <div className="col-lg-3 col-md-4 col-6">
                         <div className="single-footer-items">
-                            <h3>Company</h3>
+                            <h3>Services</h3>
                             <ul className="menu-list">
-                                <li><Link to="/about-us">About us</Link></li>
-                                <li><Link to="/features">Features</Link></li>
+                                {SERVICE_LINKS.map(link => (
+                                    <li key={link.to}><Link to={link.to}>{link.label}</Link></li>
+                                ))}
                             </ul>
                         </div>
                     </div>
-                    <div className="col-lg col-md-6 col-6">
+                    <div className="col-lg-2 col-md-4 col-6">
                         <div className="single-footer-items">
-                            <h3>Resources</h3>
+                            <h3>Industries</h3>
                             <ul className="menu-list">
-                                <li><Link to="/services">Our Services</Link></li>
-                                <li><Link to="/about-us">Why Choose Us</Link></li>
-                                <li><Link to="/contact">Contact Us</Link></li>
+                                {INDUSTRY_LINKS.map(link => (
+                                    <li key={link.to}><Link to={link.to}>{link.label}</Link></li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="col-lg-3 col-md-4 col-6">
+                        <div className="single-footer-items">
+                            <h3>Company</h3>
+                            <ul className="menu-list">
+                                {COMPANY_LINKS.map(link => (
+                                    <li key={link.to}><Link to={link.to}>{link.label}</Link></li>
+                                ))}
                             </ul>
                         </div>
                     </div>
@@ -75,7 +131,7 @@ const Footer = () => {
                         <div className="col-md-5">
                             <div className="logo">
                                 <Link to="/">
-                                    <img className="img-fluid" src={logo2} alt="Data Marketics Logo" loading="lazy" width="120" />
+                                    <img className="img-fluid" src={logo2} alt="Data Marketics Logo" loading="lazy" width="120" height="34" />
                                 </Link>
                             </div>
                         </div>
@@ -86,14 +142,12 @@ const Footer = () => {
                                 <span className="copy-sep" aria-hidden="true">•</span>
                                 <Link to="/privacy-policy">Privacy Policy</Link>
                                 <span className="copy-sep" aria-hidden="true">•</span>
-                                <a href="https://datamarketics.com/sitemap.xml">Sitemap</a>
+                                <Link to="/sitemap">Sitemap</Link>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            {/* <img className="footer-shape" src={footerShape1} alt="Decorative Shape" loading="lazy" /> */}
-            {/* <img className="footer-shape2" src={footerShape2} alt="Decorative Shape" loading="lazy" /> */}
         </div>
     );
 };

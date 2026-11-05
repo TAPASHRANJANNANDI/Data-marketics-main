@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" preserveAspectRatio="xMidYMid slice" role="img" aria-label="How to Choose a Reliable B2B Data Provider">
+  <defs>
+    <linearGradient id="bgCP" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b2727"/>
+      <stop offset="55%" stop-color="#0f766e"/>
+      <stop offset="100%" stop-color="#2dd4bf"/>
+    </linearGradient>
+    <radialGradient id="glowCP1" cx="75%" cy="25%" r="55%">
+      <stop offset="0%" stop-color="#99f6e4" stop-opacity="0.30"/>
+      <stop offset="100%" stop-color="#99f6e4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowCP2" cx="18%" cy="82%" r="48%">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="dotsCP" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#ccfbf1" fill-opacity="0.10"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bgCP)"/>
+  <rect width="1200" height="630" fill="url(#dotsCP)"/>
+  <rect width="1200" height="630" fill="url(#glowCP1)"/>
+  <rect width="1200" height="630" fill="url(#glowCP2)"/>
+
+  <text x="600" y="100" fill="#ffffff" font-family="'Figtree','IBM Plex Sans','Segoe UI',sans-serif" font-weight="800" font-size="46" text-anchor="middle" letter-spacing="-0.5">How to Choose a B2B Data Provider</text>
+  <text x="600" y="142" fill="#99f6e4" font-family="'Figtree','IBM Plex Sans','Segoe UI',sans-serif" font-weight="600" font-size="19" text-anchor="middle" opacity="0.9">Seven factors that separate a reliable provider from the rest</text>
+
+  <!-- Shortlist of candidate providers being evaluated -->
+  <g transform="translate(150, 210)">
+    <g fill="#0b2727" fill-opacity="0.35" stroke="#99f6e4" stroke-opacity="0.45" stroke-width="2">
+      <rect x="0" y="0" width="330" height="64" rx="12"/>
+      <rect x="0" y="88" width="330" height="64" rx="12"/>
+      <rect x="0" y="176" width="330" height="64" rx="12"/>
+      <rect x="0" y="264" width="330" height="64" rx="12"/>
+    </g>
+
+    <!-- Provider avatars -->
+    <g fill="#5eead4" fill-opacity="0.75">
+      <circle cx="36" cy="32" r="14"/>
+      <circle cx="36" cy="120" r="14"/>
+      <circle cx="36" cy="208" r="14"/>
+      <circle cx="36" cy="296" r="14"/>
+    </g>
+
+    <!-- Score bars -->
+    <g stroke-linecap="round" stroke-width="8">
+      <line x1="70" y1="26" x2="250" y2="26" stroke="#ccfbf1" stroke-opacity="0.5"/>
+      <line x1="70" y1="42" x2="170" y2="42" stroke="#ccfbf1" stroke-opacity="0.28"/>
+
+      <line x1="70" y1="114" x2="210" y2="114" stroke="#ccfbf1" stroke-opacity="0.5"/>
+      <line x1="70" y1="130" x2="140" y2="130" stroke="#ccfbf1" stroke-opacity="0.28"/>
+
+      <line x1="70" y1="202" x2="265" y2="202" stroke="#ccfbf1" stroke-opacity="0.5"/>
+      <line x1="70" y1="218" x2="195" y2="218" stroke="#ccfbf1" stroke-opacity="0.28"/>
+
+      <line x1="70" y1="290" x2="185" y2="290" stroke="#ccfbf1" stroke-opacity="0.5"/>
+      <line x1="70" y1="306" x2="125" y2="306" stroke="#ccfbf1" stroke-opacity="0.28"/>
+    </g>
+
+    <!-- The provider that passes every check -->
+    <rect x="-8" y="168" width="346" height="80" rx="14" fill="none" stroke="#fcd34d" stroke-width="3"/>
+    <circle cx="300" cy="208" r="18" fill="#fcd34d"/>
+    <path d="M 292 208 l 6 7 l 12 -15" fill="none" stroke="#0b2727" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Evaluation criteria checklist -->
+  <g transform="translate(610, 210)">
+    <g fill="none" stroke="#5eead4" stroke-opacity="0.7" stroke-width="2.5">
+      <rect x="0" y="0" width="28" height="28" rx="7"/>
+      <rect x="0" y="72" width="28" height="28" rx="7"/>
+      <rect x="0" y="144" width="28" height="28" rx="7"/>
+      <rect x="0" y="216" width="28" height="28" rx="7"/>
+      <rect x="0" y="288" width="28" height="28" rx="7"/>
+    </g>
+
+    <g fill="none" stroke="#fcd34d" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M 7 14 l 6 7 l 12 -15"/>
+      <path d="M 7 86 l 6 7 l 12 -15"/>
+      <path d="M 7 158 l 6 7 l 12 -15"/>
+      <path d="M 7 230 l 6 7 l 12 -15"/>
+      <path d="M 7 302 l 6 7 l 12 -15"/>
+    </g>
+
+    <g stroke-linecap="round" stroke-width="9" stroke="#ccfbf1" stroke-opacity="0.45">
+      <line x1="52" y1="14" x2="272" y2="14"/>
+      <line x1="52" y1="86" x2="312" y2="86"/>
+      <line x1="52" y1="158" x2="240" y2="158"/>
+      <line x1="52" y1="230" x2="296" y2="230"/>
+      <line x1="52" y1="302" x2="258" y2="302"/>
+    </g>
+  </g>
+
+  <!-- Accent rule -->
+  <rect x="150" y="570" width="120" height="5" rx="2.5" fill="#fcd34d" fill-opacity="0.85"/>
+</svg>

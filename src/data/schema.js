@@ -36,6 +36,43 @@ const PAGES = {
 };
 
 const absolute = path => (path === '/' ? `${SITE_URL}/` : `${SITE_URL}${path}`);
+// Sitemap metadata for the static routes, keyed by the same paths as PAGES.
+// `source` is the page component, used by scripts/generate-sitemap.mjs to
+// read a real <lastmod> from git instead of stamping every URL with one
+// hand-typed date. A path listed in PAGES but absent here is deliberately
+// kept out of sitemap.xml: /sitemap is an HTML sitemap for people, and
+// search engines already have sitemap.xml.
+const SITEMAP_META = {
+    '/': { source: 'src/pages/Home.jsx', changefreq: 'weekly', priority: '1.0' },
+
+    '/about-us': { source: 'src/pages/About.jsx', changefreq: 'monthly', priority: '0.8' },
+    '/features': { source: 'src/pages/Features.jsx', changefreq: 'monthly', priority: '0.8' },
+    '/services': { source: 'src/pages/Services.jsx', changefreq: 'weekly', priority: '0.9' },
+    '/contact': { source: 'src/pages/Contact.jsx', changefreq: 'monthly', priority: '0.7' },
+
+    '/demand-generation': { source: 'src/pages/DemandGeneration.jsx', changefreq: 'weekly', priority: '0.9' },
+    '/b2b-lead-generation': { source: 'src/pages/B2BLeadGeneration.jsx', changefreq: 'weekly', priority: '0.9' },
+    '/data-enrichment': { source: 'src/pages/DataEnrichment.jsx', changefreq: 'monthly', priority: '0.8' },
+    '/intent-data': { source: 'src/pages/IntentData.jsx', changefreq: 'monthly', priority: '0.8' },
+    '/appointment-setting': { source: 'src/pages/AppointmentSetting.jsx', changefreq: 'monthly', priority: '0.8' },
+    '/exhibitors-data': { source: 'src/pages/ExhibitorsData.jsx', changefreq: 'monthly', priority: '0.8' },
+    '/technographic-data': { source: 'src/pages/TechnographicData.jsx', changefreq: 'monthly', priority: '0.7' },
+
+    '/industries/finance': { source: 'src/pages/industries/FinanceIndustry.jsx', changefreq: 'monthly', priority: '0.7' },
+    '/industries/healthcare': { source: 'src/pages/industries/HealthcareIndustry.jsx', changefreq: 'monthly', priority: '0.7' },
+    '/industries/manufacturing': { source: 'src/pages/industries/ManufacturingIndustry.jsx', changefreq: 'monthly', priority: '0.7' },
+    '/industries/saas': { source: 'src/pages/industries/SaaSIndustry.jsx', changefreq: 'monthly', priority: '0.7' },
+    '/industries/technology': { source: 'src/pages/industries/TechnologyIndustry.jsx', changefreq: 'monthly', priority: '0.7' },
+
+    '/blog': { source: 'src/pages/Blog.jsx', changefreq: 'weekly', priority: '0.8' },
+    '/privacy-policy': { source: 'src/pages/PrivacyPolicy.jsx', changefreq: 'yearly', priority: '0.3' },
+};
+
+// Ordered list of the static URLs that belong in sitemap.xml.
+export const SITEMAP_PAGES = Object.entries(SITEMAP_META).map(
+    ([path, meta]) => ({ path, ...meta })
+);
+
 
 // items: [{ name, path }] ordered from the homepage down to the current page.
 export const breadcrumbNode = (items, id) => ({

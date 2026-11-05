@@ -6,7 +6,7 @@ import DancingChart from '../../components/DancingChart';
 import { pageSchema } from '../../data/schema';
 
 const IMGS = {
-    hero:     '/assets/industries/manufacturing-hero.jpg',
+    hero:     '/assets/industries/manufacturing-hero.webp',
     section1: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=900&q=80',
     section2: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=900&q=80',
 };
@@ -70,7 +70,7 @@ const ManufacturingIndustry = () => {
     return (
         <>
             <Helmet>
-                <title>Manufacturing Leads &amp; Company Data | Datamarketics</title>
+                <title>Manufacturing Leads &amp; Company Data | Data Marketics</title>
                 <meta name="description" content="Find manufacturing companies and decision-makers using company data, contact information and targeted prospecting solutions for effective sales outreach." />
                 <meta name="keywords" content="manufacturing leads, manufacturing database, manufacturing contact list, B2B contact database, B2B prospecting data" />
                 <link rel="canonical" href="https://datamarketics.com/industries/manufacturing" />
@@ -103,7 +103,7 @@ const ManufacturingIndustry = () => {
                         </div>
                         <div className="col-lg-6">
                             <motion.div className="hero-image hero-image-static" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.2 }}>
-                                <img className="img-fluid" src={IMGS.hero} alt="Manufacturing industry marketing solutions" style={{ borderRadius: '20px', boxShadow: '0 24px 60px rgba(13,115,119,0.22)', width: '100%', height: '420px', objectFit: 'cover' }} loading="eager" />
+                                <img className="img-fluid" src={IMGS.hero} alt="Manufacturing industry marketing solutions" style={{ borderRadius: '20px', boxShadow: '0 24px 60px rgba(13,115,119,0.22)', width: '100%', height: '420px', objectFit: 'cover' }} loading="eager" fetchPriority="high" />
                             </motion.div>
                         </div>
                     </div>

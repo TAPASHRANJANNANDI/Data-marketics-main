@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { pageSchema } from '../data/schema';
+import { RelatedPosts } from '../components/RelatedLinks';
 
 const fadeUp = {
     hidden: { opacity: 0, y: 28 },
@@ -145,7 +146,7 @@ const TechnographicData = () => {
     return (
         <>
             <Helmet>
-                <title>Technographic Data Solutions for B2B Sales | Datamarketics</title>
+                <title>Technographic Data Solutions for B2B Sales | Data Marketics</title>
                 <meta name="description" content={SEO.description} />
                 <meta name="keywords" content={SEO.keywords} />
                 <link rel="canonical" href={SEO.url} />
@@ -169,7 +170,7 @@ const TechnographicData = () => {
                                 <div className="space16"></div>
                                 <h1 style={{ fontSize: '46px', lineHeight: '1.1' }}>Technographic Data Solutions for Smarter <span>B2B Prospecting</span></h1>
                                 <div className="space16"></div>
-                                <p>Understand the technologies businesses use to identify relevant prospects, personalize outreach, and make better sales and marketing decisions. Datamarketics helps businesses use company and technology insights to support more focused prospecting and account research.</p>
+                                <p>Understand the technologies businesses use to identify relevant prospects, personalize outreach, and make better sales and marketing decisions. Data Marketics helps businesses use company and technology insights to support more focused prospecting and account research.</p>
                                 <div className="space16"></div>
                                 <p>By understanding a company's technology environment, your team can better identify potential opportunities, prioritize target accounts, and develop outreach that aligns with a prospect's business needs.</p>
                                 <div className="space20"></div>
@@ -178,7 +179,7 @@ const TechnographicData = () => {
                                 </p>
                                 <div className="space30"></div>
                                 <div className="hero-btns" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '14px' }}>
-                                    <Link to="/contact" className="theme-btn2">Contact Datamarketics</Link>
+                                    <Link to="/contact" className="theme-btn2">Contact Data Marketics</Link>
                                     <span style={{ fontSize: '15px', color: 'var(--dm-ink-soft)', flex: '1 1 220px' }}>to discuss your prospecting and business data requirements.</span>
                                 </div>
                             </motion.div>
@@ -394,17 +395,17 @@ const TechnographicData = () => {
                 </div>
             </div>
 
-            {/* 8. Why Choose Datamarketics? */}
+            {/* 8. Why Choose Data Marketics? */}
             <div className="about-page-area1 sp">
                 <div className="container">
                     <div className="row align-items-center g-4">
                         <div className="col-lg-6">
                             <motion.div className="headding2" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
                                 <SectionNumber n={7} />
-                                <h2>Why Choose Datamarketics?</h2>
+                                <h2>Why Choose Data Marketics?</h2>
                                 <div className="space16"></div>
                                 <p style={bodyText}>Effective prospecting begins with understanding which companies are relevant to your business and what information your team needs to engage them.</p>
-                                <p style={bodyText}>Datamarketics supports business data and lead generation efforts by helping businesses focus on relevant prospects and build more targeted sales and marketing campaigns.</p>
+                                <p style={bodyText}>Data Marketics supports business data and lead generation efforts by helping businesses focus on relevant prospects and build more targeted sales and marketing campaigns.</p>
                             </motion.div>
                         </div>
                         <div className="col-lg-6">
@@ -460,13 +461,17 @@ const TechnographicData = () => {
                                 <h2 style={{ color: '#fff', fontSize: '38px', fontWeight: 800, marginBottom: '16px' }}>Find More Relevant Prospects with Better Data Insights</h2>
                                 <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '17px', marginBottom: '24px' }}>Make your prospecting more focused by understanding the companies you want to reach and the technologies they use.</p>
                                 <h3 style={{ color: '#fff', fontSize: '22px', fontWeight: 700, marginBottom: '24px' }}>Ready to discuss your requirements?</h3>
-                                <Link to="/contact" className="theme-btn2">Contact Datamarketics</Link>
+                                <Link to="/contact" className="theme-btn2">Contact Data Marketics</Link>
                                 <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '16px', marginTop: '18px', marginBottom: 0 }}>to explore business data and lead generation solutions for your sales and marketing goals.</p>
                             </motion.div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            {/* Posts that cover this service, so the blog and the
+                service pages link to each other in both directions. */}
+            <RelatedPosts service="/technographic-data" />
         </>
     );
 };

@@ -139,7 +139,7 @@ const Features = () => {
     return (
         <>
             <Helmet>
-                <title>Data &amp; Lead Generation Features | Datamarketics</title>
+                <title>Data &amp; Lead Generation Features | Data Marketics</title>
                 <meta name="description" content="Explore features for contact databases, company profiles, business email lists, prospecting data and targeted leads designed to support smarter sales outreach." />
                 <meta name="keywords" content="B2B contact database, business email list, B2B email list, company database with emails, B2B Company profile, B2B prospecting data" />
                 <link rel="canonical" href="https://datamarketics.com/features" />
@@ -373,8 +373,8 @@ const Features = () => {
                         <div className="col-lg-7">
                             <div className="images">
                                 <div className="image1" style={{ padding: '10px' }}><AnalyticalOverviewDashboard /></div>
-                                <div className="image2"><img className="img-fluid" src={innovationShape1} alt="Shape" /></div>
-                                <div className="image3"><img className="img-fluid" src={innovationShape2} alt="Shape" /></div>
+                                <div className="image2"><img className="img-fluid" src={innovationShape1} alt="Shape" loading="lazy" /></div>
+                                <div className="image3"><img className="img-fluid" src={innovationShape2} alt="Shape" loading="lazy" /></div>
                             </div>
                         </div>
                     </div>

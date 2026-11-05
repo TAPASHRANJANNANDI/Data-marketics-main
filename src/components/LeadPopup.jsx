@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import PhoneInput, { isValidPhoneNumber, getCountryCallingCode } from 'react-phone-number-input';
 import flags from 'react-phone-number-input/flags';
 import 'react-phone-number-input/style.css';
+import { trackFormSubmission } from '../data/analytics';
 
 // Custom searchable country dropdown. Replaces the native <select> the
 // library uses by default, which was rendering the OS country list far
@@ -303,6 +304,7 @@ export default function LeadPopup() {
             // Mark the popup as satisfied for the rest of this browser, hide
             // it, and hand the user off to the celebratory /thank-you page
             // instead of the inline success box (which briefly flashed before).
+            trackFormSubmission('lead_popup');
             localStorage.setItem(SUCCESS_KEY, 'true');
             setVisible(false);
             navigate('/thank-you');

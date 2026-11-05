@@ -11,6 +11,7 @@ import edit4 from '../assets/img/icons/editing6-icon4.svg';
 import secIcon1 from '../assets/img/icons/about-page-sec-icon1.png';
 import secIcon2 from '../assets/img/icons/about-page-sec-icon2.png';
 import { pageSchema } from '../data/schema';
+import { RelatedPosts } from '../components/RelatedLinks';
 
 // Distinct corporate event imagery for this page
 const CORP_EVENT = {
@@ -27,7 +28,7 @@ const ExhibitorsData = () => {
     return (
         <>
         <Helmet>
-            <title>Exhibitor Data &amp; Prospecting Solutions | Datamarketics</title>
+            <title>Exhibitor Data &amp; Prospecting Solutions | Data Marketics</title>
             <meta name="description" content="Discover potential customers with exhibitor data, company information and prospecting solutions designed to turn trade show audiences into sales opportunities." />
             <meta name="keywords" content="exhibitor data, exhibitor lists, trade show leads, B2B prospecting data, B2B Company profile, targeted B2B leads" />
             <link rel="canonical" href="https://datamarketics.com/exhibitors-data" />
@@ -65,14 +66,14 @@ const ExhibitorsData = () => {
                                     src={CORP_EVENT.hero}
                                     alt="Exhibitors data dashboard for B2B event marketing"
                                     style={{ borderRadius: '20px', boxShadow: '0 24px 60px rgba(13, 115, 119, 0.22)', width: '100%', height: '420px', objectFit: 'cover' }}
-                                    loading="eager"
+                                    loading="eager" fetchPriority="high"
                                 />
                             </motion.div>
                         </div>
                     </div>
                 </div>
-                {/* <img className="hero-shape1" src={shape1} alt="" /> */}
-                {/* <img className="hero-shape2" src={shape2} alt="" /> */}
+                {/* <img className="hero-shape1" src={shape1} alt="" loading="lazy" /> */}
+                {/* <img className="hero-shape2" src={shape2} alt="" loading="lazy" /> */}
             </div>
 
             <div className="about-page-area1 sp">
@@ -127,7 +128,7 @@ const ExhibitorsData = () => {
                     <div className="row">
                         <div className="col-lg-8 m-auto text-center">
                             <div className="heading6">
-                                <span className="title"><img src={spanImage6} alt="Icon" /></span>
+                                <span className="title"><img src={spanImage6} alt="Icon" loading="lazy" /></span>
                                 <h2>How Our Exhibitors Data Helps You Generate Qualified Leads</h2>
                             </div>
                         </div>
@@ -143,7 +144,7 @@ const ExhibitorsData = () => {
                         ].map((item, index) => (
                             <div className="col-lg-4 col-md-6 mb-4" key={index}>
                                 <div className="editing-box">
-                                    <div className="icon"><img src={item.icon} alt={item.title} width="48" /></div>
+                                    <div className="icon"><img src={item.icon} alt={item.title} width="48" loading="lazy" /></div>
                                     <h4>{item.title}</h4>
                                     <p>{item.text}</p>
                                 </div>
@@ -198,12 +199,12 @@ const ExhibitorsData = () => {
                                 }}
                             >
                                 <motion.div className="single-box" variants={fadeUp}>
-                                    <div className="icon"><img src={secIcon1} alt="trade show exhibitor analytics" /></div>
+                                    <div className="icon"><img src={secIcon1} alt="trade show exhibitor analytics" loading="lazy" /></div>
                                     <h4>Time and Cost Efficiency</h4>
                                     <p>Save resources by accessing curated lists in one place.</p>
                                 </motion.div>
                                 <motion.div className="single-box" variants={fadeUp}>
-                                    <div className="icon"><img src={secIcon2} alt="exhibitor data sales analytics dashboard" /></div>
+                                    <div className="icon"><img src={secIcon2} alt="exhibitor data sales analytics dashboard" loading="lazy" /></div>
                                     <h4>Ready-to-Use Sales Leads</h4>
                                     <p>Exhibitor contacts are sales-qualified prospects primed for outreach.</p>
                                 </motion.div>
@@ -212,6 +213,10 @@ const ExhibitorsData = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Posts that cover this service, so the blog and the
+                service pages link to each other in both directions. */}
+            <RelatedPosts service="/exhibitors-data" />
         </>
     );
 };

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import corporateHero from '../assets/img/about/corporate_hero.png';
+import corporateHero from '../assets/img/about/corporate_hero.webp';
 
 const ThreeDHeroWidget = () => {
     const [leadsCount, setLeadsCount] = useState(1482);
@@ -179,8 +179,7 @@ const ThreeDHeroWidget = () => {
                         height: 'auto',
                         display: 'block',
                         objectFit: 'cover'
-                    }} 
-                />
+                    }} loading="eager" fetchPriority="high" />
             </div>
 
             {/* Floating Metric Card Overlay - Single DOM Node positioned responsively */}

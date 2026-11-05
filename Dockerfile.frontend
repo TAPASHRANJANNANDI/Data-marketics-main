@@ -5,6 +5,9 @@ COPY package.json package-lock.json ./
 RUN npm ci
 
 COPY index.html vite.config.mjs ./
+# scripts/ holds the sitemap generator and the pre-render step that npm run
+# build invokes. Without it the build produces head-only pages again.
+COPY scripts ./scripts
 COPY src ./src
 COPY public ./public
 
