@@ -176,7 +176,7 @@ function CTA({ title, text }) {
         }}>
             <div aria-hidden="true" style={{ position: 'absolute', top: '-80px', right: '-40px', width: '260px', height: '260px', background: 'radial-gradient(circle, rgba(94,234,212,0.30) 0%, rgba(94,234,212,0) 70%)', pointerEvents: 'none' }} />
             <div style={{ position: 'relative', zIndex: 1 }}>
-                <h3 style={{ fontSize: 'clamp(22px, 3vw, 26px)', fontWeight: 800, margin: '0 0 12px', lineHeight: 1.25 }}>{title}</h3>
+                <h3 className="dm-blog-cta-title" style={{ fontSize: 'clamp(22px, 3vw, 26px)', fontWeight: 800, margin: '0 0 12px', lineHeight: 1.25 }}>{title}</h3>
                 <p style={{ fontSize: '16px', color: '#ccfbf1', lineHeight: 1.7, margin: '0 0 22px' }}>{text}</p>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
                     <Link to="/contact" className="theme-btn2" style={{ background: '#ffffff', color: '#0d7377' }}>

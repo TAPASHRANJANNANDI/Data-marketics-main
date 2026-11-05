@@ -167,6 +167,13 @@ h1, h2, h3, h4, h5, h6 {
     color: #ffffff !important;
 }
 
+/* Blog post CTA heading sits on a dark teal gradient; the global
+   h1-h6 ink color above would make it near-black and unreadable. */
+.dm-blog-cta-title {
+    -webkit-text-fill-color: #F5FFFD !important;
+    color: #F5FFFD !important;
+}
+
 p, li, span, label, td, th {
     color: var(--dm-ink-soft);
 }
