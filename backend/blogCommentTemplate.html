@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Blog Comment - Data Marketics</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f4f7f6; color: #333333; -webkit-font-smoothing: antialiased;">
+    <div style="max-width: 600px; margin: 40px auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+
+        <!-- Top accent line -->
+        <div style="height: 6px; background: linear-gradient(90deg, #25b9a3, #007bff); width: 100%;"></div>
+
+        <!-- Header -->
+        <div style="background-color: #101537; padding: 35px 40px; text-align: center;">
+            <div style="display: inline-block; background-color: rgba(37,185,163,0.15); border-radius: 50px; padding: 8px 20px; margin-bottom: 15px;">
+                <span style="color: #25b9a3; font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">💬 Blog Comment</span>
+            </div>
+            <h1 style="color: #ffffff; margin: 0; font-size: 24px; font-weight: 600; letter-spacing: 0.5px;">New Comment on the Blog</h1>
+            <p style="color: #aeb4d1; margin: 8px 0 0 0; font-size: 15px;">{{post_title}}</p>
+        </div>
+
+        <!-- Body -->
+        <div style="padding: 40px;">
+            <p style="font-size: 16px; color: #444; line-height: 1.6; margin-top: 0; margin-bottom: 25px;">Hello Team,</p>
+            <p style="font-size: 16px; color: #444; line-height: 1.6; margin-top: 0; margin-bottom: 30px;">A reader left a comment on a Data Marketics blog post. Comments are not published on the site, so this email is the only copy — reply directly if it deserves a response.</p>
+
+            <!-- The comment itself -->
+            <div style="background-color: #f0fdf9; border-left: 4px solid #25b9a3; border-radius: 6px; padding: 20px 24px; margin-bottom: 32px;">
+                <p style="color: #0d7e6a; font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin: 0 0 12px 0;">Comment</p>
+                <p style="color: #222222; font-size: 15px; line-height: 1.7; margin: 0; white-space: pre-wrap;">{{comment}}</p>
+            </div>
+
+            <!-- Commenter details -->
+            <table style="width: 100%; border-collapse: collapse; margin-bottom: 35px; background-color: #fcfcfc; border-radius: 6px; overflow: hidden; border: 1px solid #eeeeee;">
+                <tr>
+                    <td style="padding: 16px 20px; border-bottom: 1px solid #eeeeee; width: 35%; background-color: #f8f9fa;">
+                        <strong style="color: #101537; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">👤 Name</strong>
+                    </td>
+                    <td style="padding: 16px 20px; border-bottom: 1px solid #eeeeee; color: #222222; font-size: 15px; font-weight: 600;">{{name}}</td>
+                </tr>
+                <tr>
+                    <td style="padding: 16px 20px; border-bottom: 1px solid #eeeeee; background-color: #f8f9fa;">
+                        <strong style="color: #101537; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">✉️ Email</strong>
+                    </td>
+                    <td style="padding: 16px 20px; border-bottom: 1px solid #eeeeee; font-size: 15px;">
+                        <a href="mailto:{{email}}" style="color: #25b9a3; text-decoration: none; font-weight: 600;">{{email}}</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 16px 20px; border-bottom: 1px solid #eeeeee; background-color: #f8f9fa;">
+                        <strong style="color: #101537; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">🌐 Website</strong>
+                    </td>
+                    <td style="padding: 16px 20px; border-bottom: 1px solid #eeeeee; color: #222222; font-size: 15px;">{{website}}</td>
+                </tr>
+                <tr>
+                    <td style="padding: 16px 20px; background-color: #f8f9fa;">
+                        <strong style="color: #101537; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">📄 Post</strong>
+                    </td>
+                    <td style="padding: 16px 20px; font-size: 15px;">
+                        <a href="{{post_url}}" style="color: #25b9a3; text-decoration: none; font-weight: 600;">{{post_title}}</a>
+                    </td>
+                </tr>
+            </table>
+
+            <!-- CTA Button -->
+            <div style="text-align: center;">
+                <a href="mailto:{{email}}" style="background-color: #25b9a3; color: #ffffff; padding: 14px 35px; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 15px; display: inline-block;">
+                    Reply to {{name}}
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div style="background-color: #101537; padding: 25px; text-align: center;">
+            <p style="color: #7b83a6; font-size: 13px; margin: 0;">© {{year}} Data Marketics. All rights reserved.</p>
+            <p style="color: #4a5173; font-size: 12px; margin: 10px 0 0 0;">This email was automatically generated by the blog comment form.</p>
+        </div>
+    </div>
+</body>
+</html>

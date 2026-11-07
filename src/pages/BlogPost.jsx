@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Calendar, Clock, ChevronDown, Sparkles } from 'lucide-react';
 import blogs, { getBlogBySlug, shareImageFor } from '../data/blogs';
 import { RelatedServices } from '../components/RelatedLinks';
+import BlogCommentForm from '../components/BlogCommentForm';
 import { ORG_ID, WEBSITE_ID, LOGO_URL, breadcrumbNode } from '../data/schema';
 
 function formatDate(iso) {
@@ -322,6 +323,8 @@ export default function BlogPost() {
                     {post.content.map((block, i) => renderBlock(block, i))}
 
                     <RelatedServices paths={post.relatedServices} />
+
+                    <BlogCommentForm slug={post.slug} title={post.title} />
                 </article>
 
                 {/* RELATED */}

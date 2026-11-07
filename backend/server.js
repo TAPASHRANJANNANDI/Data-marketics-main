@@ -42,6 +42,20 @@ app.use(json());
 app.use(urlencoded({ extended: true }));
 app.use('/api/chat', apiLimiter);
 
+// Blog comment forms attract bots. Rejected attempts are counted too, so a
+// script cannot sit on the endpoint guessing CAPTCHA answers — which is why
+// the ceiling is 8 rather than 3: a real reader who mistypes their email and
+// then fumbles the security question still has room to finish.
+const commentLimiter = rateLimit({
+    windowMs: 10 * 60 * 1000,
+    max: 8,
+    message: 'Too many comments from this address. Please try again in a few minutes.',
+    standardHeaders: true,
+    legacyHeaders: false,
+});
+
+app.use('/api/blog-comment', commentLimiter);
+
 // Trust the front-end nginx / docker-proxy so rate-limit can identify clients
 // via X-Forwarded-For without warning.
 app.set('trust proxy', 1);
@@ -261,6 +275,125 @@ app.post('/api/send-email', async (req, res) => {
     } catch (error) {
         console.error('Error sending email:', error);
         res.status(500).json({ success: false, message: error.message });
+    }
+});
+
+// Blog comments are emailed to the team rather than published on the
+// site, so there is no moderation queue, no stored data and no comment
+// markup for Google to index.
+const COMMENT_LIMITS = {
+    name: 80,
+    email: 160,
+    website: 200,
+    comment: 4000,
+};
+
+const escapeHtml = (value) =>
+    String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+
+app.post('/api/blog-comment', async (req, res) => {
+    const body = req.body || {};
+    const name = String(body.name || '').trim();
+    const email = String(body.email || '').trim();
+    const website = String(body.website || '').trim();
+    const comment = String(body.comment || '').trim();
+    const slug = String(body.slug || '').trim();
+    const title = String(body.title || '').trim();
+
+    // Honeypot: a hidden field no human ever sees. Bots fill every input
+    // they find, so anything here means a bot. Answer 200 so it has
+    // nothing to learn from the response, and send no email.
+    if (String(body.company || '').trim()) {
+        console.log('🕳️  Blog comment rejected: honeypot filled');
+        return res.json({ success: true, message: 'Thanks — your comment has been sent.' });
+    }
+
+    if (!name || !email || !comment || !slug) {
+        return res.status(400).json({ success: false, message: 'Please fill in your name, email and comment.' });
+    }
+
+    for (const [field, limit] of Object.entries(COMMENT_LIMITS)) {
+        if (body[field] && String(body[field]).length > limit) {
+            return res.status(400).json({
+                success: false,
+                message: `Your ${field} is too long (maximum ${limit} characters).`,
+            });
+        }
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+        return res.status(400).json({ success: false, message: 'Please enter a valid email address.' });
+    }
+
+    if (!verifyMathCaptcha(body.captcha)) {
+        return res.status(400).json({ success: false, message: 'Incorrect answer to the security question. Please try again.' });
+    }
+
+    // Built here rather than taken from the request so a bot cannot use
+    // the email as a way to inject an arbitrary link.
+    const postUrl = `https://datamarketics.com/blog/${encodeURIComponent(slug)}`;
+    const postTitle = title || slug;
+
+    // Anything that reaches a mail header must not carry line breaks.
+    const headerSafe = value => String(value).replace(/[\r\n]+/g, ' ').trim();
+
+    try {
+        const transporter = nodemailer.createTransport({
+            host: process.env.EMAIL_HOST || 'smtp.gmail.com',
+            port: parseInt(process.env.EMAIL_PORT || '587', 10),
+            secure: process.env.EMAIL_PORT === '465',
+            auth: {
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS,
+            },
+        });
+
+        const templatePath = path.resolve(__dirname, './blogCommentTemplate.html');
+
+        if (!fs.existsSync(templatePath)) {
+            throw new Error(`Template file not found at: ${templatePath}`);
+        }
+
+        // Every value is escaped: the comment is untrusted text going
+        // straight into an HTML email.
+        const html = fs.readFileSync(templatePath, 'utf8')
+            .replace(/\{\{name\}\}/g, escapeHtml(name))
+            .replace(/\{\{email\}\}/g, escapeHtml(email))
+            .replace(/\{\{website\}\}/g, escapeHtml(website || 'Not provided'))
+            .replace(/\{\{comment\}\}/g, escapeHtml(comment))
+            .replace(/\{\{post_title\}\}/g, escapeHtml(postTitle))
+            .replace(/\{\{post_url\}\}/g, escapeHtml(postUrl))
+            .replace(/\{\{year\}\}/g, new Date().getFullYear());
+
+        const info = await transporter.sendMail({
+            from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
+            to: process.env.EMAIL_TO || process.env.EMAIL_USER,
+            // Replying in the mail client goes to the reader, not to us.
+            replyTo: email,
+            subject: headerSafe(`💬 New blog comment on "${postTitle}" — ${name}`),
+            text: [
+                'New blog comment',
+                `Post: ${postTitle}`,
+                `URL: ${postUrl}`,
+                `Name: ${name}`,
+                `Email: ${email}`,
+                `Website: ${website || 'Not provided'}`,
+                '',
+                comment,
+            ].join('\n'),
+            html,
+        });
+
+        console.log('💬 Blog comment emailed: ' + info.response);
+        res.json({ success: true, message: 'Thanks — your comment has been sent.' });
+    } catch (error) {
+        console.error('Error sending blog comment:', error);
+        res.status(500).json({ success: false, message: 'Could not send your comment. Please try again later.' });
     }
 });
 

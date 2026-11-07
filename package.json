@@ -13,7 +13,8 @@
     "sitemap": "node scripts/generate-sitemap.mjs",
     "verify": "node scripts/verify-build.mjs",
     "share-images": "node scripts/generate-share-images.mjs",
-    "og-images": "node scripts/generate-og-images.mjs"
+    "og-images": "node scripts/generate-og-images.mjs",
+    "test:comments": "node scripts/test-blog-comments.mjs"
   },
   "repository": {
     "type": "git",
