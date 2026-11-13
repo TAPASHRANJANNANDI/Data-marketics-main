@@ -29,7 +29,7 @@ export default function Blog() {
     return (
         <>
             <Helmet>
-                <title>B2B Lead Generation &amp; Data Insights Blog | Data Marketics</title>
+                <title>B2B Lead Generation and Data Insights Blog | Data Marketics</title>
                 <meta name="description" content="Explore insights on lead generation, prospecting, business data, demand generation, sales strategies and marketing trends from Data Marketics." />
                 <meta name="keywords" content="B2B lead generation blog, B2B prospecting data, B2B sales leads, B2B data provider, demand generation" />
                 <link rel="canonical" href="https://datamarketics.com/blog" />

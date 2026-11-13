@@ -64,7 +64,7 @@ const FinanceIndustry = () => {
     return (
         <>
             <Helmet>
-                <title>Finance Industry Leads &amp; Business Data | Data Marketics</title>
+                <title>Finance Industry Leads and Business Data | Data Marketics</title>
                 <meta name="description" content="Reach finance companies and decision-makers with targeted business data, contact information and lead generation solutions for financial services marketing and sales." />
                 <meta name="keywords" content="finance leads, financial services leads, finance database, B2B contact database, company database with emails" />
                 <link rel="canonical" href="https://datamarketics.com/industries/finance" />

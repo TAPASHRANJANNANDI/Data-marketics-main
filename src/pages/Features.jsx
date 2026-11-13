@@ -139,7 +139,7 @@ const Features = () => {
     return (
         <>
             <Helmet>
-                <title>Data &amp; Lead Generation Features | Data Marketics</title>
+                <title>Data and Lead Generation Features | Data Marketics</title>
                 <meta name="description" content="Explore features for contact databases, company profiles, business email lists, prospecting data and targeted leads designed to support smarter sales outreach." />
                 <meta name="keywords" content="B2B contact database, business email list, B2B email list, company database with emails, B2B Company profile, B2B prospecting data" />
                 <link rel="canonical" href="https://datamarketics.com/features" />

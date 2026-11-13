@@ -242,7 +242,7 @@ const blogs = [
     {
         slug: 'how-to-generate-high-quality-b2b-leads',
         title: 'How to Generate High-Quality B2B Leads That Convert',
-        metaTitle: "How to Generate High-Quality B2B Leads: Strategies & Tips",
+        metaTitle: "How to Generate High-Quality B2B Leads: Strategies and Tips",
         metaDescription: "Discover practical ways to generate high-quality leads using targeted prospecting, verified data, business email lists and effective outreach strategies.",
         metaKeywords: "high-quality B2B leads, verified B2B leads, targeted B2B leads, B2B prospecting data, B2B sales leads",
         excerpt: 'Generating leads is easy. Generating high-quality B2B leads that actually convert is the real challenge. A 10-step playbook for filling your pipeline with prospects that close.',

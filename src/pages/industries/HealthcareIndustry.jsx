@@ -63,7 +63,7 @@ const HealthcareIndustry = () => {
     return (
         <>
             <Helmet>
-                <title>Healthcare Leads &amp; Business Data | Data Marketics</title>
+                <title>Healthcare Leads and Business Data | Data Marketics</title>
                 <meta name="description" content="Find healthcare companies and decision-makers with targeted contact data, verified leads and prospecting solutions built for healthcare sales and marketing teams." />
                 <meta name="keywords" content="healthcare leads, healthcare database, healthcare contact list, verified B2B leads, B2B prospecting data" />
                 <link rel="canonical" href="https://datamarketics.com/industries/healthcare" />

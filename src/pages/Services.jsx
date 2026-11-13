@@ -103,7 +103,7 @@ const Services = () => {
     return (
         <>
          <Helmet>
-            <title>B2B Data &amp; Lead Generation Services | Data Marketics</title>
+            <title>B2B Data and Lead Generation Services | Data Marketics</title>
             <meta name="description" content="Explore data services, lead generation, prospecting, demand generation, appointment setting and other solutions designed to help businesses generate qualified opportunities." />
             <meta name="keywords" content="B2B data services, B2B lead generation services, B2B data provider, B2B database provider, B2B leads provider, B2B sales leads" />
             <link rel="canonical" href="https://datamarketics.com/services" />
