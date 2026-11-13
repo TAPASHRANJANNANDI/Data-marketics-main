@@ -64,7 +64,7 @@ const SaaSIndustry = () => {
     return (
         <>
             <Helmet>
-                <title>SaaS Leads &amp; Contact Data | Data Marketics</title>
+                <title>SaaS Leads and Contact Data | Data Marketics</title>
                 <meta name="description" content="Connect with SaaS companies and decision-makers using targeted contact data, business email lists and prospecting solutions designed for sales growth." />
                 <meta name="keywords" content="SaaS leads, SaaS database, B2B contact database, B2B email list, business email list" />
                 <link rel="canonical" href="https://datamarketics.com/industries/saas" />

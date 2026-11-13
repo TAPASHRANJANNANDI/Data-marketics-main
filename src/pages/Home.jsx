@@ -167,7 +167,7 @@ const Home = () => {
     return (
         <>
             <Helmet>
-                <title>B2B Data Provider &amp; Lead Generation Solutions | Data Marketics</title>
+                <title>B2B Data Provider and Lead Generation Solutions | Data Marketics</title>
                 <meta name="description" content="Data Marketics provides reliable business data, contact databases, targeted leads and lead generation solutions to help businesses find and connect with the right prospects." />
                 <meta name="keywords" content="B2B data provider, B2B database provider, B2B data services, B2B contact database, targeted B2B leads, B2B prospecting data" />
                 <link rel="canonical" href="https://datamarketics.com/" />

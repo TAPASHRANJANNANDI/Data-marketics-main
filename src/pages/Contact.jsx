@@ -98,7 +98,7 @@ const Contact = () => {
     return (
         <>
             <Helmet>
-                <title>Contact Data Marketics | Data &amp; Lead Generation Solutions</title>
+                <title>Contact Data Marketics | Data and Lead Generation Solutions</title>
                 <meta name="description" content="Get in touch with Data Marketics for business data, contact databases, targeted leads and lead generation solutions tailored to your sales and marketing goals." />
                 <meta name="keywords" content="B2B data provider, B2B data services, B2B database provider, B2B leads provider, B2B lead generation services" />
                 <link rel="canonical" href="https://datamarketics.com/contact" />

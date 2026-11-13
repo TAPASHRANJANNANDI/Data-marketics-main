@@ -62,7 +62,7 @@ const TechnologyIndustry = () => {
     return (
         <>
             <Helmet>
-                <title>Technology Leads &amp; Contact Data | Data Marketics</title>
+                <title>Technology Leads and Contact Data | Data Marketics</title>
                 <meta name="description" content="Reach technology companies and key decision-makers with targeted contact data, company profiles and lead generation solutions for sales and marketing teams." />
                 <meta name="keywords" content="technology leads, technology database, technology contact list, B2B contact database, B2B Company profile" />
                 <link rel="canonical" href="https://datamarketics.com/industries/technology" />

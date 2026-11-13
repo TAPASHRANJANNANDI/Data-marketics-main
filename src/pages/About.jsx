@@ -118,7 +118,7 @@ const About = () => (
     <>
         {/* ── SEO HEAD ─────────────────────────────────────────── */}
         <Helmet>
-            <title>About Data Marketics | Business Data &amp; Lead Generation</title>
+            <title>About Data Marketics | Business Data and Lead Generation</title>
             <meta name="description" content="Learn about Data Marketics and how we help businesses access quality data, prospect information and lead generation solutions to build stronger sales pipelines." />
             <meta name="keywords" content="B2B data provider, B2B database provider, B2B data services, B2B Company profile, lead generation company" />
             <link rel="canonical" href="https://datamarketics.com/about-us" />
